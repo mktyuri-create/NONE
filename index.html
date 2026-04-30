@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0054)file:///C:/Users/g710931/Downloads/app_none_final.html -->
+<!-- saved from url=(0056)file:///C:/Users/g710931/Downloads/app_none_final_8.html -->
 <html lang="pt-BR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -38,6 +38,8 @@ body { display: flex; justify-content: center; }
 .logo-pill span { font-size: 19px; font-weight: 700; color: var(--navy); letter-spacing: 1px; }
 .header-info h1 { font-size: 15px; font-weight: 600; color: #E6F1FB; }
 .header-info p { font-size: 11px; color: var(--blue-100); margin-top: 1px; }
+.logout-btn { background: rgba(255,255,255,0.12); border: 0.5px solid rgba(181,212,244,0.3); border-radius: 8px; padding: 6px 10px; color: var(--blue-100); font-size: 11px; font-weight: 700; cursor: pointer; font-family: inherit; white-space: nowrap; flex-shrink: 0; }
+.logout-btn:active { background: rgba(255,255,255,0.22); }
 
 /* VIEWER HEADER */
 .viewer-header { background: var(--navy); padding: 44px 16px 14px; display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
@@ -95,10 +97,20 @@ body { display: flex; justify-content: center; }
 .field input:focus, .field select:focus { border-color: var(--navy-mid); }
 .field textarea { resize: none; }
 
-.ruptura-list { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 4px; }
-.ruptura-tag { padding: 7px 11px; border-radius: 20px; border: 0.5px solid var(--border); background: var(--bg); font-size: 11px; color: var(--navy); cursor: pointer; transition: all 0.12s; user-select: none; }
-.ruptura-tag.selected { background: var(--navy); color: white; border-color: var(--navy); }
-.ruptura-link { font-size: 11px; color: var(--navy-mid); text-decoration: underline; display: inline-block; margin-top: 8px; }
+.ruptura-search { width: 100%; padding: 10px 12px; border-radius: 9px; border: 0.5px solid var(--border); background: var(--bg); font-size: 13px; color: var(--navy); outline: none; font-family: inherit; }
+.ruptura-search:focus { border-color: var(--navy-mid); }
+.ruptura-results { max-height: 180px; overflow-y: auto; margin-top: 6px; border-radius: 9px; border: 0.5px solid var(--border); background: white; display: none; }
+.ruptura-results.show { display: block; }
+.ruptura-result-item { padding: 9px 12px; cursor: pointer; border-bottom: 0.5px solid var(--blue-50); transition: background 0.1s; }
+.ruptura-result-item:last-child { border-bottom: none; }
+.ruptura-result-item:active { background: var(--blue-50); }
+.ruptura-result-name { font-size: 12px; font-weight: 600; color: var(--navy); }
+.ruptura-result-meta { font-size: 10px; color: var(--navy-light); margin-top: 1px; }
+.ruptura-selected-list { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.ruptura-chip { display: flex; align-items: center; gap: 5px; background: var(--navy); color: white; border-radius: 20px; padding: 5px 10px; font-size: 11px; font-weight: 600; }
+.ruptura-chip-remove { cursor: pointer; font-size: 14px; line-height: 1; opacity: 0.7; }
+.ruptura-chip-remove:hover { opacity: 1; }
+.ruptura-empty { padding: 12px; font-size: 12px; color: var(--navy-light); text-align: center; }
 
 .btn-submit { width: 100%; padding: 13px; background: var(--navy); color: var(--blue-100); border: none; border-radius: 11px; font-size: 14px; font-weight: 700; cursor: pointer; margin-top: 6px; font-family: inherit; transition: opacity 0.15s; }
 .btn-submit:active { opacity: 0.85; }
@@ -127,16 +139,25 @@ body { display: flex; justify-content: center; }
 .nav-btn.active .nav-dot { display: block; }
 
 /* LOGIN SCREEN */
-.login-screen { position: fixed; inset: 0; background: var(--navy); display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 100; padding: 32px 28px; transition: opacity 0.4s, transform 0.4s; }
+.login-screen { position: fixed; inset: 0; background: var(--navy); display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 100; padding: 32px 28px; transition: opacity 0.4s, transform 0.4s; overflow-y: auto; }
 .login-screen.hide { opacity: 0; transform: scale(1.04); pointer-events: none; }
-.login-logo { background: white; border-radius: 16px; padding: 10px 22px; margin-bottom: 12px; }
+.login-logo { background: white; border-radius: 16px; padding: 10px 22px; margin-bottom: 8px; }
 .login-logo span { font-size: 32px; font-weight: 700; color: var(--navy); letter-spacing: 2px; }
-.login-tagline { color: var(--blue-100); font-size: 13px; margin-bottom: 40px; }
+.login-tagline { color: var(--blue-100); font-size: 13px; margin-bottom: 28px; }
 .login-card { background: rgba(255,255,255,0.07); border: 0.5px solid rgba(181,212,244,0.25); border-radius: 16px; padding: 24px 20px; width: 100%; max-width: 320px; }
 .login-label { font-size: 11px; font-weight: 700; color: var(--blue-100); text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 8px; }
-.login-input { width: 100%; padding: 12px 14px; border-radius: 10px; border: 0.5px solid rgba(181,212,244,0.3); background: rgba(255,255,255,0.08); font-size: 16px; color: white; font-family: inherit; outline: none; letter-spacing: 3px; text-align: center; font-weight: 600; }
+.login-input { width: 100%; padding: 12px 14px; border-radius: 10px; border: 0.5px solid rgba(181,212,244,0.3); background: rgba(255,255,255,0.08); font-size: 16px; color: white; font-family: inherit; outline: none; letter-spacing: 3px; text-align: center; font-weight: 600; margin-bottom: 0; }
 .login-input::placeholder { letter-spacing: 0; font-weight: 400; color: rgba(181,212,244,0.5); font-size: 13px; }
 .login-input:focus { border-color: var(--blue-100); background: rgba(255,255,255,0.12); }
+.login-select { width: 100%; padding: 12px 14px; border-radius: 10px; border: 0.5px solid rgba(181,212,244,0.3); background: rgba(255,255,255,0.08); font-size: 14px; color: white; font-family: inherit; outline: none; -webkit-appearance: none; appearance: none; margin-bottom: 0; }
+.login-select option { background: #0C2D5E; color: white; }
+.login-type-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 0; }
+.login-type-btn { padding: 14px 10px; border-radius: 10px; border: 1.5px solid rgba(181,212,244,0.3); background: rgba(255,255,255,0.05); color: white; font-family: inherit; font-size: 13px; font-weight: 700; cursor: pointer; text-align: center; transition: all 0.15s; }
+.login-type-btn:active, .login-type-btn.selected { background: white; color: var(--navy); border-color: white; }
+.login-type-icon { font-size: 22px; display: block; margin-bottom: 4px; }
+.login-step { display: none; margin-top: 16px; }
+.login-step.show { display: block; }
+.login-divider { height: 0.5px; background: rgba(181,212,244,0.2); margin: 16px 0; }
 .login-btn { width: 100%; padding: 13px; background: white; color: var(--navy); border: none; border-radius: 10px; font-size: 15px; font-weight: 700; cursor: pointer; margin-top: 14px; font-family: inherit; transition: opacity 0.15s; }
 .login-btn:active { opacity: 0.85; }
 .login-error { color: #ff6b6b; font-size: 12px; text-align: center; margin-top: 10px; display: none; }
@@ -152,14 +173,58 @@ body { display: flex; justify-content: center; }
 <body>
 
 <!-- LOGIN -->
-<div class="login-screen" id="login-screen">
-  <div class="login-logo"><span>none</span></div>
+<div class="login-screen" id="login-screen" style="display: flex;">
+  <div class="login-logo"><img src="data:image/png;base64,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" alt="None" style="height:48px;width:auto;display:block;"></div>
   <div class="login-tagline">Equipe de Vendas</div>
   <div class="login-card">
-    <label class="login-label">Senha de acesso</label>
-    <input class="login-input" type="password" id="login-input" placeholder="Digite a senha" autocomplete="off" onkeydown="if(event.key===&#39;Enter&#39;)entrar()" \="">
-    <button class="login-btn" onclick="entrar()">Entrar</button>
-    <div class="login-error" id="login-error">Senha incorreta. Tente novamente.</div>
+
+    <label class="login-label">Tipo de acesso</label>
+    <div class="login-type-btns">
+      <div class="login-type-btn selected" id="btn-tipo-interno" onclick="selecionarTipo(&#39;interno&#39;)">
+        <span class="login-type-icon">👔</span>Interno
+      </div>
+      <div class="login-type-btn" id="btn-tipo-distribuidor" onclick="selecionarTipo(&#39;distribuidor&#39;)">
+        <span class="login-type-icon">🚚</span>Distribuidor
+      </div>
+    </div>
+
+    <div class="login-step show" id="step-interno">
+      <div class="login-divider"></div>
+      <label class="login-label">Seu nome</label>
+      <select class="login-select" id="select-interno">
+        <option value="">Selecione...</option>
+        <option>Eliadson</option>
+        <option>Flávia</option>
+        <option>Amom</option>
+        <option>Elias</option>
+      </select>
+      <label class="login-label" style="margin-top:14px">Senha</label>
+      <input class="login-input" type="password" id="input-senha-interno" placeholder="Digite a senha" autocomplete="off" onkeydown="if(event.key===&#39;Enter&#39;)entrar()">
+      <button class="login-btn" onclick="entrar()">Entrar</button>
+    </div>
+
+    <div class="login-step" id="step-distribuidor">
+      <div class="login-divider"></div>
+      <label class="login-label">Distribuidor</label>
+      <select class="login-select" id="select-distribuidor">
+        <option value="">Selecione...</option>
+        <option>Cardeal</option>
+        <option>Multigiro PB</option>
+        <option>Multigiro RN</option>
+        <option>EBA</option>
+        <option>Donizete</option>
+        <option>BTM</option>
+        <option>Dismelo</option>
+        <option>TT</option>
+        <option>Somma</option>
+        <option>Destaque do Norte</option>
+      </select>
+      <label class="login-label" style="margin-top:14px">Senha</label>
+      <input class="login-input" type="password" id="input-senha-dist" placeholder="Digite a senha" autocomplete="off" onkeydown="if(event.key===&#39;Enter&#39;)entrar()">
+      <button class="login-btn" onclick="entrar()">Entrar</button>
+    </div>
+
+    <div class="login-error" id="login-error">Senha incorreta.</div>
   </div>
 </div>
 <div class="app">
@@ -167,11 +232,12 @@ body { display: flex; justify-content: center; }
   <!-- ========== MAIN SCREEN ========== -->
   <div class="screen slide-in" id="screen-main">
     <div class="header">
-      <div class="logo-pill"><span>none</span></div>
-      <div class="header-info">
+      <div class="logo-pill"><img src="data:image/png;base64,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" alt="None" style="height:36px;width:auto;display:block;"></div>
+      <div class="header-info" style="flex:1;">
         <h1>Equipe de Vendas</h1>
-        <p>Bom trabalho hoje! 💪</p>
+        <p id="header-user">Olá, Flávia! 👋</p>
       </div>
+      <button class="logout-btn" onclick="logout()" title="Sair">⎋ Sair</button>
     </div>
 
     <div style="flex:1; overflow:hidden; display:flex; flex-direction:column;">
@@ -179,37 +245,37 @@ body { display: flex; justify-content: center; }
       <div style="flex:1; overflow:hidden; position:relative;">
 
         <!-- MENU -->
-        <div class="main-scroll" id="tab-menu" style="position:absolute;inset:0;">
+        <div class="main-scroll" id="tab-menu" style="position: absolute; inset: 0px; display: block;">
           <div class="sec-label">Menu principal</div>
           <div class="btn-grid">
             <button class="btn-card" onclick="openViewer(&#39;pdf&#39;,&#39;Catálogo de Produtos&#39;,&#39;https://drive.google.com/file/d/1eS21maMZ0vBeTYwXdcldKYl9VEnfvZ5B/preview&#39;)">
               <div class="btn-icon">📦</div>
               <div><div class="btn-label">Catálogo de Produtos</div><div class="btn-sub">Ver produtos</div></div>
             </button>
-            <button class="btn-card" onclick="openViewer(&#39;img&#39;,&#39;Metas do Mês&#39;,&#39;https://drive.google.com/file/d/1_QZpuGvjS5rZQqckeobV1aamS24_MI7-/preview&#39;)">
+            <button class="btn-card" onclick="openViewer(&#39;img&#39;,&#39;Metas do Mês&#39;,&#39;https://drive.google.com/file/d/1_QZpuGvjS5rZQqckeobV1aamS24_MI7-/preview&#39;)" style="">
               <div class="btn-icon">🎯</div>
               <div><div class="btn-label">Metas do Mês</div><div class="btn-sub">Ver produtos</div></div>
             </button>
-            <button class="btn-card" onclick="openViewer(&#39;pdf&#39;,&#39;Remuneração Variável&#39;,&#39;https://drive.google.com/file/d/1NLHgFv2zlVzi4fjNCbKknhlD796b3Q7A/preview&#39;)">
+            <button class="btn-card" onclick="openViewer(&#39;pdf&#39;,&#39;Remuneração Variável&#39;,&#39;https://drive.google.com/file/d/1NLHgFv2zlVzi4fjNCbKknhlD796b3Q7A/preview&#39;)" style="">
               <div class="btn-icon">💰</div>
               <div><div class="btn-label">Remuneração Variável</div><div class="btn-sub">Ver detalhes</div></div>
             </button>
-            <button class="btn-card" onclick="openViewer(&#39;img&#39;,&#39;Destaque do Mês&#39;,&#39;https://drive.google.com/file/d/1OnrzI0xdl_qWV5CRHBmnW1HPSOjrkkd8/preview&#39;)">
+            <button class="btn-card" onclick="openViewer(&#39;img&#39;,&#39;Destaque do Mês&#39;,&#39;https://drive.google.com/file/d/1OnrzI0xdl_qWV5CRHBmnW1HPSOjrkkd8/preview&#39;)" style="">
               <div class="btn-icon">⭐</div>
               <div><div class="btn-label">Destaque do Mês</div><div class="btn-sub">Ver detalhes</div></div>
             </button>
-            <button class="btn-card" onclick="openViewer(&#39;img&#39;,&#39;Faseamento&#39;,&#39;https://drive.google.com/file/d/1Bet3fTx8OhGMS_4P3wsRqeFEPlelb8-P/preview&#39;)">
+            <button class="btn-card" onclick="openViewer(&#39;img&#39;,&#39;Faseamento&#39;,&#39;https://drive.google.com/file/d/1Bet3fTx8OhGMS_4P3wsRqeFEPlelb8-P/preview&#39;)" style="">
               <div class="btn-icon">📈</div>
               <div><div class="btn-label">Faseamento</div><div class="btn-sub">Ver detalhes</div></div>
             </button>
-            <button class="btn-card" onclick="openViewer(&#39;pdf&#39;,&#39;Best — Previsões&#39;,&#39;https://docs.google.com/spreadsheets/d/1u6BXy-Q68iN9Unm2M76awlFrdrvw8Vd1/preview&#39;)">
+            <button class="btn-card" onclick="openViewer(&#39;pdf&#39;,&#39;Best — Previsões&#39;,&#39;https://docs.google.com/spreadsheets/d/1u6BXy-Q68iN9Unm2M76awlFrdrvw8Vd1/preview&#39;)" style="">
               <div class="btn-icon">🏆</div>
               <div><div class="btn-label">Best</div><div class="btn-sub">Preencher previsões</div></div>
             </button>
           </div>
 
-          <div class="sec-label" style="margin-top:18px">Metas por cliente</div>
-          <button class="btn-card-full" onclick="openViewer(&#39;dual&#39;,&#39;Metas por Cliente&#39;,&#39;https://drive.google.com/file/d/1sbWjJgmOlt2CBhNoqmny6qX4GtMsDdKX/preview&#39;,&#39;https://drive.google.com/file/d/1Ui1ekc6cK7nvjyOQSBfEa7dgR1YzhBuW/preview&#39;)">
+          <div class="sec-label" style="margin-top: 18px;">Metas por cliente</div>
+          <button class="btn-card-full" onclick="openViewer(&#39;dual&#39;,&#39;Metas por Cliente&#39;,&#39;https://drive.google.com/file/d/1sbWjJgmOlt2CBhNoqmny6qX4GtMsDdKX/preview&#39;,&#39;https://drive.google.com/file/d/1Ui1ekc6cK7nvjyOQSBfEa7dgR1YzhBuW/preview&#39;)" style="">
             <div class="btn-icon" style="width:36px;height:36px;border-radius:10px;background:var(--navy);display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;">👥</div>
             <div style="flex:1;">
               <div class="btn-label">Metas por Cliente</div>
@@ -220,7 +286,7 @@ body { display: flex; justify-content: center; }
         </div>
 
         <!-- LINKS -->
-        <div class="main-scroll" id="tab-links" style="position:absolute;inset:0;display:none;">
+        <div class="main-scroll" id="tab-links" style="position: absolute; inset: 0px; display: none;">
           <div class="sec-label">Acessos</div>
           <a class="link-row" href="https://genmills-my.sharepoint.com/:f:/p/yuri_chaves/IgBau0NT79RMSomzUsS0IiRSAWhKOmLJe9Fk17ByVAdS82k?e=WsSMon" target="_blank"><div class="link-dot"></div><div class="link-name">Modelo de PPT — Reunião Semanal</div><div class="link-arrow">›</div></a>
           <a class="link-row" href="https://tableau.generalmills.com/#/views/BrazilControlTower-Dashboarddebacklogdepedidos/RevenueRecognition?:iid=2" target="_blank"><div class="link-dot"></div><div class="link-name">Tableau — Reconhecimento</div><div class="link-arrow">›</div></a>
@@ -244,7 +310,7 @@ body { display: flex; justify-content: center; }
         </div>
 
         <!-- PESQUISA -->
-        <div class="main-scroll" id="tab-pesquisa" style="position:absolute;inset:0;display:none;">
+        <div class="main-scroll" id="tab-pesquisa" style="position: absolute; inset: 0px; display: none;">
           <div class="sec-label">Pesquisa em loja</div>
           <div class="form-card">
             <div class="field">
@@ -277,8 +343,97 @@ body { display: flex; justify-content: center; }
             </div>
             <div class="field">
               <label>Produtos em ruptura</label>
-              <div class="ruptura-list" id="ruptura-list"><div class="ruptura-tag">Aveia Quaker Tradicional 500g</div><div class="ruptura-tag">Aveia Quaker 1min 500g</div><div class="ruptura-tag">Aveia Quaker Flocos Finos 500g</div><div class="ruptura-tag">Nature Valley Mel e Aveia</div><div class="ruptura-tag">Nature Valley Frutas Vermelhas</div><div class="ruptura-tag">Nature Valley Castanha e Mel</div><div class="ruptura-tag">Toddy Chocolate 200g</div><div class="ruptura-tag">Toddy Chocolate 400g</div><div class="ruptura-tag">Cheetos Requeijão 45g</div><div class="ruptura-tag">Cheetos Onda 45g</div><div class="ruptura-tag">Ruffles Original 57g</div><div class="ruptura-tag">Doritos Nacho 54g</div><div class="ruptura-tag">Elma Chips Salgadinhos</div><div class="ruptura-tag">Kit Kat Original 42g</div><div class="ruptura-tag">Yoki Pipoca Manteiga</div><div class="ruptura-tag">Yoki Flocão</div></div>
-              <a class="ruptura-link" href="https://docs.google.com/spreadsheets/d/1u6BXy-Q68iN9Unm2M76awlFrdrvw8Vd1/edit" target="_blank">Ver planilha completa ↗</a>
+              <input class="ruptura-search" type="text" id="ruptura-search" placeholder="Buscar por nome, SKU ou EAN..." autocomplete="off" oninput="buscarProduto(this.value)" onfocus="buscarProduto(this.value)">
+              <div class="ruptura-results" id="ruptura-results">
+      <div class="ruptura-result-item" onclick="adicionarRuptura(&#39;7130000357&#39;)">
+        <div class="ruptura-result-name">AMIDO DE MILHO 500G</div>
+        <div class="ruptura-result-meta">SKU: 7130000357 · EAN: 7891095003570 · AMIDO DE MILHO 12X500G</div>
+      </div>
+      <div class="ruptura-result-item" onclick="adicionarRuptura(&#39;7130000551&#39;)">
+        <div class="ruptura-result-name">AMIDO DE MILHO 1KG</div>
+        <div class="ruptura-result-meta">SKU: 7130000551 · EAN: 7891095005512 · AMIDO DE MILHO 10X1KG</div>
+      </div>
+      <div class="ruptura-result-item" onclick="adicionarRuptura(&#39;7130001504&#39;)">
+        <div class="ruptura-result-name">AMIDO DE MILHO 200G</div>
+        <div class="ruptura-result-meta">SKU: 7130001504 · EAN: 7891095015047 · AMIDO DE MILHO 12X200G</div>
+      </div>
+      <div class="ruptura-result-item" onclick="adicionarRuptura(&#39;7130000665&#39;)">
+        <div class="ruptura-result-name">AVEIA FLOCOS 500G</div>
+        <div class="ruptura-result-meta">SKU: 7130000665 · EAN: 7891095100941 · AVEIA FLOCOS FINOS 12X500G</div>
+      </div>
+      <div class="ruptura-result-item" onclick="adicionarRuptura(&#39;7130000666&#39;)">
+        <div class="ruptura-result-name">AVEIA FLOCOS 500G</div>
+        <div class="ruptura-result-meta">SKU: 7130000666 · EAN: 7891095100958 · AVEIA FLOCOS YOKI 12X500G</div>
+      </div>
+      <div class="ruptura-result-item" onclick="adicionarRuptura(&#39;7130002833&#39;)">
+        <div class="ruptura-result-name">AVEIA 170G</div>
+        <div class="ruptura-result-meta">SKU: 7130002833 · EAN: 7891095028337 · AVEIA FLÓCOS FINOS YOKI CX 12X170G</div>
+      </div>
+      <div class="ruptura-result-item" onclick="adicionarRuptura(&#39;7130002834&#39;)">
+        <div class="ruptura-result-name">AVEIA 170G</div>
+        <div class="ruptura-result-meta">SKU: 7130002834 · EAN: 7891095028344 · AVEIA FLÓCOS YOKI CX 12X170G</div>
+      </div>
+      <div class="ruptura-result-item" onclick="adicionarRuptura(&#39;7130002835&#39;)">
+        <div class="ruptura-result-name">AVEIA 170G</div>
+        <div class="ruptura-result-meta">SKU: 7130002835 · EAN: 7891095028351 · FARINHA DE AVEIA YOKI CX 12X170G</div>
+      </div>
+      <div class="ruptura-result-item" onclick="adicionarRuptura(&#39;7002120500&#39;)">
+        <div class="ruptura-result-name">HD BULK 9,5L</div>
+        <div class="ruptura-result-meta">SKU: 7002120500 · EAN: 3415581205008 · STRAWBERRY BULK 2.5G</div>
+      </div>
+      <div class="ruptura-result-item" onclick="adicionarRuptura(&#39;7002123700&#39;)">
+        <div class="ruptura-result-name">HD BULK 9,5L</div>
+        <div class="ruptura-result-meta">SKU: 7002123700 · EAN: 3415581237009 · MACADAMIA NUT BRITTLE BULK 2.5G</div>
+      </div>
+      <div class="ruptura-result-item" onclick="adicionarRuptura(&#39;7002125400&#39;)">
+        <div class="ruptura-result-name">HD BULK 9,5L</div>
+        <div class="ruptura-result-meta">SKU: 7002125400 · EAN: 3415580002608 · BELGIAN CHOCOLATE BULK 2.5G</div>
+      </div>
+      <div class="ruptura-result-item" onclick="adicionarRuptura(&#39;7002414000&#39;)">
+        <div class="ruptura-result-name">HD BULK 9,5L</div>
+        <div class="ruptura-result-meta">SKU: 7002414000 · EAN: 3415584140009 · DULCE DE LECHE BULK 2.5G</div>
+      </div>
+      <div class="ruptura-result-item" onclick="adicionarRuptura(&#39;7130000018&#39;)">
+        <div class="ruptura-result-name">FUBA PRE COZIDO 500G</div>
+        <div class="ruptura-result-meta">SKU: 7130000018 · EAN: 7891095200184 · FUBA PRÉ COZIDO FD 24X500G</div>
+      </div>
+      <div class="ruptura-result-item" onclick="adicionarRuptura(&#39;7130000019&#39;)">
+        <div class="ruptura-result-name">FUBA PRE COZIDO 1KG</div>
+        <div class="ruptura-result-meta">SKU: 7130000019 · EAN: 7891095200191 · FUBA PRÉ COZIDO FD 12X1KG</div>
+      </div>
+      <div class="ruptura-result-item" onclick="adicionarRuptura(&#39;7130000020&#39;)">
+        <div class="ruptura-result-name">FARINHA MILHO KIPOLENTA 500G</div>
+        <div class="ruptura-result-meta">SKU: 7130000020 · EAN: 7891095200207 · FARINHA MILHO KIPOLENTA 24X500G</div>
+      </div>
+      <div class="ruptura-result-item" onclick="adicionarRuptura(&#39;7130000039&#39;)">
+        <div class="ruptura-result-name">FARINHA DE MILHO AMAR 500G</div>
+        <div class="ruptura-result-meta">SKU: 7130000039 · EAN: 7891095200399 · FARINHA MILHO AMARELA 12X500G</div>
+      </div>
+      <div class="ruptura-result-item" onclick="adicionarRuptura(&#39;7130001460&#39;)">
+        <div class="ruptura-result-name">FARINHA DE MILHO AMAR 2KG</div>
+        <div class="ruptura-result-meta">SKU: 7130001460 · EAN: 7891095217397 · FARINHA MILHO AMARELA 5X2KG</div>
+      </div>
+      <div class="ruptura-result-item" onclick="adicionarRuptura(&#39;7130000995&#39;)">
+        <div class="ruptura-result-name">MOUSSE 70G</div>
+        <div class="ruptura-result-meta">SKU: 7130000995 · EAN: 7891095009954 · MOUSSE DE CHOCOLATE 12X70G</div>
+      </div>
+      <div class="ruptura-result-item" onclick="adicionarRuptura(&#39;7130000996&#39;)">
+        <div class="ruptura-result-name">MOUSSE 70G</div>
+        <div class="ruptura-result-meta">SKU: 7130000996 · EAN: 7891095009961 · MOUSSE DE MORANGO 12X70G</div>
+      </div>
+      <div class="ruptura-result-item" onclick="adicionarRuptura(&#39;7130001645&#39;)">
+        <div class="ruptura-result-name">MOUSSE 70G</div>
+        <div class="ruptura-result-meta">SKU: 7130001645 · EAN: 7891095016457 · MOUSSE DE MARACUJÁ 12X70G</div>
+      </div></div>
+              <div class="ruptura-selected-list" id="ruptura-chips">
+    <div class="ruptura-chip">
+      AVEIA FLOCOS 500G
+      <span class="ruptura-chip-remove" onclick="removerRuptura(&#39;7130000666&#39;)">×</span>
+    </div>
+    <div class="ruptura-chip">
+      AMIDO DE MILHO 500G
+      <span class="ruptura-chip-remove" onclick="removerRuptura(&#39;7130000357&#39;)">×</span>
+    </div></div>
             </div>
             <div class="field">
               <label>Observações</label>
@@ -290,14 +445,18 @@ body { display: flex; justify-content: center; }
         </div>
 
         <!-- FOTOS -->
-        <div class="main-scroll" id="tab-fotos" style="position:absolute;inset:0;display:none;">
+        <div class="main-scroll" id="tab-fotos" style="position: absolute; inset: 0px; display: none;">
           <div class="sec-label">Registro de PDV</div>
           <div class="senha-badge">
             <div class="senha-icon">🔑</div>
             <div class="senha-text">
-              <label>Senha do mês</label>
-              <span id="senha-mes">NONE25</span>
+              <label>Senha do mês — Maio</label>
+              <span id="senha-mes">JUNINA GM</span>
             </div>
+          </div>
+          <div style="background:#FFF8E1;border-radius:10px;padding:10px 13px;margin-bottom:14px;display:flex;align-items:flex-start;gap:8px;">
+            <span style="font-size:16px;">⚠️</span>
+            <span style="font-size:12px;color:#7A5000;font-weight:500;line-height:1.5;">Importante: a senha do mês deve constar na foto enviada.</span>
           </div>
           <div class="form-card">
             <div class="field">
@@ -306,17 +465,32 @@ body { display: flex; justify-content: center; }
             </div>
             <div class="field">
               <label>Nome da rede</label>
-              <input type="text" id="foto-rede" placeholder="Ex: Atacadão, Assaí...">
+              <input type="text" id="foto-rede" placeholder="Ex: Atacadão, Assaí..." style="opacity: 1;">
             </div>
             <div class="field">
               <label>Categoria</label>
               <select id="foto-categoria">
                 <option value="">Selecione...</option>
-                <option>Cereais</option>
-                <option>Biscoitos</option>
-                <option>Barras</option>
-                <option>Snacks</option>
-                <option>Outros</option>
+                <option>Display</option>
+                <option>Ilha</option>
+                <option>Barraca</option>
+                <option>Terminal</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>Distribuidor</label>
+              <select id="foto-distribuidor">
+                <option value="">Selecione...</option>
+                <option>Cardeal</option>
+                <option>Multigiro PB</option>
+                <option>Multigiro RN</option>
+                <option>EBA</option>
+                <option>Donizete</option>
+                <option>BTM</option>
+                <option>Dismelo</option>
+                <option>TT</option>
+                <option>Somma</option>
+                <option>Destaque do Norte</option>
               </select>
             </div>
             <div class="field">
@@ -342,7 +516,7 @@ body { display: flex; justify-content: center; }
           <div class="nav-label">Menu</div>
           <div class="nav-dot"></div>
         </button>
-        <button class="nav-btn" id="nav-links" onclick="switchTab(&#39;links&#39;,this)">
+        <button class="nav-btn" id="nav-links" onclick="switchTab(&#39;links&#39;,this)" style="">
           <div class="nav-icon">🔗</div>
           <div class="nav-label">Links</div>
           <div class="nav-dot"></div>
@@ -365,37 +539,121 @@ body { display: flex; justify-content: center; }
   <div class="screen hidden" id="screen-viewer">
     <div class="viewer-header">
       <button class="btn-back" onclick="closeViewer()">‹ Voltar</button>
-      <div class="viewer-title" id="viewer-title">Documento</div>
+      <div class="viewer-title" id="viewer-title">Remuneração Variável</div>
     </div>
-    <div class="viewer-body" id="viewer-body">
-      <div class="viewer-loading" id="viewer-loading">
-        <div class="spinner"></div>
-        <span>Carregando...</span>
-      </div>
-    </div>
+    <div class="viewer-body" id="viewer-body"></div>
   </div>
 
 </div><!-- /app -->
 
 <script>
 // ——— LOGIN ———
-const SENHA = 'NONE2026';
+const SENHA_INTERNO = 'NONE2026';
+const SENHA_DIST = 'DIST2026';
+let tipoSelecionado = null;
+
+function selecionarTipo(tipo) {
+  tipoSelecionado = tipo;
+  document.getElementById('btn-tipo-interno').classList.toggle('selected', tipo === 'interno');
+  document.getElementById('btn-tipo-distribuidor').classList.toggle('selected', tipo === 'distribuidor');
+  document.getElementById('step-interno').classList.toggle('show', tipo === 'interno');
+  document.getElementById('step-distribuidor').classList.toggle('show', tipo === 'distribuidor');
+  document.getElementById('login-error').classList.remove('show');
+}
+
 function entrar() {
-  const val = document.getElementById('login-input').value.trim();
   const err = document.getElementById('login-error');
-  if (val === SENHA) {
-    sessionStorage.setItem('none_auth', '1');
-    document.getElementById('login-screen').classList.add('hide');
-    setTimeout(() => document.getElementById('login-screen').style.display = 'none', 400);
+  if (!tipoSelecionado) { err.textContent = 'Selecione o tipo de acesso.'; err.classList.add('show'); return; }
+
+  if (tipoSelecionado === 'interno') {
+    const nome = document.getElementById('select-interno').value;
+    const senha = document.getElementById('input-senha-interno').value.trim();
+    if (!nome) { err.textContent = 'Selecione seu nome.'; err.classList.add('show'); return; }
+    if (senha !== SENHA_INTERNO) { err.textContent = 'Senha incorreta.'; err.classList.add('show'); document.getElementById('input-senha-interno').value = ''; setTimeout(() => err.classList.remove('show'), 2500); return; }
+    sessionStorage.setItem('none_auth', 'interno');
+    sessionStorage.setItem('none_user', nome);
+    aplicarPerfil('interno', nome);
   } else {
-    err.classList.add('show');
-    document.getElementById('login-input').value = '';
-    setTimeout(() => err.classList.remove('show'), 2500);
+    const dist = document.getElementById('select-distribuidor').value;
+    const senha = document.getElementById('input-senha-dist').value.trim();
+    if (!dist) { err.textContent = 'Selecione o distribuidor.'; err.classList.add('show'); return; }
+    if (senha !== SENHA_DIST) { err.textContent = 'Senha incorreta.'; err.classList.add('show'); document.getElementById('input-senha-dist').value = ''; setTimeout(() => err.classList.remove('show'), 2500); return; }
+    sessionStorage.setItem('none_auth', 'distribuidor');
+    sessionStorage.setItem('none_user', dist);
+    aplicarPerfil('distribuidor', dist);
+  }
+
+  document.getElementById('login-screen').classList.add('hide');
+  setTimeout(() => document.getElementById('login-screen').style.display = 'none', 400);
+}
+
+function aplicarPerfil(tipo, nome) {
+  // Atualiza saudação no header
+  const headerUser = document.getElementById('header-user');
+  if (headerUser) headerUser.textContent = 'Olá, ' + nome + '! 👋';
+
+  // Se distribuidor, preenche automaticamente o campo nome da rede no PDV
+  if (tipo === 'distribuidor') {
+    const fotoRede = document.getElementById('foto-rede');
+    if (fotoRede) { fotoRede.value = nome; fotoRede.readOnly = true; fotoRede.style.opacity = '0.7'; }
+  } else {
+    const fotoRede = document.getElementById('foto-rede');
+    if (fotoRede) { fotoRede.value = ''; fotoRede.readOnly = false; fotoRede.style.opacity = '1'; }
+  }
+
+  if (tipo === 'distribuidor') {
+    // Esconde botões do menu que não são para distribuidor
+    // Mantém apenas: Catálogo de Produtos
+    // Esconde: Metas, Remuneração, Destaque, Faseamento, Best, Metas por Cliente
+    const botoesMenu = document.querySelectorAll('#tab-menu .btn-card, #tab-menu .btn-card-full');
+    botoesMenu.forEach(btn => {
+      const label = btn.querySelector('.btn-label');
+      if (label) {
+        const txt = label.textContent.trim();
+        if (txt !== 'Catálogo de Produtos') {
+          btn.style.display = 'none';
+        }
+      }
+    });
+    // Esconde seção "Metas por cliente" label e botão
+    const secLabels = document.querySelectorAll('#tab-menu .sec-label');
+    secLabels.forEach(l => { if (l.textContent.includes('Metas por cliente')) l.style.display = 'none'; });
+    // Esconde aba Links do nav
+    document.getElementById('nav-links').style.display = 'none';
   }
 }
-if (sessionStorage.getItem('none_auth') === '1') {
+
+function logout() {
+  sessionStorage.removeItem('none_auth');
+  sessionStorage.removeItem('none_user');
+  // Reset menu items visibility
+  document.querySelectorAll('#tab-menu .btn-card, #tab-menu .btn-card-full').forEach(b => b.style.display = '');
+  document.querySelectorAll('#tab-menu .sec-label').forEach(l => l.style.display = '');
+  document.getElementById('nav-links').style.display = '';
+  // Reset login form
+  document.getElementById('btn-tipo-interno').classList.remove('selected');
+  document.getElementById('btn-tipo-distribuidor').classList.remove('selected');
+  document.getElementById('step-interno').classList.remove('show');
+  document.getElementById('step-distribuidor').classList.remove('show');
+  document.getElementById('input-senha-interno').value = '';
+  document.getElementById('input-senha-dist').value = '';
+  document.getElementById('select-interno').value = '';
+  document.getElementById('select-distribuidor').value = '';
+  tipoSelecionado = null;
+  // Show login screen
   const ls = document.getElementById('login-screen');
-  ls.style.display = 'none';
+  ls.style.display = 'flex';
+  ls.classList.remove('hide');
+  // Reset nav to menu tab
+  switchTab('menu', document.getElementById('nav-menu'));
+}
+
+// Restaurar sessão
+const savedAuth = sessionStorage.getItem('none_auth');
+if (savedAuth) {
+  const savedUser = sessionStorage.getItem('none_user');
+  document.getElementById('login-screen').style.display = 'none';
+  aplicarPerfil(savedAuth, savedUser);
 }
 
 // ——— TAB NAVIGATION ———
@@ -481,14 +739,388 @@ const produtos = [
   'Elma Chips Salgadinhos','Kit Kat Original 42g',
   'Yoki Pipoca Manteiga','Yoki Flocão',
 ];
-const selecionados = new Set();
-const lista = document.getElementById('ruptura-list');
-produtos.forEach(p => {
-  const t = document.createElement('div');
-  t.className = 'ruptura-tag';
-  t.textContent = p;
-  t.onclick = () => { t.classList.toggle('selected'); selecionados.has(p)?selecionados.delete(p):selecionados.add(p); };
-  lista.appendChild(t);
+const PRODUTOS = [
+  {sku:'7130000357',desc:'AMIDO DE MILHO 12X500G',produto:'AMIDO DE MILHO 500G',ean:'7891095003570'},
+  {sku:'7130000551',desc:'AMIDO DE MILHO 10X1KG',produto:'AMIDO DE MILHO 1KG',ean:'7891095005512'},
+  {sku:'7130001504',desc:'AMIDO DE MILHO 12X200G',produto:'AMIDO DE MILHO 200G',ean:'7891095015047'},
+  {sku:'7130000665',desc:'AVEIA FLOCOS FINOS 12X500G',produto:'AVEIA FLOCOS 500G',ean:'7891095100941'},
+  {sku:'7130000666',desc:'AVEIA FLOCOS YOKI 12X500G',produto:'AVEIA FLOCOS 500G',ean:'7891095100958'},
+  {sku:'7130002833',desc:'AVEIA FLÓCOS FINOS YOKI CX 12X170G',produto:'AVEIA 170G',ean:'7891095028337'},
+  {sku:'7130002834',desc:'AVEIA FLÓCOS YOKI CX 12X170G',produto:'AVEIA 170G',ean:'7891095028344'},
+  {sku:'7130002835',desc:'FARINHA DE AVEIA YOKI CX 12X170G',produto:'AVEIA 170G',ean:'7891095028351'},
+  {sku:'7130002836',desc:'OAT BRAN YOKI CX 12X170G',produto:'OAT BRAN 170G',ean:'7891095028368'},
+  {sku:'7002120100',desc:'VANILLA BULK 2.5G',produto:'HD BULK 9,5L',ean:'3415580001649'},
+  {sku:'7002120500',desc:'STRAWBERRY BULK 2.5G',produto:'HD BULK 9,5L',ean:'3415581205008'},
+  {sku:'7002123700',desc:'MACADAMIA NUT BRITTLE BULK 2.5G',produto:'HD BULK 9,5L',ean:'3415581237009'},
+  {sku:'7002125400',desc:'BELGIAN CHOCOLATE BULK 2.5G',produto:'HD BULK 9,5L',ean:'3415580002608'},
+  {sku:'7002414000',desc:'DULCE DE LECHE BULK 2.5G',produto:'HD BULK 9,5L',ean:'3415584140009'},
+  {sku:'7130000018',desc:'FUBA PRÉ COZIDO FD 24X500G',produto:'FUBA PRE COZIDO 500G',ean:'7891095200184'},
+  {sku:'7130000019',desc:'FUBA PRÉ COZIDO FD 12X1KG',produto:'FUBA PRE COZIDO 1KG',ean:'7891095200191'},
+  {sku:'7130000020',desc:'FARINHA MILHO KIPOLENTA 24X500G',produto:'FARINHA MILHO KIPOLENTA 500G',ean:'7891095200207'},
+  {sku:'7130000039',desc:'FARINHA MILHO AMARELA 12X500G',produto:'FARINHA DE MILHO AMAR 500G',ean:'7891095200399'},
+  {sku:'7130000045',desc:'FUBÁ MIMOSO 24X500G',produto:'FUBA MIMOSO 500G',ean:'7891095200450'},
+  {sku:'7130000046',desc:'FUBÁ MIMOSO 12X1KG',produto:'FUBA MIMOSO 1KG',ean:'7891095200467'},
+  {sku:'7130000087',desc:'FARINHA MILHO KIMILHO 24X500G',produto:'FARINHA MILHO KIMILHO 500G',ean:'7891095200870'},
+  {sku:'7130000687',desc:'KIMILHO FLOCÃO FD 12X500G',produto:'KIMILHO FLOCAO 500G',ean:'7891095006878'},
+  {sku:'7130001460',desc:'FARINHA MILHO AMARELA 5X2KG',produto:'FARINHA DE MILHO AMAR 2KG',ean:'7891095217397'},
+  {sku:'7130003198',desc:'FUBÁ MIMOSO 6X4KG',produto:'FUBA MIMOSO 4KG',ean:'7891095911110'},
+  {sku:'7130000054',desc:'CANJIQUINHA MILHO 24X200G',produto:'CANJIQUINHA MILHO 200G',ean:'7891095200542'},
+  {sku:'7130000995',desc:'MOUSSE DE CHOCOLATE 12X70G',produto:'MOUSSE 70G',ean:'7891095009954'},
+  {sku:'7130000996',desc:'MOUSSE DE MORANGO 12X70G',produto:'MOUSSE 70G',ean:'7891095009961'},
+  {sku:'7130000998',desc:'CHANTILI CX 12X50G',produto:'CHANTILLY 50G',ean:'7891095009985'},
+  {sku:'7130001645',desc:'MOUSSE DE MARACUJÁ 12X70G',produto:'MOUSSE 70G',ean:'7891095016457'},
+  {sku:'7130002803',desc:'CURAU DE MILHO 12X200G',produto:'CURAU DE MILHO 200G',ean:'7891095290321'},
+  {sku:'7130002804',desc:'MISTURA BOLINHO DE CHUVA TRAD 24X250G',produto:'MISTURA BOLINHO DE CHUVA 250G',ean:'7891095001262'},
+  {sku:'7130002318',desc:'YOKITOS CONCH QJO 30X54G',produto:'EXTRUSADOS PEQ 30X54G',ean:'7891095023189'},
+  {sku:'7130002319',desc:'YOKITOS CONCHINHA QUEIJO 16X153G',produto:'EXTRUSADOS GDE 153G',ean:'7891095023196'},
+  {sku:'7130002324',desc:'YOKITOS QUEIJO LUA 36X45G',produto:'EXTRUSADOS PEQ 45G',ean:'7891095023240'},
+  {sku:'7130002325',desc:'YOKITOS QUEIJO LUA 16X135G',produto:'EXTRUSADOS GDE 135G',ean:'7891095023257'},
+  {sku:'7130002326',desc:'YOKITOS QUEIJO BOLINHA 36X45G',produto:'EXTRUSADOS PEQ 45G',ean:'7891095023264'},
+  {sku:'7130002327',desc:'YOKITOS QUEIJO TUBINHO 36X45G',produto:'EXTRUSADOS PEQ 45G',ean:'7891095023271'},
+  {sku:'7130002331',desc:'YOKITOS CEBOLA CX24X54G',produto:'EXTRUSADOS PEQ 24X54G',ean:'7891095023318'},
+  {sku:'7130002332',desc:'YOKITOS ANÉIS DE CEBOLA 12X108G',produto:'EXTRUSADOS GDE 108G',ean:'7891095023325'},
+  {sku:'7130002427',desc:'YOKITOS CONCH PRES 30X54G',produto:'EXTRUSADOS PEQ 30X54G',ean:'7891095023202'},
+  {sku:'7130002428',desc:'YOKITOS CONCH PRESUNTO 16X153G',produto:'EXTRUSADOS GDE 153G',ean:'7891095023219'},
+  {sku:'7130002429',desc:'YOKITOS REQUEIJAO REDINHA 36X45G',produto:'EXTRUSADOS PEQ 45G',ean:'7891095023226'},
+  {sku:'7130002430',desc:'YOKITOS REQUEIJAO REDINHA 16X135G',produto:'EXTRUSADOS GDE 135G',ean:'7891095023233'},
+  {sku:'7130003231',desc:'FAROFA DE MILHO 12X400G',produto:'FAROFA DE MILHO 400G',ean:'7891095911448'},
+  {sku:'7130003227',desc:'FAROFA TRADICIONAL 14X800G',produto:'FAROFA TRADICIONAL 800G',ean:'7891095911394'},
+  {sku:'7130003238',desc:'FAROFA MANDIOCA TEMPERADA 24X400G',produto:'FAROFA MAND TEMP 400G',ean:'7891095911486'},
+  {sku:'7130003244',desc:'FAROFA TRADICIONAL PROMOPACK 24X400G',produto:'FAROFA PROMOPACK 400G',ean:'7891095911561'},
+  {sku:'7130000249',desc:'GLICOSE YOKI BISNAGA 12X350G',produto:'GLICOSE 350G',ean:'7891095002498'},
+  {sku:'7130000011',desc:'CANJICA AMARELA MUNGUZA 12X500G',produto:'CANJICA AMARELA 500G',ean:'7891095100118'},
+  {sku:'7130000031',desc:'CANJIQUINHA 12X500G',produto:'CANJIQUINHA 500G',ean:'7891095100316'},
+  {sku:'7130001160',desc:'AMENDOIM 12X500G',produto:'AMENDOIM DESC 500G',ean:'7891095011605'},
+  {sku:'7130003084',desc:'AMENDOIM 15X400G',produto:'AMENDOIM DESC 400G',ean:'7891095030842'},
+  {sku:'7130003211',desc:'ERVILHA 16X400G',produto:'ERVILHA 400G',ean:'7891095911288'},
+  {sku:'7130003212',desc:'GRÃO DE BICO 16X400G',produto:'GRAO DE BICO 400G',ean:'7891095911295'},
+  {sku:'7130003209',desc:'CANJICA CRISTAL 16X400G',produto:'CANJICA CRISTAL 400G',ean:'7891095911264'},
+  {sku:'7130003214',desc:'LENTILHA TIPO 2 16X400G',produto:'LENTILHA 400G',ean:'7891095911301'},
+  {sku:'7130000981',desc:'PÓ SORVETE ABACAXI 12X150G',produto:'SORVETE PÓ 150G',ean:'7891095009817'},
+  {sku:'7130000982',desc:'PÓ SORVETE DE COCO 12X150G',produto:'SORVETE PÓ 150G',ean:'7891095009824'},
+  {sku:'7130000990',desc:'PÓ SORVETE CHOCOLATE 12X150G',produto:'SORVETE PÓ 150G',ean:'7891095009909'},
+  {sku:'7130000991',desc:'PÓ SORVETE MORANGO 12X150G',produto:'SORVETE PÓ 150G',ean:'7891095009916'},
+  {sku:'7130000993',desc:'PÓ SORVETE CREME 12X150G',produto:'SORVETE PÓ 150G',ean:'7891095009930'},
+  {sku:'7130001646',desc:'PÓ SORVETE DE MILHO VERDE 12X150G',produto:'SORVETE PÓ 150G',ean:'7891095016464'},
+  {sku:'7130000613',desc:'MAIS SABOR AVES 48X60G',produto:'MAIS SABOR 48X60G',ean:'7891095605569'},
+  {sku:'7130000615',desc:'MAIS SABOR CARNES 48X60G',produto:'MAIS SABOR 48X60G',ean:'7891095605576'},
+  {sku:'7130000616',desc:'MAIS SABOR FEIJÃO 48X60G',produto:'MAIS SABOR 48X60G',ean:'7891095150304'},
+  {sku:'7130000617',desc:'MAIS SABOR LEGUMES 48X60G',produto:'MAIS SABOR 48X60G',ean:'7891095605583'},
+  {sku:'7130000618',desc:'MAIS SABOR MASSAS 48X60G',produto:'MAIS SABOR 48X60G',ean:'7891095150472'},
+  {sku:'7130001188',desc:'MAIS SABOR NORDESTINO 24X60G',produto:'MAIS SABOR 24X60G',ean:'7891095011889'},
+  {sku:'7130002138',desc:'MAIS SABOR SALADA 48X60G',produto:'MAIS SABOR 48X60G',ean:'7891095021383'},
+  {sku:'7130015952',desc:'MAIS SABOR ARROZ BR CX 24X60G',produto:'MAIS SABOR 24X60G',ean:'7891095159529'},
+  {sku:'7130000030',desc:'FARINHA MANDIOCA BIJU 24X500G',produto:'FARINHA DE MAND BIJU 500G',ean:'7891095300303'},
+  {sku:'7130000037',desc:'FARINHA MANDIOCA 24X500G',produto:'FARINHA DE MANDIOCA 500G',ean:'7891095300372'},
+  {sku:'7130000038',desc:'FARINHA MANDIOCA TORRADA 24X500G',produto:'FARINHA DE MAND TORRADA 500G',ean:'7891095300389'},
+  {sku:'7130000049',desc:'SAGU DE MANDIOCA 12X500G',produto:'SAGU DE MANDIOCA 500G',ean:'7891095300495'},
+  {sku:'7130000061',desc:'POLVILHO AZEDO 12X500G',produto:'POLVILHO AZEDO 500G',ean:'7891095300617'},
+  {sku:'7130000063',desc:'POLVILHO DOCE 12X500G',produto:'POLVILHO DOCE 500G',ean:'7891095300631'},
+  {sku:'7130000064',desc:'TAPIOCA 12X500G',produto:'TAPIOCA 500G',ean:'7891095300648'},
+  {sku:'7130000110',desc:'FARINHA DE MANDIOCA 12X1KG',produto:'FARINHA DE MANDIOCA 1KG',ean:'7891095001101'},
+  {sku:'7130000595',desc:'POLVILHO AZEDO FD 12X1KG',produto:'POLVILHO AZEDO 1KG',ean:'7891095005956'},
+  {sku:'7130000842',desc:'FARINHA MANDIOCA GROSSA 12X1KG',produto:'FARINHA DE MAND GROSSA 1KG',ean:'7891095008421'},
+  {sku:'7130000863',desc:'POLVILHO DOCE 12X1KG',produto:'POLVILHO DOCE 1KG',ean:'7891095378630'},
+  {sku:'7130002933',desc:'GOMA DE TAPIOCA 20X500G',produto:'GOMA DE TAPIOCA 500G',ean:'7891095029334'},
+  {sku:'7130003196',desc:'FARINHA DE MANDIOCA CRUA 6X4KG',produto:'FARINHA DE MAND CRUA 4KG',ean:'7891095911097'},
+  {sku:'7130003197',desc:'FARINHA DE MANDIOCA TORRADA 6X4KG',produto:'FARINHA DE MAND TORRADA 4KG',ean:'7891095911103'},
+  {sku:'7002131205',desc:'COPINHO STRAWBERRY 24X100ML',produto:'HD MINICUP 100ML',ean:'3415581312454'},
+  {sku:'7002133205',desc:'COPINHO MACADAMIA NUT BRITTLE24X100ML',produto:'HD MINICUP 100ML',ean:'3415581332452'},
+  {sku:'7002153305',desc:'COPINHO BELGIAN CHOCOLATE 24X100ML',produto:'HD MINICUP 100ML',ean:'3415580010092'},
+  {sku:'7002153405',desc:'COPINHO COOKIESN CREAM 24X100ML',produto:'HD MINICUP 100ML',ean:'3415580010030'},
+  {sku:'7002327205',desc:'COPINHO DULCE DE LECHE 24X100ML',produto:'HD MINICUP 100ML',ean:'3415580010122'},
+  {sku:'7130000016',desc:'POPCORN MICRO MANTEIGA 36X100G',produto:'PIPOCA MICRO REG 100G',ean:'7891095100934'},
+  {sku:'7130000062',desc:'POPCORN MICRO NATURAL 36X100G',produto:'PIPOCA MICRO REG 100G',ean:'7891095100125'},
+  {sku:'7130000072',desc:'POPCORN MICRO BACON 36X100G',produto:'PIPOCA MICRO REG 100G',ean:'7891095100729'},
+  {sku:'7130000220',desc:'POPCORN MICRO COM SAL 36X100G',produto:'PIPOCA MICRO REG 100G',ean:'7891095002207'},
+  {sku:'7130000223',desc:'POPCORN NATURAL COM SAL 18X2X100G',produto:'PIPOCA MICRO REG 100G',ean:'7891095002238'},
+  {sku:'7130000316',desc:'POPMICRO MANTEIGA 18X2X100',produto:'PIPOCA MICRO REG 100G',ean:'7891095003167'},
+  {sku:'7130000362',desc:'POPMICRO NATURAL 18X2X100',produto:'PIPOCA MICRO REG 100G',ean:'7891095003624'},
+  {sku:'7130000627',desc:'POPMICRO TOQUE CHEF 36X100G',produto:'PIPOCA MICRO REG 100G',ean:'7891095006274'},
+  {sku:'7130000794',desc:'POPMICRO SAL 36X50G',produto:'PIPOCA MICRO 50G',ean:'7891095007943'},
+  {sku:'7130000845',desc:'POPMICRO MANTEIGA CINEMA 36X100G',produto:'PIPOCA MICRO REG 100G',ean:'7891095008452'},
+  {sku:'7130001529',desc:'POPCORN MICRO COBERT CARAMELO 30X160G',produto:'PIPOCA MICRO COBERTURA 160G',ean:'7891095015290'},
+  {sku:'7130001755',desc:'POPMICRO COBERTURA CHOCOLATE 30X160G',produto:'PIPOCA MICRO COBERTURA 160G',ean:'7891095017553'},
+  {sku:'7130002971',desc:'POPCORN MICRO NATURAL 36X50G',produto:'PIPOCA MICRO 50G',ean:'7891095029716'},
+  {sku:'7130002972',desc:'POPCORN MICRO MANTEIGA 36X50G',produto:'PIPOCA MICRO 50G',ean:'7891095029723'},
+  {sku:'7130003020',desc:'POPCORN MICRO NATURAL SAL 36X90G',produto:'PIPOCA MICRO REG 90G',ean:'7891095030200'},
+  {sku:'7130003021',desc:'POPCORN MICRO MANTEIGA 36X90G',produto:'PIPOCA MICRO REG 90G',ean:'7891095030217'},
+  {sku:'7130003234',desc:'PIPOCA MICRO COBER. MANTEIGA 30X105G',produto:'PIPOCA MICRO COBERTURA 105G',ean:'7891095911479'},
+  {sku:'7130001396',desc:'CANELA DA CHINA EM PO TUBO 24X35G',produto:'CANELA DA CHINA EM PO 35G',ean:'7891095013968'},
+  {sku:'7130001577',desc:'GENGIBRE MOIDO 24X15G',produto:'GENGIBRE MOIDO 15G',ean:'7891095015771'},
+  {sku:'7130001578',desc:'TOMILHO 24X10G',produto:'TOMILHO 10G',ean:'7891095015788'},
+  {sku:'7130001579',desc:'CEBOLINHA VERDE 24X5G',produto:'CEBOLINHA VERDE 5G',ean:'7891095015795'},
+  {sku:'7130001582',desc:'CEBOLA GRANULADA 24X20G',produto:'CEBOLA GRANULADA 20G',ean:'7891095015825'},
+  {sku:'7130001587',desc:'COENTRO EM PÓ 24X10G',produto:'COENTRO EM PO 10G',ean:'7891095015870'},
+  {sku:'7130001589',desc:'PAPRICA DOCE 24X12G',produto:'PAPRICA DOCE 12G',ean:'7891095015894'},
+  {sku:'7130002046',desc:'PAPRICA COM PIMENTA CALABRESA 24X50G',produto:'PAPRICA COM PIMENTA 50G',ean:'7891095020461'},
+  {sku:'7130002649',desc:'CHIMICHURRI 24X12G',produto:'CHIMICHURRI 12G',ean:'7891095026494'},
+  {sku:'7130002961',desc:'BASE PARA CALDO DE LEGUMES 24X30G',produto:'BASE CALDO DE LEGUMES 30G',ean:'7891095029617'},
+  {sku:'7130015001',desc:'ADOBO TEMP CHURRASCO 24X12G',produto:'ADOBO TEMP CHURRASCO 12G',ean:'7891095150014'},
+  {sku:'7130015022',desc:'NÓZ MOSCADA 24X50G',produto:'NOZ MOSCADA 50G',ean:'7891095150229'},
+  {sku:'7130015035',desc:'AÇAFRÃO DA TERRA 24X50G',produto:'AÇAFRÃO DA TERRA 50G',ean:'7891095150359'},
+  {sku:'7130015401',desc:'PIMENTA PRETA PÓ 24X50G',produto:'PIMENTA PRETA PO 50G',ean:'7891095154012'},
+  {sku:'7130015402',desc:'PIMENTA E COMINHO 24X70G',produto:'PIM COM COMINHO 70G',ean:'7891095154029'},
+  {sku:'7130015403',desc:'COMINHO EM PO 24X60G',produto:'COMINHO EM PO 60G',ean:'7891095154036'},
+  {sku:'7130015404',desc:'ERVA DOCE 24X8G',produto:'ERVA DOCE 24X8G',ean:'7891095154043'},
+  {sku:'7130015406',desc:'ORÉGANO 24X10G',produto:'OREGANO 10G',ean:'7891095154067'},
+  {sku:'7130015407',desc:'CANELA EM PO 24X50G',produto:'CANELA EM PO 50G',ean:'7891095154074'},
+  {sku:'7130015408',desc:'CRAVO DA INDIA 24X40G',produto:'CRAVO DA INDIA 40G',ean:'7891095154081'},
+  {sku:'7130015409',desc:'CANELA EM CASCA 24X20G',produto:'CANELA EM CASCA 20G',ean:'7891095154098'},
+  {sku:'7130015410',desc:'COLORIFICO 24X80G',produto:'COLORIFICO 80G',ean:'7891095154104'},
+  {sku:'7130015411',desc:'COLORIFICO 12X1X10X20G',produto:'COLORIFICO 120X20G',ean:'7891095154111'},
+  {sku:'7130015412',desc:'PIMENTA PRETA PÓ 12X1X10X15G',produto:'PIMENTA PRETA PO 120X15G',ean:'7891095154128'},
+  {sku:'7130015415',desc:'ERVA DOCE 12X1X10X8G',produto:'ERVA DOCE 120X8G',ean:'7891095154159'},
+  {sku:'7130015416',desc:'BICARBONATO 12X1X10X30G',produto:'BICARBONATO DE SODIO 120X30G',ean:'7891095154166'},
+  {sku:'7130015417',desc:'ORÉGANO 12X1X10X3G',produto:'OREGANO 120X3G',ean:'7891095154173'},
+  {sku:'7130015418',desc:'CANELA EM PÓ 12X1X10X8G',produto:'CANELA EM PO 120X8G',ean:'7891095154180'},
+  {sku:'7130015419',desc:'CRAVO DA INDIA 12X1X10X8G',produto:'CRAVO DA INDIA 120X8G',ean:'7891095154197'},
+  {sku:'7130015420',desc:'COLORIFICO 24X20G',produto:'COLORIFICO 24X20G',ean:'7891095154203'},
+  {sku:'7130015421',desc:'PIMENTA REINO PRETA 24X15G',produto:'PIMENTA PRETA PO 24X15G',ean:'7891095154210'},
+  {sku:'7130015422',desc:'PIMENTA E COMINHO 24X15G',produto:'PIM COM COMINHO 15G',ean:'7891095154227'},
+  {sku:'7130015423',desc:'COMINHO EM PO 24X8G',produto:'COMINHO EM PO 8G',ean:'7891095154234'},
+  {sku:'7130015424',desc:'ERVA DOCE 24X40G',produto:'ERVA DOCE 40G',ean:'7891095154241'},
+  {sku:'7130015425',desc:'BICARBONATO 24X30G',produto:'BICARBONATO DE SODIO 24X30G',ean:'7891095154258'},
+  {sku:'7130015426',desc:'ORÉGANO 24X3G',produto:'OREGANO 24X3G',ean:'7891095154265'},
+  {sku:'7130015427',desc:'CANELA EM PO 24X8G',produto:'CANELA EM PO 24X8G',ean:'7891095154272'},
+  {sku:'7130015428',desc:'CRAVO DA INDIA 24X8G',produto:'CRAVO DA INDIA 24X8G',ean:'7891095154289'},
+  {sku:'7130015429',desc:'CANELA EM CASCA 24X8G',produto:'CANELA EM CASCA 24X8G',ean:'7891095154296'},
+  {sku:'7130015430',desc:'FOLHA DE LOURO 24X4G',produto:'FOLHA DE LOURO 24X4G',ean:'7891095154302'},
+  {sku:'7130015431',desc:'NOZ MOSCADA 24X8G',produto:'NOZ MOSCADA 8G',ean:'7891095154319'},
+  {sku:'7130015432',desc:'CANELA CASCA 12X1X10X8G',produto:'CANELA EM CASCA 120X8G',ean:'7891095154326'},
+  {sku:'7130015433',desc:'FOLHA DE LOURO 12X1X10X4G',produto:'FOLHA DE LOURO 120X4G',ean:'7891095154333'},
+  {sku:'7130015462',desc:'PIMENTA PRETA GRAO 24X15G',produto:'PIMENTA PRETA GRAO 15G',ean:'7891095154623'},
+  {sku:'7130015463',desc:'SALSA DESIDRATADA 24X8G',produto:'SALSA DESIDRATADA 8G',ean:'7891095154630'},
+  {sku:'7130015464',desc:'PIM.BCA.MOIDA 24X15G',produto:'PIM BRANCA MOIDA 15G',ean:'7891095154647'},
+  {sku:'7130015475',desc:'BICARBONAT.DE SODIO 24X80G',produto:'BICARBONATO DE SODIO 80G',ean:'7891095604753'},
+  {sku:'7130015476',desc:'CAMOMILA 24X10G',produto:'CAMOMILA 10G',ean:'7891095604760'},
+  {sku:'7130015477',desc:'CURRY 24X50G',produto:'CURRY 50G',ean:'7891095604777'},
+  {sku:'7130015478',desc:'PAPRICA DOCE 24X50G',produto:'PAPRICA DOCE 50G',ean:'7891095604784'},
+  {sku:'7130015497',desc:'OREGANO INSTITUCIONAL 6X200G',produto:'OREGANO 200G',ean:'7891095604975'},
+  {sku:'7130015511',desc:'ALHO GRAN ECONOMICA 24X60G',produto:'ALHO GRANULADO 60G',ean:'7891095605118'},
+  {sku:'7130015516',desc:'CEBOLA GRANULADA ECONOMICA 24X50G',produto:'CEBOLA GRANULADA 50G',ean:'7891095605163'},
+  {sku:'7130015517',desc:'CEBOLA ALHO E SALSA 24X40G',produto:'CEBOLA ALHO SALSA 40G',ean:'7891095605170'},
+  {sku:'7130015608',desc:'ALECRIM DESIDRATADO 24X6G',produto:'ALECRIM 6G',ean:'7891095156085'},
+  {sku:'7130015609',desc:'LOURO EM PÓ 24X12G',produto:'FOLHA DE LOURO 12G',ean:'7891095156092'},
+  {sku:'7130015610',desc:'MANJERICAO DESIDRATADO 24X07G',produto:'MANJERICÃO 7G',ean:'7891095156108'},
+  {sku:'7130015613',desc:'PIMENTA CALABRESA EM FLOCOS 24X13G',produto:'PIM CALABRESA FLOCOS 13G',ean:'7891095156139'},
+  {sku:'7130015641',desc:'OREGANO 24X15G',produto:'OREGANO 15G',ean:'7891095156412'},
+  {sku:'7130015950',desc:'TEMPERO BAIANO KITAN CX 24X40G',produto:'TEMPERO BAIANO 40G',ean:'7891095159505'},
+  {sku:'7130003122',desc:'PIMENTA DO REINO PRETA 12X45G',produto:'PIMENTA DO REINO PRETA 45G',ean:'7891095031221'},
+  {sku:'7130003124',desc:'SAL ROSA DO HIMALAIA 12X100G',produto:'SAL ROSA DO HIMALAIA 100G',ean:'7891095031245'},
+  {sku:'7130003127',desc:'PÁPRICA DEFUMADA 20X36G',produto:'PAPRICA DEFUMADA 36G',ean:'7891095031276'},
+  {sku:'7130003090',desc:'MIX DE PIMENTAS 12X45G',produto:'MIX DE PIMENTAS 45G',ean:'7891095030903'},
+  {sku:'7130003092',desc:'PIMENTA PRETA REFIL 24X45G',produto:'REF PIMENTA PRETA 45G',ean:'7891095030927'},
+  {sku:'7130003093',desc:'MIX DE PIMENTAS REFIL 24X45G',produto:'REF MIX DE PIMENTAS 45G',ean:'7891095030934'},
+  {sku:'7130003094',desc:'SAL ROSA DO HIMALAIA REFIL 24X100G',produto:'REF SAL ROSA HIMALAIA 100G',ean:'7891095030941'},
+  {sku:'7130003091',desc:'LEMON PEPPER 20X50G',produto:'LEMON PEPPER 50G',ean:'7891095910892'},
+  {sku:'7130003188',desc:'SAL PARRILA KITANO 12X500G',produto:'SAL PARRILLA 500G',ean:'7891095911011'},
+  {sku:'7130003189',desc:'SAL PARRILA CHIMICHURRI KITANO 12X415G',produto:'SAL PARRILLA CHIMICHURRI 415G',ean:'7891095911028'},
+  {sku:'7130003190',desc:'SAL PARRILA PIMENTA KITANO 12X480G',produto:'SAL PARRILLA PIMENTA 480G',ean:'7891095911035'},
+  {sku:'7130003191',desc:'DRY RUB CARNE BOVINA 12X115G',produto:'DRY RUB 115G',ean:'7891095911042'},
+  {sku:'7130003192',desc:'DRY RUB CARNE SUÍNA 12X115G',produto:'DRY RUB 115G',ean:'7891095911059'},
+  {sku:'7130003193',desc:'DRY RUB AVES 12X115G',produto:'DRY RUB 115G',ean:'7891095911066'},
+  {sku:'7130003194',desc:'VINAGRETE KITANO 12X40G',produto:'VINAGRETE KITANO 40G',ean:'7891095911073'},
+  {sku:'7130003195',desc:'ALHO TOSTADO KITANO 12X90G',produto:'ALHO TOSTADO KITANO 90G',ean:'7891095911080'},
+  {sku:'7130003223',desc:'COLORIFICO 30X180G',produto:'COLORIFICO 180G',ean:'7891095911363'},
+  {sku:'7130003224',desc:'COLORIFICO 12X400G',produto:'COLORIFICO 400G',ean:'7891095911370'},
+  {sku:'7130003225',desc:'COLORIFICO 12X800G',produto:'COLORIFICO 800G',ean:'7891095911387'},
+  {sku:'7130000796',desc:'PAÇOCA ROLHA 12X352G',produto:'PAÇOCA 352G',ean:'7891095007967'},
+  {sku:'7130000797',desc:'PAÇOCA TABLETE 12X352G',produto:'PAÇOCA 352G',ean:'7891095007974'},
+  {sku:'7130000798',desc:'PÉ DE MOLEQUE 12X306G',produto:'PE DE MOLEQUE 306G',ean:'7891095007981'},
+  {sku:'7130002213',desc:'PE DE MOLEQUE 6X800G',produto:'PE DE MOLEQUE 800G',ean:'7891095022137'},
+  {sku:'7130006211',desc:'PACOQUINHA ROLHA 6X1250G',produto:'PAÇOCA 1,25KG',ean:'7891095062119'},
+  {sku:'7130006212',desc:'PACOQUINHA TABLETE 6X1.100KG',produto:'PAÇOCA 1,1KG',ean:'7891095062126'},
+  {sku:'7130000214',desc:'AMENDOIM DESC SALGADO 12X150G',produto:'AMENDOIM DESC 150G',ean:'7891095002146'},
+  {sku:'7130000215',desc:'AMENDOIM DESC TEMPERADO 12X150G',produto:'AMENDOIM DESC 150G',ean:'7891095002153'},
+  {sku:'7130000216',desc:'AMENDOIM DOCE PRÁLINE 12X150G',produto:'AMENDOIM DOCE 150G',ean:'7891095002160'},
+  {sku:'7130000217',desc:'AMENDOIM JAPONÊS 12X150G',produto:'AMENDOIM JAPONES 150G',ean:'7891095002177'},
+  {sku:'7130000517',desc:'AMENDOIM JAPONÊS 12X500GR',produto:'AMENDOIM JAPONES 500G',ean:'7891095005178'},
+  {sku:'7130001132',desc:'CASTANHA DE CAJU CX 12X100G',produto:'CASTANHA DE CAJU 100G',ean:'7891095011322'},
+  {sku:'7130001534',desc:'AMENDOIM DESC SALGADO 12X500G',produto:'AMENDOIM DESC 500G',ean:'7891095015344'},
+  {sku:'7130001757',desc:'AMENDOIM DOCE PRALINÊ 12X500G',produto:'AMENDOIM DOCE 500G',ean:'7891095017577'},
+  {sku:'7130002307',desc:'OVINHO DE AMENDOIM 25X90G',produto:'OVINHO DE AMENDOIM 90G',ean:'7891095023073'},
+  {sku:'7130003022',desc:'AMENDOIM JAPONES 12X1,01KG',produto:'AMENDOIM JAPONES 1KG',ean:'7891095030224'},
+  {sku:'7130003099',desc:'AMENDOIM JAPONES 12X70G',produto:'AMENDOIM JAPONES 70G',ean:'7891095005987'},
+  {sku:'7130003100',desc:'AMENDOIM DESCASCADO SALGADO 12X70G',produto:'AMENDOIM DESC 70G',ean:'7891095006595'},
+  {sku:'7130003175',desc:'AMENDOIM CROCANTE LEV. SALGADO 12X150G',produto:'AMENDOIM CASQUINHA 150G',ean:'7891095910946'},
+  {sku:'7130003178',desc:'AMENDOIM CROC MOLHO DE PIMENTA 12X150G',produto:'AMENDOIM CASQUINHA 150G',ean:'7891095910977'},
+  {sku:'7130003180',desc:'AMENDOIM CROCANTE SABOR DO CHEF 12X150G',produto:'AMENDOIM CASQUINHA 150G',ean:'7891095910991'},
+  {sku:'7130003176',desc:'AMENDOIM CROCANTE LEV. SALGADO 12X500G',produto:'AMENDOIM CASQUINHA 500G',ean:'7891095910953'},
+  {sku:'7130003179',desc:'AMENDOIM CROC MOLHO DE PIMENTA 12X500G',produto:'AMENDOIM CASQUINHA 500G',ean:'7891095910984'},
+  {sku:'7130003181',desc:'AMENDOIM CROCANTE SABOR DO CHEF 12X500G',produto:'AMENDOIM CASQUINHA 500G',ean:'7891095911004'},
+  {sku:'7130003177',desc:'AMENDOIM CROCANTE LEV SALGADO 12X1,01KG',produto:'AMENDOIM CASQUINHA 1KG',ean:'7891095910960'},
+  {sku:'7130000554',desc:'TEMPERO COMPLETO COM PIMENTA 12X1KG',produto:'TEMPERO PASTA 1KG',ean:'7891095005543'},
+  {sku:'7130000556',desc:'TEMPERO COMPLETO SEM PIMENTA 12X1KG',produto:'TEMPERO PASTA 1KG',ean:'7891095005567'},
+  {sku:'7130000558',desc:'TEMPERO ALHO E SAL 12X1KG',produto:'TEMPERO PASTA 1KG',ean:'7891095005581'},
+  {sku:'7130001469',desc:'CALDO DE CARNE CHEF LINE 10X1.01KG',produto:'CALDO EM PO 1KG',ean:'7891095014699'},
+  {sku:'7130001470',desc:'CALDO DE GALINHA CHEF LINE 10X1.01KG',produto:'CALDO EM PO 1KG',ean:'7891095014705'},
+  {sku:'7130002823',desc:'CALDO PÓ DE CARNE 24X37,5G',produto:'CALDO EM PO 37,5G',ean:'7891095028238'},
+  {sku:'7130002824',desc:'CALDO PÓ DE GALINHA 24X37,5G',produto:'CALDO EM PO 37,5G',ean:'7891095028245'},
+  {sku:'7130002827',desc:'CALDO PÓ DE PICANHA 24X37,5G',produto:'CALDO EM PO 37,5G',ean:'7891095028276'},
+  {sku:'7130002828',desc:'CALDO PÓ DE LEGUMES 24X37,5G',produto:'CALDO EM PO 37,5G',ean:'7891095028283'},
+  {sku:'7130015012',desc:'MOLHO INGLES 12X150ML',produto:'MOLHO 150G',ean:'7891095150120'},
+  {sku:'7130015013',desc:'MOLHO DE PIMENTA 12X150ML',produto:'MOLHO 150G',ean:'7891095150137'},
+  {sku:'7130015014',desc:'MOLHO SHOYU 12X150ML',produto:'MOLHO 150G',ean:'7891095150144'},
+  {sku:'7130015532',desc:'TEMPERO COMPLETO SEM PIMENTA 24X300G',produto:'TEMPERO PASTA 300G',ean:'7891095605323'},
+  {sku:'7130015540',desc:'TEMPERO COMPLETO COM PIMENTA 24X300G',produto:'TEMPERO PASTA 300G',ean:'7891095605408'},
+  {sku:'7130015543',desc:'ALHO E SAL KITANO 24X300G',produto:'TEMPERO PASTA 300G',ean:'7891095605439'},
+  {sku:'7130015559',desc:'MOLHO DE ALHO 12X150ML',produto:'MOLHO 150G',ean:'7891095155590'},
+  {sku:'7130015642',desc:'TOQUE DE CHEF AMACIANTE 24X120',produto:'TOQUE DE CHEF AMACIANTE 120G',ean:'7891095156429'},
+  {sku:'7130015643',desc:'TOQUE CHEF AVES 24X120G',produto:'TOQUE DE CHEF REG 120G',ean:'7891095156436'},
+  {sku:'7130015644',desc:'TOQUE CHEF GRELHADOS 24X120G',produto:'TOQUE DE CHEF REG 120G',ean:'7891095156443'},
+  {sku:'7130015942',desc:'AMACIANTE DE CARNE CX 10X1 KG',produto:'TOQUE DE CHEF 1KG',ean:'7891095159420'},
+  {sku:'7130003111',desc:'BATATA PALHA TRADICIONAL 20X105G',produto:'BATATA PALHA 105G',ean:'7891095031115'},
+  {sku:'7130003112',desc:'BATATA PALHA EXTRAFINA 20X100G',produto:'BATATA PALHA EXTRAFINA 100G',ean:'7891095031122'},
+  {sku:'7130003113',desc:'BATATA PALHA TRADICIONAL 24X70G',produto:'BATATA PALHA 70G',ean:'7891095031139'},
+  {sku:'7130003115',desc:'BATATA PALHA EXTRAFINA CEB SALSA 20X100G',produto:'BATATA PALHA EXTRAFINA 100G',ean:'7891095031153'},
+  {sku:'7130003116',desc:'BATATA PALHA EXTRAFINA HOT DOG 20X100G',produto:'BATATA PALHA EXTRAFINA 100G',ean:'7891095031160'},
+  {sku:'7130003117',desc:'BATATA PALHA EXTRAFINA PARMESAO 20X100G',produto:'BATATA PALHA EXTRAFINA 100G',ean:'7891095031177'},
+  {sku:'7130003169',desc:'BATATA PALHA TRADICIONAL L105P90 20X105G',produto:'BATATA PALHA L105P90 105G',ean:'7891095031696'},
+  {sku:'7002110105',desc:'POTE VANILLA 8X473ML',produto:'HD PINT 473ML',ean:'3415580009904'},
+  {sku:'7002110505',desc:'POTE STRAWBERRY 8X473ML',produto:'HD PINT 473ML',ean:'3415580009911'},
+  {sku:'7002111305',desc:'POTE BELGIAN CHOCOLATE 8X473ML',produto:'HD PINT 473ML',ean:'3415580009966'},
+  {sku:'7002111705',desc:'POTE CARAMEL BISCUIT 8X473ML',produto:'HD PINT 473ML',ean:'3415581117288'},
+  {sku:'7002112205',desc:'POTE MACADAMIA NUT BRITTLE8X473ML',produto:'HD PINT 473ML',ean:'3415581122459'},
+  {sku:'7002115205',desc:'POTE COOKIES & CREAM 8X473ML',produto:'HD PINT 473ML',ean:'3415580009881'},
+  {sku:'7002116205',desc:'POTE DULCE DE LECHE 8X473ML',produto:'HD PINT 473ML',ean:'3415580009997'},
+  {sku:'7002110305',desc:'POTE COFFEE 8X473ML',produto:'HD PINT 473ML',ean:'3415581103281'},
+  {sku:'7002117605',desc:'POTE STRAWBERRY CHEESECAKE8X473ML',produto:'HD PINT 473ML',ean:'3415581176452'},
+  {sku:'7130001801',desc:'YOKITOS BATATA OND NATURAL 6X380G',produto:'SNACK BATATA 380G',ean:'7891095018017'},
+  {sku:'7130002309',desc:'BATATA ONDULADA CHURRASCO 36X45G',produto:'SNACK BATATA 45G',ean:'7891095023097'},
+  {sku:'7130002310',desc:'BATATA ONDULADA 14X90G',produto:'SNACK BATATA 14X90G',ean:'7891095023103'},
+  {sku:'7130002311',desc:'BATATA ONDULADA CEB SALSA 14X90G',produto:'SNACK BATATA 14X90G',ean:'7891095023110'},
+  {sku:'7130002312',desc:'BATATA ONDULADA CHURRASCO 14X90G',produto:'SNACK BATATA 14X90G',ean:'7891095023127'},
+  {sku:'7130002313',desc:'BATATA ONDULADA NATURAL 36X45G',produto:'SNACK BATATA 45G',ean:'7891095023134'},
+  {sku:'7130002314',desc:'BATATA ONDULADA CEBOLA SALSA 36X45G',produto:'SNACK BATATA 45G',ean:'7891095023141'},
+  {sku:'7130002315',desc:'BATATA LISA NATURAL 36X45G',produto:'SNACK BATATA 45G',ean:'7891095023158'},
+  {sku:'7130002316',desc:'BATATA ONDULADA 8X180G',produto:'SNACK BATATA 180G',ean:'7891095023165'},
+  {sku:'7130002317',desc:'BATATA LISA SABOR NATURAL 12X90G',produto:'SNACK BATATA 12X90G',ean:'7891095023172'},
+  {sku:'7130000007',desc:'MISTURA PÃO DE QUEIJO YOKI 30X250G',produto:'MISTURA PAO DE QUEIJO 250G',ean:'7891095300808'},
+  {sku:'7130001083',desc:'PURÊ DE BATATA YOKI 24X180G',produto:'PURE DE BATATA 180G',ean:'7891095010837'},
+  {sku:'7130000382',desc:'CREME DE CEBOLA 12X65G',produto:'CREME DE CEBOLA 65G',ean:'7891095003822'},
+  {sku:'7130000388',desc:'SOPÃO DE GALINHA 24X196G',produto:'SOPÃO 196G',ean:'7891095003884'},
+  {sku:'7130000394',desc:'SOPÃO DE CARNE 24X196G',produto:'SOPÃO 196G',ean:'7891095003945'},
+  {sku:'7130000716',desc:'SOPÃO FEIJÃO 24X196G',produto:'SOPÃO 196G',ean:'7891095007165'},
+  {sku:'7130001013',desc:'SOPÃO LEGUMES COM MACARRÃO 24X196G',produto:'SOPÃO 196G',ean:'7891095010134'},
+  {sku:'7130003088',desc:'CREME DE CEBOLA 10X1,01 KG',produto:'CREME DE CEBOLA 1KG',ean:'7891095030880'},
+  {sku:'7130002262',desc:'PIPOCA SUPER PREMIUM 15X650G',produto:'PIPOCA GRÃO SUP PREMIUM 650G',ean:'7891095022625'},
+  {sku:'7130003222',desc:'PIPOCA YOKI 28X400G',produto:'PIPOCA GRÃO REGULAR 400G',ean:'7891095911356'},
+  {sku:'7130003221',desc:'PIPOCA PREMIUM 28X400G',produto:'PIPOCA GRÃO PREMIUM 400G',ean:'7891095911349'},
+  {sku:'7130000042',desc:'FARINHA DE ROSCA 24X500G',produto:'FARINHA ROSCA 500G',ean:'7891095400423'},
+  {sku:'7130000075',desc:'TRIGO KIBE 12X500G',produto:'TRIGO KIBE 500G',ean:'7891095400751'},
+  {sku:'7130000139',desc:'MISTURA PARA EMPANAR 12X300G',produto:'MISTURA PARA EMPANAR 300G',ean:'7891095001392'},
+  {sku:'7130003199',desc:'TRIGO PARA KIBE 6X4KG',produto:'TRIGO KIBE 4KG',ean:'7891095911127'},
+  {sku:'7130003200',desc:'FARINHA DE ROSCA 6X4KG',produto:'FARINHA ROSCA 4KG',ean:'7891095911134'},
+  {sku:'7130003247',desc:'BATATA PALHA EXTRAFINA 9X190G',produto:'BATATA PALHA 190',ean:'7891095911592'},
+  {sku:'7130003248',desc:'BATATA PALHA TRADICIONAL 9X195G',produto:'BATATA PALHA 195G',ean:'7891095911608'},
+  {sku:'7130003249',desc:'BATATA PALHA TRADICIONAL 12X380G',produto:'BATATA PALHA 380G',ean:'7891095911615'},
+  {sku:'7130003253',desc:'FAROFA SABOR FRANGO 14X200G',produto:'FAROFA SABORIZADA 200G',ean:'7891095911653'},
+  {sku:'7130003252',desc:'FAROFA SABOR BACON 14X200G',produto:'FAROFA SABORIZADA 200G',ean:'7891095911646'},
+  {sku:'7130003251',desc:'FAROFA TRADICIONAL 14X200G',produto:'FAROFA 14X200G',ean:'7891095911639'},
+  {sku:'7130003257',desc:'FAROFA SUAVE 14x200G',produto:'FAROFA 14X200G',ean:'7891095030040'},
+  {sku:'7130003254',desc:'FAROFA COM PEDAÇOS DE BANANA 12X200G',produto:'CASEIRISSIMAS 200G',ean:'7891095911660'},
+  {sku:'7130003255',desc:'FAROFA COM PEDAÇOS DE CEBOLA 12X200G',produto:'CASEIRISSIMAS 200G',ean:'7891095911677'},
+  {sku:'7130003256',desc:'FAROFA COM PEDAÇOS SABOR COSTELINHA 12X200G',produto:'CASEIRISSIMAS 200G',ean:'7891095911684'},
+  {sku:'7130003260',desc:'PIPOCA PRESUNTO DEFUMADO 36X95G',produto:'PIPOCA MICRO NETFLIX 95G',ean:'7891095911745'},
+  {sku:'7130003259',desc:'PIPOCA EXPLOSÃO DE CHEDDAR 36X95G',produto:'PIPOCA MICRO NETFLIX 95G',ean:'7891095911738'},
+  {sku:'7130003261',desc:'BATATA PALHA EXTRAFINA 12X375G',produto:'BATATA PALHA EXTRAFINA 375G',ean:'7891095911752'},
+  {sku:'7130002899',desc:'FAROFA COM PEDAÇOS DE CEBOLA12X200G',produto:'FAROFA 12X200G',ean:'7891095028993'},
+  {sku:'7130003262',desc:'POP MICRO MANTEIGA DE CINEMA 18X2X100',produto:'PIPOCA MICRO REG 100G',ean:'7891095911769'},
+  {sku:'7130003279',desc:'POP MICRO STRANGER THINGS 30X140',produto:'PIPOCA MICRO NETFLIX 140G',ean:'7891095912100'},
+  {sku:'7130003235',desc:'MIX DE TEMPEROS PARA CARNE 24X40G',produto:'MIX DE TEMPEROS 40G',ean:'7891095911523'},
+  {sku:'7130003236',desc:'MIX DE TEMPEROS PARA FRANGO 24X40G',produto:'MIX DE TEMPEROS 40G',ean:'7891095911530'},
+  {sku:'7130003237',desc:'CEBOLA E ALHO 24X40G',produto:'CEBOLA E ALHO 40G',ean:'7891095912094'},
+  {sku:'7130003278',desc:'BICARBONATO DE SODIO 12X400G',produto:'BICARBONATO DE SODIO 400G',ean:'7891095911929'},
+  {sku:'7130003266',desc:'AMENDOIM JAPONES CX 15/800G',produto:'AMENDOIM JAPONES 800G',ean:'7891095911806'},
+  {sku:'7130003273',desc:'AMENDOIM CROCANTE LEV. SALGADO 15X800G',produto:'AMENDOIM CASQUINHA 800G',ean:'7891095911837'},
+  {sku:'7130003275',desc:'AMENDOIM DESC SALGADO 15X110G',produto:'AMENDOIM DESC 110G',ean:'7891095911899'},
+  {sku:'7130003276',desc:'AMENDOIM DESCASCADO TEMPERADO 15X110G',produto:'AMENDOIM DESC 110G',ean:'7891095911905'},
+  {sku:'7130003274',desc:'AMENDOIM DESCASCADO SALGADO 12X50G',produto:'AMENDOIM DESC 50G',ean:'7891095911882'},
+  {sku:'7130003277',desc:'AMENDOIM DESCASCADO SALGADO 12X350G',produto:'AMENDOIM DESC 350G',ean:'7891095911912'},
+  {sku:'7130003263',desc:'AMENDOIM JAPONES CX 12X60G',produto:'AMENDOIM JAPONES 60G',ean:'7891095911776'},
+  {sku:'7130003264',desc:'AMENDOIM JAPONES CX 12X120G',produto:'AMENDOIM JAPONES 120G',ean:'7891095911783'},
+  {sku:'7130003265',desc:'AMENDOIM JAPONES CX 12X420G',produto:'AMENDOIM JAPONES 420G',ean:'7891095911790'},
+  {sku:'7130003267',desc:'AMENDOIM CROCANTE LEV. SALGADO 12X120G',produto:'AMENDOIM CASQUINHA 120G',ean:'7891095911813'},
+  {sku:'7130003268',desc:'AMENDOIM CROC MOLHO DE PIMENTA 12X120G',produto:'AMENDOIM CASQUINHA 120G',ean:'7891095911844'},
+  {sku:'7130003269',desc:'AMENDOIM CROCANTE SABOR DO CHEF 12X120G',produto:'AMENDOIM CASQUINHA 120G',ean:'7891095911868'},
+  {sku:'7130003270',desc:'AMENDOIM CROCANTE LEV. SALGADO 12X420G',produto:'AMENDOIM CASQUINHA 420G',ean:'7891095911820'},
+  {sku:'7130003271',desc:'AMENDOIM CROC MOLHO DE PIMENTA 12X420G',produto:'AMENDOIM CASQUINHA 420G',ean:'7891095911851'},
+  {sku:'7130003272',desc:'AMENDOIM CROCANTE SABOR DO CHEF 12X420G',produto:'AMENDOIM CASQUINHA 420G',ean:'7891095911875'},
+  {sku:'7130003321',desc:'PACOCA ROLHA CAIXA 101X13G',produto:'PAÇOCA 1,3KG',ean:'7891095912285'},
+  {sku:'7130003320',desc:'PACOCA ROLHA CX 8X520G',produto:'PAÇOCA 520G',ean:'7891095912254'},
+  {sku:'7130003319',desc:'PACOCA ROLHA CX 16X286G',produto:'PAÇOCA 286G',ean:'7891095912247'},
+  {sku:'7130003318',desc:'PACOCA TABLETE CX 16X180G',produto:'PAÇOCA 180G',ean:'7891095912230'},
+  {sku:'7130003322',desc:'AMENDOIM CROCANTE CEBOLA E ERVAS 12X110G',produto:'AMENDOIM CASQUINHA 110G',ean:'7891095912360'},
+  {sku:'7130003323',desc:'AMENDOIM CROCANTE COSTEL LIMAO 12X110G',produto:'AMENDOIM CASQUINHA 110G',ean:'7891095912377'},
+  {sku:'7130003317',desc:'POP MICRO CHURRASCO 36X90G',produto:'PIPOCA MICRO COBERTURA 90G',ean:'7891095912353'},
+  {sku:'7130003310',desc:'KITANO MS NATURAL OREGANO 24X8G',produto:'KITANO MS NATURAL OREGANO 8G',ean:'7891095912261'},
+  {sku:'7130003313',desc:'KITANO MS NATURAL PIMENTA 24X25G',produto:'KITANO MS NATURAL PIMENTA 25G',ean:'7891095912292'},
+  {sku:'7130003314',desc:'KITANO MS NATURAL ACAFRAO 24X25G',produto:'KITANO MS NATURAL ACAFRAO 25G',ean:'7891095912308'},
+  {sku:'7130003311',desc:'KITANO MS NATURAL COLORIFICO 24X60G',produto:'KITANO MS NATURAL COLORIFICO 60G',ean:'7891095912315'},
+  {sku:'7130003312',desc:'KITANO MS NATURAL COLORIFICO 12X400G',produto:'KITANO MS NATURAL COLORIFICO 400G',ean:'7891095912322'},
+  {sku:'7130003315',desc:'KITANO MS NATURAL MIX CARNE 24X15G',produto:'KITANO MS NATURAL MIX SABORES 15G',ean:'7891095912339'},
+  {sku:'7130003316',desc:'KITANO MS NATURAL MIX FRANGO 24X15G',produto:'KITANO MS NATURAL MIX SABORES 15G',ean:'7891095912346'},
+];
+
+const rupturasSelecionadas = new Map(); // sku -> produto obj
+
+function buscarProduto(query) {
+  const results = document.getElementById('ruptura-results');
+  const q = query.trim().toLowerCase();
+  if (!q) { results.classList.remove('show'); return; }
+  
+  const matches = PRODUTOS.filter(p =>
+    p.desc.toLowerCase().includes(q) ||
+    p.produto.toLowerCase().includes(q) ||
+    p.sku.includes(q) ||
+    p.ean.includes(q)
+  ).slice(0, 20);
+
+  if (matches.length === 0) {
+    results.innerHTML = '<div class="ruptura-empty">Nenhum produto encontrado</div>';
+  } else {
+    results.innerHTML = matches.map(p => `
+      <div class="ruptura-result-item" onclick="adicionarRuptura('${p.sku}')">
+        <div class="ruptura-result-name">${p.produto}</div>
+        <div class="ruptura-result-meta">SKU: ${p.sku} · EAN: ${p.ean} · ${p.desc}</div>
+      </div>`).join('');
+  }
+  results.classList.add('show');
+}
+
+function adicionarRuptura(sku) {
+  const prod = PRODUTOS.find(p => p.sku === sku);
+  if (!prod || rupturasSelecionadas.has(sku)) {
+    document.getElementById('ruptura-results').classList.remove('show');
+    document.getElementById('ruptura-search').value = '';
+    return;
+  }
+  rupturasSelecionadas.set(sku, prod);
+  renderChips();
+  document.getElementById('ruptura-results').classList.remove('show');
+  document.getElementById('ruptura-search').value = '';
+}
+
+function removerRuptura(sku) {
+  rupturasSelecionadas.delete(sku);
+  renderChips();
+}
+
+function renderChips() {
+  const container = document.getElementById('ruptura-chips');
+  container.innerHTML = [...rupturasSelecionadas.values()].map(p => `
+    <div class="ruptura-chip">
+      ${p.produto}
+      <span class="ruptura-chip-remove" onclick="removerRuptura('${p.sku}')">×</span>
+    </div>`).join('');
+}
+
+// Close results when clicking outside
+document.addEventListener('click', e => {
+  if (!e.target.closest('.field')) {
+    document.getElementById('ruptura-results').classList.remove('show');
+  }
 });
 
 // ——— FOTO PREVIEW ———
@@ -512,7 +1144,7 @@ async function enviarPesquisa() {
   const supervisor = document.getElementById('supervisor').value;
   const cnpj = document.getElementById('cnpj').value;
   const distribuidor = document.getElementById('distribuidor').value;
-  const rupturas = [...selecionados].join(', ') || 'Nenhuma';
+  const rupturas = [...rupturasSelecionadas.values()].map(p => p.sku + ' - ' + p.produto).join(' | ') || 'Nenhuma';
   const observacao = document.getElementById('observacao').value.trim();
   if(!supervisor||!cnpj||!distribuidor){ alert('Preencha supervisor, CNPJ e distribuidor.'); return; }
   const btn = document.getElementById('btn-pesquisa');
@@ -529,18 +1161,66 @@ async function enviarPesquisa() {
     document.getElementById('cnpj').value='';
     document.getElementById('distribuidor').value='';
     document.getElementById('observacao').value='';
-    selecionados.clear();
-    document.querySelectorAll('.ruptura-tag.selected').forEach(t=>t.classList.remove('selected'));
+    rupturasSelecionadas.clear();
+    renderChips();
+    document.getElementById('ruptura-search').value = '';
   } catch(e){ alert('Erro ao enviar. Verifique sua conexão.'); }
   btn.disabled=false; btn.textContent='Salvar no Google Sheets';
 }
 
+const FOTO_URL = 'https://script.google.com/macros/s/AKfycbxqAm-m8mf5vI0dXkeWzjfEAL-a-7ADBiEptYQgWO5UqI3hsXmcjTI1rBH4nm27btN5/exec';
+
 async function enviarFoto() {
-  const cnpj=document.getElementById('foto-cnpj').value;
-  const rede=document.getElementById('foto-rede').value;
-  if(!cnpj||!rede){alert('Preencha CNPJ e nome da rede.');return;}
-  document.getElementById('msg-foto').classList.add('show');
-  setTimeout(()=>document.getElementById('msg-foto').classList.remove('show'),3000);
+  const cnpj = document.getElementById('foto-cnpj').value;
+  const rede = document.getElementById('foto-rede').value;
+  const categoria = document.getElementById('foto-categoria').value;
+  const distribuidor = document.getElementById('foto-distribuidor').value;
+  const fotoInput = document.getElementById('foto-input');
+
+  if (!cnpj || !rede || !distribuidor) {
+    alert('Preencha CNPJ, nome da rede e distribuidor.');
+    return;
+  }
+  if (!fotoInput.files || !fotoInput.files[0]) {
+    alert('Tire ou selecione uma foto antes de enviar.');
+    return;
+  }
+
+  const btn = document.querySelector('#tab-fotos .btn-submit');
+  btn.disabled = true;
+  btn.textContent = 'Enviando...';
+
+  // Converte foto para base64
+  const reader = new FileReader();
+  reader.onload = async function(e) {
+    const base64 = e.target.result.split(',')[1];
+    try {
+      await fetch(FOTO_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          data: new Date().toLocaleString('pt-BR'),
+          cnpj, rede, categoria, distribuidor,
+          foto: base64
+        })
+      });
+      document.getElementById('msg-foto').classList.add('show');
+      setTimeout(() => document.getElementById('msg-foto').classList.remove('show'), 3000);
+      // Limpa o formulário
+      document.getElementById('foto-cnpj').value = '';
+      document.getElementById('foto-rede').value = '';
+      document.getElementById('foto-categoria').value = '';
+      document.getElementById('foto-distribuidor').value = '';
+      document.getElementById('foto-input').value = '';
+      document.getElementById('foto-preview').style.display = 'none';
+    } catch(err) {
+      alert('Erro ao enviar. Verifique sua conexão.');
+    }
+    btn.disabled = false;
+    btn.textContent = 'Enviar registro';
+  };
+  reader.readAsDataURL(fotoInput.files[0]);
 }
 </script>
 
