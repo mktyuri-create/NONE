@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0057)file:///C:/Users/g710931/Downloads/app_none_final_11.html -->
+<!-- saved from url=(0047)file:///C:/Users/g710931/Downloads/index_2.html -->
 <html lang="pt-BR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -163,6 +163,199 @@ body { display: flex; justify-content: center; }
 .login-error { color: #ff6b6b; font-size: 12px; text-align: center; margin-top: 10px; display: none; }
 .login-error.show { display: block; }
 
+/* DASHBOARD METAS */
+
+:root {
+  --navy:#0C2D5E; --navy-mid:#185FA5; --navy-light:#378ADD;
+  --blue-100:#B5D4F4; --blue-50:#E6F1FB; --bg:#f0f4f9;
+  --border:#B5D4F4; --green:#2E7D32; --green-bg:#E8F5E9;
+  --amber:#E65100; --amber-bg:#FFF3E0; --red:#C62828; --red-bg:#FFEBEE;
+}
+*{box-sizing:border-box;margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;}
+body{background:var(--bg);min-height:100vh;}
+
+.header{background:var(--navy);padding:14px 16px;display:flex;align-items:center;gap:10px;position:sticky;top:0;z-index:10;}
+.back-btn{background:rgba(255,255,255,0.15);border:none;border-radius:8px;padding:7px 12px;color:white;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;}
+.header-title{font-size:15px;font-weight:600;color:#E6F1FB;}
+.header-sub{font-size:11px;color:var(--blue-100);}
+
+.page{max-width:430px;margin:0 auto;padding:14px 14px 80px;}
+
+.sv-tabs{display:flex;gap:8px;margin-bottom:16px;overflow-x:auto;padding-bottom:2px;}
+.sv-tab{flex-shrink:0;padding:8px 14px;border-radius:20px;border:1.5px solid var(--border);background:white;font-size:12px;font-weight:600;color:var(--navy-mid);cursor:pointer;white-space:nowrap;}
+.sv-tab.active{background:var(--navy);color:white;border-color:var(--navy);}
+
+.gs-card{background:var(--navy);border-radius:16px;padding:16px;margin-bottom:14px;}
+.gs-label{font-size:10px;font-weight:700;color:var(--blue-100);text-transform:uppercase;letter-spacing:0.6px;margin-bottom:6px;}
+.gs-pct-row{display:flex;align-items:baseline;gap:10px;margin-bottom:4px;}
+.gs-pct-real{font-size:26px;font-weight:700;color:white;}
+.gs-pct-proj{font-size:14px;color:var(--blue-100);font-weight:600;}
+.gs-sub{font-size:11px;color:var(--blue-100);margin-bottom:14px;}
+
+.gs-nums{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:6px;margin-bottom:14px;}
+.gs-num{background:rgba(255,255,255,0.1);border-radius:10px;padding:8px 6px;text-align:center;}
+.gs-num-label{font-size:8px;color:var(--blue-100);font-weight:700;text-transform:uppercase;letter-spacing:0.3px;display:block;margin-bottom:3px;}
+.gs-num-val{font-size:13px;font-weight:700;color:white;}
+.gs-num-val.falt{color:#FF8A65;}
+.gs-num-val.proj{color:#81C784;}
+
+.prog-wrap{margin-bottom:4px;}
+.prog-labels{display:flex;justify-content:space-between;margin-bottom:4px;}
+.prog-labels span{font-size:9px;color:var(--blue-100);}
+.prog-bar{background:rgba(255,255,255,0.15);border-radius:20px;height:8px;overflow:visible;position:relative;}
+.prog-fill-real{height:100%;border-radius:20px;background:#378ADD;position:absolute;left:0;top:0;z-index:2;}
+.prog-fill-proj{height:100%;border-radius:20px;background:rgba(129,199,132,0.6);position:absolute;left:0;top:0;z-index:1;}
+.prog-min-mark{position:absolute;left:90%;top:-3px;height:14px;width:2px;background:rgba(255,255,255,0.5);z-index:3;}
+
+.sec-label{font-size:10px;font-weight:700;color:var(--navy-mid);text-transform:uppercase;letter-spacing:0.7px;margin-bottom:10px;}
+
+.metric-card{background:white;border-radius:14px;padding:14px;margin-bottom:10px;border:0.5px solid var(--border);}
+.metric-header{display:flex;align-items:center;gap:10px;margin-bottom:12px;}
+.metric-icon{width:36px;height:36px;border-radius:10px;background:var(--bg);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
+.metric-name{font-size:13px;font-weight:700;color:var(--navy);flex:1;}
+.pct-pills{display:flex;gap:4px;flex-direction:column;align-items:flex-end;}
+.pct-pill{font-size:10px;font-weight:700;padding:2px 7px;border-radius:6px;}
+.pct-pill.real{background:var(--blue-50);color:var(--navy-mid);}
+.pct-pill.proj.green{background:var(--green-bg);color:var(--green);}
+.pct-pill.proj.amber{background:var(--amber-bg);color:var(--amber);}
+.pct-pill.proj.red{background:var(--red-bg);color:var(--red);}
+
+.metric-row{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:6px;margin-bottom:10px;}
+.metric-cell{text-align:center;}
+.metric-cell-label{font-size:8px;font-weight:700;color:#999;text-transform:uppercase;letter-spacing:0.3px;display:block;margin-bottom:2px;}
+.metric-cell-val{font-size:12px;font-weight:700;color:var(--navy);}
+.metric-cell-val.falt{color:var(--amber);}
+.metric-cell-val.real{color:var(--navy-mid);}
+.metric-cell-val.proj{color:var(--green);}
+
+.metric-bars{margin-bottom:8px;}
+.mini-bar-wrap{margin-bottom:4px;}
+.mini-bar-label{display:flex;justify-content:space-between;margin-bottom:2px;}
+.mini-bar-label span{font-size:9px;color:#999;}
+.mini-bar{background:var(--bg);border-radius:20px;height:5px;overflow:hidden;}
+.mini-bar-fill{height:100%;border-radius:20px;}
+
+.metric-gain{display:flex;justify-content:space-between;align-items:center;}
+.metric-gain-label{font-size:11px;color:#999;}
+.metric-gain-val{font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;}
+.metric-gain-val.zero{background:var(--red-bg);color:var(--red);}
+.metric-gain-val.earned{background:var(--green-bg);color:var(--green);}
+
+.summary-card{background:white;border-radius:14px;padding:16px;border:0.5px solid var(--border);margin-bottom:10px;}
+.summary-title{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:12px;}
+.summary-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:0.5px solid var(--bg);}
+.summary-row:last-child{border-bottom:none;}
+.summary-name{font-size:12px;color:#555;}
+.summary-gain{font-size:13px;font-weight:700;}
+.summary-gain.zero{color:var(--red);}
+.summary-gain.earned{color:var(--green);}
+.summary-total{background:var(--navy);border-radius:10px;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;margin-top:4px;}
+.summary-total-label{font-size:12px;color:var(--blue-100);font-weight:600;}
+.summary-total-val{font-size:18px;font-weight:700;color:white;}
+
+.legend{display:flex;gap:12px;margin-bottom:10px;flex-wrap:wrap;}
+.legend-item{display:flex;align-items:center;gap:5px;font-size:10px;color:#666;}
+.legend-dot{width:10px;height:10px;border-radius:50%;}
+.legend-dot.real{background:#378ADD;}
+.legend-dot.proj{background:rgba(129,199,132,0.8);}
+
+/* DASHBOARD CLIENTES */
+
+:root{
+  --navy:#0C2D5E;--navy-mid:#185FA5;--navy-light:#378ADD;
+  --blue-100:#B5D4F4;--blue-50:#E6F1FB;--bg:#f0f4f9;
+  --border:#B5D4F4;--green:#2E7D32;--green-bg:#E8F5E9;
+  --amber:#E65100;--amber-bg:#FFF3E0;--red:#C62828;--red-bg:#FFEBEE;
+  --gold:#F57F17;--gold-bg:#FFF8E1;
+}
+*{box-sizing:border-box;margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;}
+body{background:var(--bg);min-height:100vh;}
+
+.header{background:var(--navy);padding:14px 16px;display:flex;align-items:center;gap:10px;position:sticky;top:0;z-index:10;}
+.back-btn{background:rgba(255,255,255,0.15);border:none;border-radius:8px;padding:7px 12px;color:white;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;}
+.header-info h1{font-size:15px;font-weight:600;color:#E6F1FB;}
+.header-info p{font-size:11px;color:var(--blue-100);}
+
+.page{max-width:430px;margin:0 auto;padding:14px 14px 80px;}
+
+/* TABS — page level */
+.page-tabs{display:flex;background:white;border-radius:12px;padding:4px;margin-bottom:16px;border:0.5px solid var(--border);}
+.page-tab{flex:1;text-align:center;padding:8px 6px;border-radius:9px;font-size:12px;font-weight:600;color:var(--navy-mid);cursor:pointer;}
+.page-tab.active{background:var(--navy);color:white;}
+
+/* SV TABS */
+.sv-tabs{display:flex;gap:8px;margin-bottom:14px;overflow-x:auto;padding-bottom:2px;}
+.sv-tab{flex-shrink:0;padding:7px 13px;border-radius:20px;border:1.5px solid var(--border);background:white;font-size:11px;font-weight:600;color:var(--navy-mid);cursor:pointer;white-space:nowrap;}
+.sv-tab.active{background:var(--navy);color:white;border-color:var(--navy);}
+
+/* SUMMARY HERO */
+.hero{background:var(--navy);border-radius:14px;padding:14px;margin-bottom:12px;}
+.hero-label{font-size:10px;font-weight:700;color:var(--blue-100);text-transform:uppercase;letter-spacing:0.6px;margin-bottom:8px;}
+.hero-nums{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;}
+.hero-num{background:rgba(255,255,255,0.1);border-radius:10px;padding:9px 6px;text-align:center;}
+.hero-num-label{font-size:8px;color:var(--blue-100);font-weight:700;text-transform:uppercase;letter-spacing:0.3px;display:block;margin-bottom:3px;}
+.hero-num-val{font-size:14px;font-weight:700;color:white;}
+.hero-num-val.falt{color:#FF8A65;}
+.hero-num-val.proj{color:#81C784;}
+
+/* CLIENT CARDS */
+.sec-label{font-size:10px;font-weight:700;color:var(--navy-mid);text-transform:uppercase;letter-spacing:0.7px;margin-bottom:10px;}
+
+.client-card{background:white;border-radius:14px;padding:13px;margin-bottom:9px;border:0.5px solid var(--border);}
+.client-header{display:flex;align-items:flex-start;gap:8px;margin-bottom:10px;}
+.client-name{font-size:12px;font-weight:700;color:var(--navy);flex:1;line-height:1.3;}
+.client-pct-wrap{display:flex;flex-direction:column;gap:3px;align-items:flex-end;flex-shrink:0;}
+.pct-badge{font-size:10px;font-weight:700;padding:2px 7px;border-radius:6px;white-space:nowrap;}
+.pct-badge.real{background:var(--blue-50);color:var(--navy-mid);}
+.pct-badge.proj.green{background:var(--green-bg);color:var(--green);}
+.pct-badge.proj.amber{background:var(--amber-bg);color:var(--amber);}
+.pct-badge.proj.red{background:var(--red-bg);color:var(--red);}
+
+.client-row{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:4px;margin-bottom:9px;}
+.client-cell{text-align:center;}
+.client-cell-label{font-size:8px;font-weight:700;color:#aaa;text-transform:uppercase;letter-spacing:0.2px;display:block;margin-bottom:2px;}
+.client-cell-val{font-size:11px;font-weight:700;color:var(--navy);}
+.client-cell-val.real{color:var(--navy-mid);}
+.client-cell-val.proj{color:var(--green);}
+.client-cell-val.falt{color:var(--amber);}
+
+.client-bars{margin-bottom:0;}
+.mini-bar-row{margin-bottom:4px;}
+.mini-bar-lbl{display:flex;justify-content:space-between;margin-bottom:2px;}
+.mini-bar-lbl span{font-size:9px;color:#aaa;}
+.mini-bar{background:var(--bg);border-radius:20px;height:5px;overflow:hidden;}
+.mini-fill{height:100%;border-radius:20px;}
+
+/* ===== DESAFIO PAGE ===== */
+.desafio-header{background:linear-gradient(135deg,#F57F17,#E65100);border-radius:14px;padding:14px;margin-bottom:14px;}
+.desafio-title{font-size:16px;font-weight:700;color:white;margin-bottom:4px;}
+.desafio-sub{font-size:11px;color:rgba(255,255,255,0.8);}
+
+.desafio-sv-block{margin-bottom:16px;}
+.desafio-sv-label{font-size:11px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;padding:6px 10px;background:var(--blue-50);border-radius:8px;}
+
+.desafio-client-card{background:white;border-radius:12px;padding:12px;margin-bottom:8px;border:0.5px solid var(--border);}
+.desafio-client-name{font-size:12px;font-weight:700;color:var(--navy);margin-bottom:10px;}
+.desafio-cols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;}
+.desafio-col{text-align:center;padding:8px 6px;border-radius:9px;}
+.desafio-col.atual{background:var(--blue-50);}
+.desafio-col.d5{background:var(--green-bg);}
+.desafio-col.d7{background:var(--gold-bg);}
+.desafio-col-label{font-size:8px;font-weight:700;text-transform:uppercase;letter-spacing:0.3px;display:block;margin-bottom:3px;}
+.desafio-col.atual .desafio-col-label{color:var(--navy-mid);}
+.desafio-col.d5 .desafio-col-label{color:var(--green);}
+.desafio-col.d7 .desafio-col-label{color:var(--gold);}
+.desafio-col-val{font-size:13px;font-weight:700;}
+.desafio-col.atual .desafio-col-val{color:var(--navy);}
+.desafio-col.d5 .desafio-col-val{color:var(--green);}
+.desafio-col.d7 .desafio-col-val{color:var(--gold);}
+.desafio-col-sub{font-size:9px;color:#aaa;display:block;margin-top:2px;}
+
+.desafio-diff{margin-top:8px;display:flex;gap:6px;}
+.desafio-diff-item{flex:1;background:var(--bg);border-radius:8px;padding:6px 8px;text-align:center;}
+.desafio-diff-label{font-size:8px;color:#999;font-weight:700;text-transform:uppercase;letter-spacing:0.3px;display:block;margin-bottom:2px;}
+.desafio-diff-val{font-size:11px;font-weight:700;color:var(--gold);}
+
 /* LOADING */
 .viewer-loading { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; background: #111827; }
 .viewer-loading span { color: var(--blue-100); font-size: 13px; }
@@ -252,9 +445,9 @@ body { display: flex; justify-content: center; }
               <div class="btn-icon">📦</div>
               <div><div class="btn-label">Catálogo de Produtos</div><div class="btn-sub">Ver produtos</div></div>
             </button>
-            <button class="btn-card" onclick="openViewer(&#39;img&#39;,&#39;Metas do Mês&#39;,&#39;https://drive.google.com/file/d/1_QZpuGvjS5rZQqckeobV1aamS24_MI7-/preview&#39;)">
+            <button class="btn-card" onclick="openDashboard(&#39;metas&#39;,&#39;Metas do Mês&#39;)">
               <div class="btn-icon">🎯</div>
-              <div><div class="btn-label">Metas do Mês</div><div class="btn-sub">Ver produtos</div></div>
+              <div><div class="btn-label">Metas do Mês</div><div class="btn-sub">Dashboard RVV</div></div>
             </button>
             <button class="btn-card" onclick="openViewer(&#39;pdf&#39;,&#39;Remuneração Variável&#39;,&#39;https://drive.google.com/file/d/1NLHgFv2zlVzi4fjNCbKknhlD796b3Q7A/preview&#39;)">
               <div class="btn-icon">💰</div>
@@ -275,11 +468,11 @@ body { display: flex; justify-content: center; }
           </div>
 
           <div class="sec-label" style="margin-top:18px">Metas por cliente</div>
-          <button class="btn-card-full" onclick="openViewer(&#39;dual&#39;,&#39;Metas por Cliente&#39;,&#39;https://drive.google.com/file/d/1sbWjJgmOlt2CBhNoqmny6qX4GtMsDdKX/preview&#39;,&#39;https://drive.google.com/file/d/1Ui1ekc6cK7nvjyOQSBfEa7dgR1YzhBuW/preview&#39;)">
+          <button class="btn-card-full" onclick="openDashboard(&#39;clientes&#39;,&#39;Metas por Cliente&#39;)">
             <div class="btn-icon" style="width:36px;height:36px;border-radius:10px;background:var(--navy);display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;">👥</div>
             <div style="flex:1;">
               <div class="btn-label">Metas por Cliente</div>
-              <div class="btn-sub">Ver os dois arquivos</div>
+              <div class="btn-sub">Dashboard + Meta Desafio</div>
             </div>
             <div style="color:var(--blue-100);font-size:18px;">›</div>
           </button>
@@ -461,7 +654,227 @@ body { display: flex; justify-content: center; }
     </div>
   </div>
 
-</div><!-- /app -->
+
+  
+  
+  <!-- DASHBOARD METAS DO MES -->
+  <div id="dash-metas" style="display:none;flex:1;overflow-y:auto;background:var(--bg);">
+    <div style="max-width:430px;margin:0 auto;padding:14px 14px 80px;">
+      
+<div class="header-sub">Dashboard RVV — Q4 F26</div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="sv-tabs">
+    <div class="sv-tab active" style="background:#185FA5;color:white;border-color:#185FA5;" onclick="showSV_metas(&#39;Regional&#39;,this)">🌎 Regional</div>
+    <div class="sv-tab" onclick="showSV_metas(&#39;Eliadson&#39;,this)">Eliadson · CE/PI</div>
+    <div class="sv-tab" onclick="showSV_metas(&#39;Flávia&#39;,this)">Flávia · RN/PB</div>
+    <div class="sv-tab" onclick="showSV_metas(&#39;Amom&#39;,this)">Amom · PE</div>
+    <div class="sv-tab" onclick="showSV_metas(&#39;Elias&#39;,this)">Elias · Norte</div>
+  </div>
+  <div id="sv-content"></div>
+</div>
+
+
+
+    </div>
+  
+  <!-- DASHBOARD METAS POR CLIENTE -->
+  <div id="dash-clientes" style="display:none;flex:1;overflow-y:auto;background:var(--bg);">
+    <div style="max-width:430px;margin:0 auto;padding:14px 14px 80px;">
+      
+</div>
+
+<div class="page">
+  <!-- PAGE TABS -->
+  <div class="page-tabs">
+    <div class="page-tab active" onclick="switchPage_cli(&#39;clientes&#39;,this)">📋 Por Cliente</div>
+    <div class="page-tab" onclick="switchPage_cli(&#39;desafio&#39;,this)">🏆 Meta Desafio</div>
+  </div>
+
+  <!-- ===== PAGE: CLIENTES ===== -->
+  <div id="page-clientes">
+    <div style="background:linear-gradient(135deg,#0C2D5E,#185FA5);border-radius:14px;padding:14px;margin-bottom:14px;">
+      <div style="font-size:10px;font-weight:700;color:#B5D4F4;text-transform:uppercase;letter-spacing:0.6px;margin-bottom:8px;">🌎 Regional IND NONE — Total</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:6px;">
+        <div style="background:rgba(255,255,255,0.1);border-radius:10px;padding:9px 6px;text-align:center;"><span style="font-size:8px;color:#B5D4F4;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Objetivo</span><span style="font-size:13px;font-weight:700;color:white;">5.763,4</span></div>
+        <div style="background:rgba(255,255,255,0.1);border-radius:10px;padding:9px 6px;text-align:center;"><span style="font-size:8px;color:#B5D4F4;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Realizado</span><span style="font-size:13px;font-weight:700;color:#B5D4F4;">285,7 <small style="font-size:10px;">5%</small></span></div>
+        <div style="background:rgba(255,255,255,0.1);border-radius:10px;padding:9px 6px;text-align:center;"><span style="font-size:8px;color:#B5D4F4;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Projeção</span><span style="font-size:13px;font-weight:700;color:#81C784;">805,6 <small style="font-size:10px;">14%</small></span></div>
+        <div style="background:rgba(255,255,255,0.1);border-radius:10px;padding:9px 6px;text-align:center;"><span style="font-size:8px;color:#B5D4F4;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Faltante</span><span style="font-size:13px;font-weight:700;color:#FF8A65;">5.138,4</span></div>
+      </div>
+    </div>
+    <div class="sv-tabs">
+      <div class="sv-tab" onclick="showSV_cli(&#39;Eliadson&#39;,this)">Eliadson</div>
+      <div class="sv-tab" onclick="showSV_cli(&#39;Flávia&#39;,this)">Flávia</div>
+      <div class="sv-tab" onclick="showSV_cli(&#39;Amom&#39;,this)">Amom</div>
+      <div class="sv-tab" onclick="showSV_cli(&#39;Elias&#39;,this)">Elias</div>
+    </div>
+    <div id="clientes-content"></div>
+  </div>
+
+  <!-- ===== PAGE: DESAFIO ===== -->
+  <div id="page-desafio" style="display:none;">
+    <div class="desafio-header">
+      <div class="desafio-title">🏆 Meta Desafio</div>
+      <div class="desafio-sub">Objetivo 5% e Desafio 7% — Clientes estratégicos</div>
+    </div>
+
+    <!-- AMOM -->
+    <div class="desafio-sv-block">
+      <div class="desafio-sv-label">👤 Amom · PE</div>
+
+      <div class="desafio-client-card">
+        <div class="desafio-client-name">BR ATAC CADAN</div>
+        <div class="desafio-cols">
+          <div class="desafio-col atual"><span class="desafio-col-label">Atual</span><span class="desafio-col-val">—</span></div>
+          <div class="desafio-col d5"><span class="desafio-col-label">Meta 5%</span><span class="desafio-col-val">R$ 261,7k</span></div>
+          <div class="desafio-col d7"><span class="desafio-col-label">Desafio 7%</span><span class="desafio-col-val">R$ 379,5k</span></div>
+        </div>
+        <div class="desafio-diff">
+          <div class="desafio-diff-item"><span class="desafio-diff-label">Diferença p/ desafio</span><span class="desafio-diff-val">+ R$ 117,8k</span></div>
+        </div>
+      </div>
+
+      <div class="desafio-client-card">
+        <div class="desafio-client-name" style="color:#C62828;">BR ATAC AMANHECER (Jr)</div>
+        <div class="desafio-cols">
+          <div class="desafio-col atual"><span class="desafio-col-label">Atual</span><span class="desafio-col-val">—</span></div>
+          <div class="desafio-col d5"><span class="desafio-col-label">Meta 5%</span><span class="desafio-col-val">R$ 150,9k</span></div>
+          <div class="desafio-col d7"><span class="desafio-col-label">Desafio 7%</span><span class="desafio-col-val">R$ 301,8k</span></div>
+        </div>
+        <div class="desafio-diff">
+          <div class="desafio-diff-item"><span class="desafio-diff-label">Diferença p/ desafio</span><span class="desafio-diff-val">+ R$ 150,9k</span></div>
+        </div>
+      </div>
+
+      <div class="desafio-client-card">
+        <div class="desafio-client-name">BR VITORIA ATACADIST (ASSIS)</div>
+        <div class="desafio-cols">
+          <div class="desafio-col atual"><span class="desafio-col-label">Atual</span><span class="desafio-col-val">—</span></div>
+          <div class="desafio-col d5"><span class="desafio-col-label">Meta 5%</span><span class="desafio-col-val">R$ 185,2k</span></div>
+          <div class="desafio-col d7"><span class="desafio-col-label">Desafio 7%</span><span class="desafio-col-val">R$ 248,2k</span></div>
+        </div>
+        <div class="desafio-diff">
+          <div class="desafio-diff-item"><span class="desafio-diff-label">Diferença p/ desafio</span><span class="desafio-diff-val">+ R$ 63,0k</span></div>
+        </div>
+      </div>
+
+      <div class="desafio-client-card">
+        <div class="desafio-client-name" style="color:#C62828;">COMERCIAL OESTE LTDA</div>
+        <div class="desafio-cols">
+          <div class="desafio-col atual"><span class="desafio-col-label">Atual</span><span class="desafio-col-val">—</span></div>
+          <div class="desafio-col d5"><span class="desafio-col-label">Meta 5%</span><span class="desafio-col-val">R$ 44,8k</span></div>
+          <div class="desafio-col d7"><span class="desafio-col-label">Desafio 7%</span><span class="desafio-col-val">R$ 89,6k</span></div>
+        </div>
+        <div class="desafio-diff">
+          <div class="desafio-diff-item"><span class="desafio-diff-label">Diferença p/ desafio</span><span class="desafio-diff-val">+ R$ 44,8k</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ELIADSON -->
+    <div class="desafio-sv-block">
+      <div class="desafio-sv-label">👤 Eliadson · CE/PI</div>
+
+      <div class="desafio-client-card">
+        <div class="desafio-client-name">BR SOLMAR</div>
+        <div class="desafio-cols">
+          <div class="desafio-col atual"><span class="desafio-col-label">Atual</span><span class="desafio-col-val">—</span></div>
+          <div class="desafio-col d5"><span class="desafio-col-label">Meta 5%</span><span class="desafio-col-val">R$ 197,80</span></div>
+          <div class="desafio-col d7"><span class="desafio-col-label">Desafio 7%</span><span class="desafio-col-val">R$ 220,00</span></div>
+        </div>
+        <div class="desafio-diff">
+          <div class="desafio-diff-item"><span class="desafio-diff-label">Diferença p/ desafio</span><span class="desafio-diff-val">+ R$ 22,20</span></div>
+        </div>
+      </div>
+
+      <div class="desafio-client-card">
+        <div class="desafio-client-name">BR DISTR. LAREDO</div>
+        <div class="desafio-cols">
+          <div class="desafio-col atual"><span class="desafio-col-label">Atual</span><span class="desafio-col-val">—</span></div>
+          <div class="desafio-col d5"><span class="desafio-col-label">Meta 5%</span><span class="desafio-col-val">R$ 108,70</span></div>
+          <div class="desafio-col d7"><span class="desafio-col-label">Desafio 7%</span><span class="desafio-col-val">R$ 220,00</span></div>
+        </div>
+        <div class="desafio-diff">
+          <div class="desafio-diff-item"><span class="desafio-diff-label">Diferença p/ desafio</span><span class="desafio-diff-val">+ R$ 111,30</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FLÁVIA -->
+    <div class="desafio-sv-block">
+      <div class="desafio-sv-label">👤 Flávia · RN/PB</div>
+
+      <div class="desafio-client-card">
+        <div class="desafio-client-name" style="color:#C62828;">BR REDE PROGRESSO</div>
+        <div class="desafio-cols">
+          <div class="desafio-col atual"><span class="desafio-col-label">Atual</span><span class="desafio-col-val">—</span></div>
+          <div class="desafio-col d5"><span class="desafio-col-label">Meta 5%</span><span class="desafio-col-val">R$ 404,20</span></div>
+          <div class="desafio-col d7"><span class="desafio-col-label">Desafio 7%</span><span class="desafio-col-val">R$ 484,00</span></div>
+        </div>
+        <div class="desafio-diff">
+          <div class="desafio-diff-item"><span class="desafio-diff-label">Diferença p/ desafio</span><span class="desafio-diff-val">+ R$ 79,80</span></div>
+        </div>
+      </div>
+
+      <div class="desafio-client-card">
+        <div class="desafio-client-name">NORDECE - NORDESTE REPRESENTACAO E</div>
+        <div class="desafio-cols">
+          <div class="desafio-col atual"><span class="desafio-col-label">Atual</span><span class="desafio-col-val">—</span></div>
+          <div class="desafio-col d5"><span class="desafio-col-label">Meta 5%</span><span class="desafio-col-val">R$ 459,00</span></div>
+          <div class="desafio-col d7"><span class="desafio-col-label">Desafio 7%</span><span class="desafio-col-val">R$ 250,00</span></div>
+        </div>
+        <div class="desafio-diff">
+          <div class="desafio-diff-item"><span class="desafio-diff-label">Diferença p/ desafio</span><span class="desafio-diff-val">— R$ 209,00</span></div>
+        </div>
+      </div>
+
+      <div class="desafio-client-card">
+        <div class="desafio-client-name">COMERCIAL ELOI CHAVES LTDA</div>
+        <div class="desafio-cols">
+          <div class="desafio-col atual"><span class="desafio-col-label">Atual</span><span class="desafio-col-val">—</span></div>
+          <div class="desafio-col d5"><span class="desafio-col-label">Meta 5%</span><span class="desafio-col-val">R$ 22,70</span></div>
+          <div class="desafio-col d7"><span class="desafio-col-label">Desafio 7%</span><span class="desafio-col-val">R$ 45,40</span></div>
+        </div>
+        <div class="desafio-diff">
+          <div class="desafio-diff-item"><span class="desafio-diff-label">Diferença p/ desafio</span><span class="desafio-diff-val">+ R$ 22,70</span></div>
+        </div>
+      </div>
+
+      <div class="desafio-client-card">
+        <div class="desafio-client-name" style="color:#C62828;">AVENIDA</div>
+        <div class="desafio-cols">
+          <div class="desafio-col atual"><span class="desafio-col-label">Atual</span><span class="desafio-col-val">—</span></div>
+          <div class="desafio-col d5"><span class="desafio-col-label">Meta 5%</span><span class="desafio-col-val">R$ 150,00</span></div>
+          <div class="desafio-col d7"><span class="desafio-col-label">Desafio 7%</span><span class="desafio-col-val">R$ 200,00</span></div>
+        </div>
+        <div class="desafio-diff">
+          <div class="desafio-diff-item"><span class="desafio-diff-label">Diferença p/ desafio</span><span class="desafio-diff-val">+ R$ 50,00</span></div>
+        </div>
+      </div>
+
+      <div class="desafio-client-card">
+        <div class="desafio-client-name" style="color:#C62828;">CAICO DISTRIBUIDORA DE LATICINIOS</div>
+        <div class="desafio-cols">
+          <div class="desafio-col atual"><span class="desafio-col-label">Atual</span><span class="desafio-col-val">—</span></div>
+          <div class="desafio-col d5"><span class="desafio-col-label">Meta 5%</span><span class="desafio-col-val">R$ 47,20</span></div>
+          <div class="desafio-col d7"><span class="desafio-col-label">Desafio 7%</span><span class="desafio-col-val">R$ 94,40</span></div>
+        </div>
+        <div class="desafio-diff">
+          <div class="desafio-diff-item"><span class="desafio-diff-label">Diferença p/ desafio</span><span class="desafio-diff-val">+ R$ 47,20</span></div>
+        </div>
+      </div>
+    </div>
+  </div><!-- /page-desafio -->
+</div><!-- /page -->
+
+
+
+    </div>
+  
+
+<!-- /app -->
 
 <script>
 // ——— LOGIN ———
@@ -625,13 +1038,41 @@ function openViewer(type, title, url, url2) {
   }
 }
 
+function openDashboard(type, title) {
+  const screen = document.getElementById('screen-viewer');
+  document.getElementById('viewer-title').textContent = title;
+  screen.classList.remove('hidden');
+  screen.classList.add('slide-in');
+
+  // Hide iframe body, show dashboard panel
+  document.getElementById('viewer-body').style.display = 'none';
+
+  const dashId = 'dash-' + type;
+  document.querySelectorAll('[id^="dash-"]').forEach(d => d.style.display = 'none');
+  const panel = document.getElementById(dashId);
+  panel.style.display = 'flex';
+  panel.style.flexDirection = 'column';
+
+  // Init dashboards
+  if (type === 'metas') {
+    setTimeout(() => showSV_metas('Eliadson', document.querySelector('#dash-metas .sv-tab')), 100);
+  } else if (type === 'clientes') {
+    setTimeout(() => {
+      showSV_cli('Eliadson', document.querySelector('#page-clientes .sv-tab'));
+      switchPage_cli('clientes', document.querySelector('.page-tab'));
+    }, 100);
+  }
+}
+
 function closeViewer() {
   const screen = document.getElementById('screen-viewer');
   screen.classList.add('hidden');
   screen.classList.remove('slide-in');
-  // Clear iframes to stop loading
+  // Clear iframes and hide dashboards
   setTimeout(() => {
     document.getElementById('viewer-body').innerHTML = '';
+    document.getElementById('viewer-body').style.display = 'flex';
+    document.querySelectorAll('[id^="dash-"]').forEach(d => d.style.display = 'none');
   }, 300);
 }
 
@@ -1142,6 +1583,410 @@ async function enviarFoto() {
   };
   reader.readAsDataURL(fotoInput.files[0]);
 }
+
+
+
+
+// ===== DASHBOARD METAS =====
+(function() {
+
+const DATA_METAS = {
+  "Eliadson":{
+    "region":"CE / PI",
+    "gross_sales":{"obj":1774.1,"real":63.0,"proj":104.3,"fora":0.0,"total_proj":167.3,"total_com_fora":167.3,"pct_real":3.6,"pct_proj":9.4,"pct_com_fora":9.4,"falt":1606.8},
+    "metrics":[
+      {"name":"Gross Sales","icon":"📊","obj":951.4,"real":1.6,"proj":23.7,"total_proj":25.3,"pct_real":0.2,"pct_proj":2.7,"falt":926.1},
+      {"name":"Inovações","icon":"🚀","obj":25.0,"real":0.0,"proj":0.0,"total_proj":0.0,"pct_real":0.0,"pct_proj":0.0,"falt":25.0},
+      {"name":"Kitano + Mais Sabor","icon":"🧂","obj":479.3,"real":61.4,"proj":80.0,"total_proj":141.4,"pct_real":12.8,"pct_proj":29.5,"falt":337.9},
+      {"name":"Popcorn Microondas","icon":"🍿","obj":58.8,"real":0.0,"proj":0.0,"total_proj":0.0,"pct_real":0.0,"pct_proj":0.0,"falt":58.8},
+      {"name":"Batata Palha","icon":"🥔","obj":144.9,"real":0.0,"proj":0.0,"total_proj":0.0,"pct_real":0.0,"pct_proj":0.0,"falt":144.9},
+      {"name":"Yok Extrusados + Snacks","icon":"🫙","obj":114.8,"real":0.0,"proj":0.5,"total_proj":0.5,"pct_real":0.0,"pct_proj":0.5,"falt":114.3}
+    ]
+  },
+  "Flávia":{
+    "region":"RN / PB",
+    "gross_sales":{"obj":1809.6,"real":21.0,"proj":39.1,"fora":0.0,"total_proj":58.8,"total_com_fora":60.0,"pct_real":1.2,"pct_proj":3.2,"pct_com_fora":3.3,"falt":1750.8},
+    "metrics":[
+      {"name":"Gross Sales","icon":"📊","obj":1258.3,"real":15.3,"proj":39.1,"total_proj":54.3,"pct_real":1.2,"pct_proj":4.3,"falt":1204.0},
+      {"name":"Inovações","icon":"🚀","obj":7.9,"real":0.0,"proj":0.0,"total_proj":0.0,"pct_real":0.0,"pct_proj":0.0,"falt":7.9},
+      {"name":"Kitano + Mais Sabor","icon":"🧂","obj":294.9,"real":5.6,"proj":0.0,"total_proj":5.5,"pct_real":1.9,"pct_proj":1.9,"falt":289.4},
+      {"name":"Popcorn Microondas","icon":"🍿","obj":154.3,"real":0.0,"proj":0.0,"total_proj":0.0,"pct_real":0.0,"pct_proj":0.0,"falt":154.3},
+      {"name":"Batata Palha","icon":"🥔","obj":43.1,"real":0.0,"proj":0.0,"total_proj":0.0,"pct_real":0.0,"pct_proj":0.0,"falt":43.1},
+      {"name":"Yok Extrusados + Snacks","icon":"🫙","obj":51.2,"real":0.0,"proj":0.0,"total_proj":0.0,"pct_real":0.0,"pct_proj":0.0,"falt":51.2}
+    ]
+  },
+  "Amom":{
+    "region":"PE",
+    "gross_sales":{"obj":1686.7,"real":201.7,"proj":353.2,"fora":0.0,"total_proj":523.9,"total_com_fora":523.9,"pct_real":12.0,"pct_proj":31.1,"pct_com_fora":31.1,"falt":1162.8},
+    "metrics":[
+      {"name":"Gross Sales","icon":"📊","obj":1159.0,"real":181.3,"proj":284.3,"total_proj":434.5,"pct_real":15.6,"pct_proj":37.5,"falt":724.5},
+      {"name":"Inovações","icon":"🚀","obj":12.7,"real":0.0,"proj":1.7,"total_proj":1.7,"pct_real":0.0,"pct_proj":13.6,"falt":11.0},
+      {"name":"Kitano + Mais Sabor","icon":"🧂","obj":132.3,"real":0.0,"proj":0.0,"total_proj":0.0,"pct_real":0.0,"pct_proj":0.0,"falt":132.3},
+      {"name":"Popcorn Microondas","icon":"🍿","obj":162.0,"real":0.0,"proj":53.2,"total_proj":53.2,"pct_real":0.0,"pct_proj":32.9,"falt":108.8},
+      {"name":"Batata Palha","icon":"🥔","obj":74.4,"real":20.4,"proj":12.5,"total_proj":32.8,"pct_real":27.4,"pct_proj":44.2,"falt":41.6},
+      {"name":"Yok Extrusados + Snacks","icon":"🫙","obj":146.3,"real":0.0,"proj":1.5,"total_proj":1.5,"pct_real":0.0,"pct_proj":1.0,"falt":144.8}
+    ]
+  },
+  "Elias":{
+    "region":"Norte PA",
+    "gross_sales":{"obj":534.6,"real":0.0,"proj":54.1,"fora":235.5,"total_proj":54.1,"total_com_fora":289.8,"pct_real":0.0,"pct_proj":10.1,"pct_com_fora":54.2,"falt":480.5},
+    "metrics":[
+      {"name":"Gross Sales","icon":"📊","obj":271.8,"real":0.0,"proj":190.9,"total_proj":44.4,"pct_real":0.0,"pct_proj":16.3,"falt":227.4},
+      {"name":"Inovações","icon":"🚀","obj":21.0,"real":0.0,"proj":11.9,"total_proj":0.0,"pct_real":0.0,"pct_proj":0.0,"falt":21.0},
+      {"name":"Kitano + Mais Sabor","icon":"🧂","obj":76.1,"real":0.0,"proj":38.5,"total_proj":1.0,"pct_real":0.0,"pct_proj":1.3,"falt":75.1},
+      {"name":"Popcorn Microondas","icon":"🍿","obj":114.1,"real":0.0,"proj":13.0,"total_proj":4.5,"pct_real":0.0,"pct_proj":3.9,"falt":109.6},
+      {"name":"Batata Palha","icon":"🥔","obj":14.7,"real":0.0,"proj":8.2,"total_proj":0.0,"pct_real":0.0,"pct_proj":0.0,"falt":14.7},
+      {"name":"Yok Extrusados + Snacks","icon":"🫙","obj":36.9,"real":0.0,"proj":27.4,"total_proj":4.3,"pct_real":0.0,"pct_proj":11.6,"falt":32.6}
+    ]
+  }
+};
+
+const RVV_METAS={
+  'Gross Sales':             {90:6,95:10,98:15,100:32,105:33,110:34,115:36},
+  'Inovações':               {90:0.5,95:1,98:2,100:3,105:4,110:5,115:5.5},
+  'Kitano + Mais Sabor':     {90:1,95:2,98:3,100:5,105:6,110:7,115:7.5},
+  'Popcorn Microondas':      {90:0.5,95:1.5,98:2,100:3,105:4,110:4.5,115:5},
+  'Batata Palha':            {90:0.5,95:1.5,98:3,100:6,105:6.5,110:7.5,115:9},
+  'Yok Extrusados + Snacks': {90:0.5,95:2,98:4,100:6,105:6.5,110:7,115:8},
+};
+
+function getGain_metas(name,pct){
+  const t=RVV_METAS[name]||{};
+  if(pct>=115)return t[115]||0;if(pct>=110)return t[110]||0;
+  if(pct>=105)return t[105]||0;if(pct>=100)return t[100]||0;
+  if(pct>=98)return t[98]||0;if(pct>=95)return t[95]||0;
+  if(pct>=90)return t[90]||0;return 0;
+}
+
+function pctColor_metas(pct){
+  if(pct>=90)return 'green';if(pct>=50)return 'amber';return 'red';
+}
+
+function fmt_metas(v){
+  if(v===undefined||v===null)return '—';
+  return v.toLocaleString('pt-BR',{minimumFractionDigits:1,maximumFractionDigits:1});
+}
+
+function w_metas(pct){return Math.min(100,Math.max(0,pct))+'%';}
+
+function showSV_metas(name,el){
+  document.querySelectorAll('.sv-tab').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+
+  // Regional view
+  if(name==='Regional'){
+    const svs=['Eliadson','Flávia','Amom','Elias'];
+    const regions={'Eliadson':'CE/PI','Flávia':'RN/PB','Amom':'PE','Elias':'Norte'};
+    const totalObj=svs.reduce((s,sv)=>s+DATA_METAS[sv].gross_sales.obj,0);
+    const totalReal=svs.reduce((s,sv)=>s+DATA_METAS[sv].gross_sales.real,0);
+    const totalProj=svs.reduce((s,sv)=>s+DATA_METAS[sv].gross_sales.total_proj,0);
+    const totalFora=svs.reduce((s,sv)=>s+(DATA_METAS[sv].gross_sales.fora||0),0);
+    const totalComFora=svs.reduce((s,sv)=>s+(DATA_METAS[sv].gross_sales.total_com_fora||DATA_METAS[sv].gross_sales.total_proj),0);
+    const totalFalt=Math.max(0,totalObj-totalProj);
+    const pctReal=(totalReal/totalObj*100).toFixed(1);
+    const pctProj=(totalProj/totalObj*100).toFixed(1);
+    const pctComFora=(totalComFora/totalObj*100).toFixed(1);
+    const gsGain=getGain_metas('Gross Sales',parseFloat(pctProj));
+
+    let svRows='';
+    svs.forEach(sv=>{
+      const gs=DATA_METAS[sv].gross_sales;
+      const color=pctColor_metas(gs.pct_proj);
+      svRows+=`
+      <div class="metric-card">
+        <div class="metric-header">
+          <div class="metric-icon">👤</div>
+          <div class="metric-name">${sv} · ${regions[sv]}</div>
+          <div class="pct-pills">
+            <div class="pct-pill real">Real ${gs.pct_real.toFixed(1)}%</div>
+            <div class="pct-pill proj ${color}">Proj ${gs.pct_proj.toFixed(1)}%</div>
+          </div>
+        </div>
+        <div class="metric-row">
+          <div class="metric-cell"><span class="metric-cell-label">Objetivo</span><span class="metric-cell-val">${fmt_metas(gs.obj)}</span></div>
+          <div class="metric-cell"><span class="metric-cell-label">Realizado</span><span class="metric-cell-val real">${fmt_metas(Math.max(0,gs.real))}</span></div>
+          <div class="metric-cell"><span class="metric-cell-label">Projeção</span><span class="metric-cell-val proj">${fmt_metas(gs.total_proj)}</span></div>
+          <div class="metric-cell"><span class="metric-cell-label">Faltante</span><span class="metric-cell-val falt">${fmt_metas(gs.falt)}</span></div>
+        </div>
+        <div style="background:var(--blue-50);border-radius:8px;padding:7px 10px;display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+          <span style="font-size:10px;color:var(--navy-mid);font-weight:700;">📅 Fora do mês</span>
+          <span style="font-size:12px;font-weight:700;color:${(gs.fora||0)>0?'var(--green)':'#aaa'};">${(gs.fora||0)>0?'+ '+fmt_metas(gs.fora)+' → '+fmt_metas(gs.total_com_fora)+' ('+gs.pct_com_fora.toFixed(1)+'%)':'Sem carteira'}</span>
+        </div>
+        <div class="metric-bars">
+          <div class="mini-bar-row"><div class="mini-bar-lbl"><span>Realizado</span><span>${gs.pct_real.toFixed(1)}%</span></div><div class="mini-bar"><div class="mini-fill" style="width:${w_metas(gs.pct_real)};background:#378ADD"></div></div></div>
+          <div class="mini-bar-row"><div class="mini-bar-lbl"><span>Projeção</span><span>${gs.pct_proj.toFixed(1)}%</span></div><div class="mini-bar"><div class="mini-fill" style="width:${w_metas(gs.pct_proj)};background:${color==='green'?'#81C784':color==='amber'?'#FFB74D':'#EF9A9A'}"></div></div></div>
+        </div>
+      </div>`;
+    });
+
+    document.getElementById('sv-content').innerHTML=`
+      <div class="gs-card">
+        <div class="gs-label">🌎 Regional IND NONE — Gross Sales Total</div>
+        <div class="gs-pct-row">
+          <div class="gs-pct-real">${pctReal}%</div>
+          <div class="gs-pct-proj">→ ${pctProj}% c/ projeção</div>
+        </div>
+        <div class="gs-sub">RVV pela projeção: <strong>${gsGain>0?'+'+gsGain+'%':'Abaixo do mínimo (90%)'}</strong></div>
+        <div class="gs-nums">
+          <div class="gs-num"><span class="gs-num-label">Objetivo</span><span class="gs-num-val">${fmt_metas(totalObj)}</span></div>
+          <div class="gs-num"><span class="gs-num-label">Realizado</span><span class="gs-num-val">${fmt_metas(totalReal)}</span></div>
+          <div class="gs-num"><span class="gs-num-label">Projeção</span><span class="gs-num-val proj">${fmt_metas(totalProj)}</span></div>
+          <div class="gs-num"><span class="gs-num-label">Faltante</span><span class="gs-num-val falt">${fmt_metas(totalFalt)}</span></div>
+        </div>
+        <div style="background:rgba(255,255,255,0.08);border-radius:10px;padding:10px 12px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;">
+          <div><span style="font-size:9px;color:var(--blue-100);font-weight:700;text-transform:uppercase;letter-spacing:0.4px;display:block;">📅 Fora do mês</span><span style="font-size:12px;color:var(--blue-100);">Carteira fora do período</span></div>
+          <div style="text-align:right;"><span style="font-size:10px;color:var(--blue-100);display:block;">${totalFora>0?'+ '+fmt_metas(totalFora):'—'}</span><span style="font-size:15px;font-weight:700;color:${totalFora>0?'#A5D6A7':'rgba(181,212,244,0.4)'};">${totalFora>0?fmt_metas(totalComFora)+' · '+pctComFora+'%':'Sem carteira'}</span></div>
+        </div>
+        <div class="prog-wrap">
+          <div class="prog-labels"><span>0%</span><span>90% mín RVV</span><span>100%</span></div>
+          <div class="prog-bar">
+            <div class="prog-fill-proj" style="width:${w_metas(parseFloat(pctProj))}"></div>
+            <div class="prog-fill-real" style="width:${w_metas(parseFloat(pctReal))}"></div>
+            <div class="prog-min-mark"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sec-label">Por Supervisor</div>
+      ${svRows}`;
+    return;
+  }
+  const sv=DATA[name];
+  const gs=sv.gross_sales;
+  const gsGain=getGain_metas('Gross Sales',gs.pct_proj);
+  const gsColor=pctColor_metas(gs.pct_proj);
+
+  let metricsHtml='';
+  let summaryRows=`
+    <div class="summary-row">
+      <span class="summary-name">📊 Gross Sales</span>
+      <span class="summary-gain ${gsGain>0?'earned':'zero'}">${gsGain>0?'+'+gsGain+'%':'Abaixo 90%'}</span>
+    </div>`;
+  let totalGain=gsGain;
+
+  sv.metrics.filter(m=>m.name!=='Gross Sales').forEach(m=>{
+    const gain=getGain_metas(m.name,m.pct_proj);
+    const color=pctColor_metas(m.pct_proj);
+    totalGain+=gain;
+
+    metricsHtml+=`
+    <div class="metric-card">
+      <div class="metric-header">
+        <div class="metric-icon">${m.icon}</div>
+        <div class="metric-name">${m.name}</div>
+        <div class="pct-pills">
+          <div class="pct-pill real">Real: ${m.pct_real.toFixed(1)}%</div>
+          <div class="pct-pill proj ${color}">Proj: ${m.pct_proj.toFixed(1)}%</div>
+        </div>
+      </div>
+      <div class="metric-row">
+        <div class="metric-cell">
+          <span class="metric-cell-label">Objetivo</span>
+          <span class="metric-cell-val">${fmt_metas(m.obj)}</span>
+        </div>
+        <div class="metric-cell">
+          <span class="metric-cell-label">Realizado</span>
+          <span class="metric-cell-val real">${fmt_metas(Math.max(0,m.real))}</span>
+        </div>
+        <div class="metric-cell">
+          <span class="metric-cell-label">Projeção</span>
+          <span class="metric-cell-val proj">${fmt_metas(m.total_proj)}</span>
+        </div>
+        <div class="metric-cell">
+          <span class="metric-cell-label">Faltante</span>
+          <span class="metric-cell-val falt">${fmt_metas(m.falt)}</span>
+        </div>
+      </div>
+      <div class="metric-bars">
+        <div class="mini-bar-wrap">
+          <div class="mini-bar-label"><span>Realizado</span><span>${m.pct_real.toFixed(1)}%</span></div>
+          <div class="mini-bar"><div class="mini-bar-fill" style="width:${w_metas(m.pct_real)};background:#378ADD"></div></div>
+        </div>
+        <div class="mini-bar-wrap">
+          <div class="mini-bar-label"><span>Projeção total</span><span>${m.pct_proj.toFixed(1)}%</span></div>
+          <div class="mini-bar"><div class="mini-bar-fill" style="width:${w_metas(m.pct_proj)};background:${color==='green'?'#81C784':color==='amber'?'#FFB74D':'#EF9A9A'}"></div></div>
+        </div>
+      </div>
+      <div class="metric-gain">
+        <span class="metric-gain-label">RVV pela projeção</span>
+        <span class="metric-gain-val ${gain>0?'earned':'zero'}">${gain>0?'+'+gain+'%':'Não atingido'}</span>
+      </div>
+    </div>`;
+
+    summaryRows+=`
+    <div class="summary-row">
+      <span class="summary-name">${m.icon} ${m.name}</span>
+      <span class="summary-gain ${gain>0?'earned':'zero'}">${gain>0?'+'+gain+'%':'0%'}</span>
+    </div>`;
+  });
+
+  document.getElementById('sv-content').innerHTML=`
+    <div class="gs-card">
+      <div class="gs-label">Gross Sales Total · ${sv.region}</div>
+      <div class="gs-pct-row">
+        <div class="gs-pct-real">${gs.pct_real.toFixed(1)}%</div>
+        <div class="gs-pct-proj">→ ${gs.pct_proj.toFixed(1)}% c/ projeção</div>
+      </div>
+      <div class="gs-sub">RVV pela projeção: <strong>${gsGain>0?'+'+gsGain+'%':'Abaixo do mínimo (90%)'}</strong></div>
+      <div class="gs-nums">
+        <div class="gs-num"><span class="gs-num-label">Objetivo</span><span class="gs-num-val">${fmt_metas(gs.obj)}</span></div>
+        <div class="gs-num"><span class="gs-num-label">Realizado</span><span class="gs-num-val">${fmt_metas(Math.max(0,gs.real))}</span></div>
+        <div class="gs-num"><span class="gs-num-label">Projeção</span><span class="gs-num-val proj">${fmt_metas(gs.total_proj)}</span></div>
+        <div class="gs-num"><span class="gs-num-label">Faltante</span><span class="gs-num-val falt">${fmt_metas(gs.falt)}</span></div>
+      </div>
+      <div style="background:rgba(255,255,255,0.08);border-radius:10px;padding:10px 12px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;">
+        <div><span style="font-size:9px;color:var(--blue-100);font-weight:700;text-transform:uppercase;letter-spacing:0.4px;display:block;">📅 Fora do mês</span><span style="font-size:12px;color:var(--blue-100);">Carteira fora do período</span></div>
+        <div style="text-align:right;"><span style="font-size:10px;color:var(--blue-100);display:block;">${gs.fora>0?'+ '+fmt_metas(gs.fora):'—'}</span><span style="font-size:15px;font-weight:700;color:${gs.fora>0?'#A5D6A7':'rgba(181,212,244,0.4)'};">${gs.fora>0?fmt_metas(gs.total_com_fora)+' · '+gs.pct_com_fora.toFixed(1)+'%':'Sem carteira'}</span></div>
+      </div>
+      <div class="prog-wrap">
+        <div class="prog-labels"><span>0%</span><span>90% mín RVV</span><span>100%</span></div>
+        <div class="prog-bar">
+          <div class="prog-fill-proj" style="width:${w_metas(gs.pct_proj)}"></div>
+          <div class="prog-fill-real" style="width:${w_metas(gs.pct_real)}"></div>
+          <div class="prog-min-mark"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="legend">
+      <div class="legend-item"><div class="legend-dot real"></div>Realizado</div>
+      <div class="legend-item"><div class="legend-dot proj"></div>Projeção total</div>
+    </div>
+
+    <div class="sec-label">Subcategorias RVV</div>
+    ${metricsHtml}
+
+    <div class="sec-label" style="margin-top:16px">Resumo RVV</div>
+    <div class="summary-card">
+      <div class="summary-title">Ganho potencial por indicador</div>
+      ${summaryRows}
+    </div>
+    <div class="summary-total">
+      <span class="summary-total-label">💰 RVV total potencial</span>
+      <span class="summary-total-val">${totalGain>0?'+'+totalGain.toFixed(1)+'%':'0%'}</span>
+    </div>
+  `;
+}
+
+showSV_metas('Eliadson',document.querySelector('.sv-tab'));
+
+window.showSV_metas = showSV_metas;
+})();
+
+// ===== DASHBOARD CLIENTES =====
+(function() {
+
+const REGIONAL_DATA = {"obj":5763.4,"real":285.7,"proj":805.6,"falt":5138.4,"pct_real":5.0,"pct_proj":14.0};
+
+const CLIENTES_DATA = {
+  "Eliadson":[
+    {"nome":"DONIZETE DISTRIBUIDORA DE AL","obj":357.0,"real":0.0,"proj":0.0,"total_proj":0.0,"falt":357.0,"pct_real":0.0,"pct_proj":0.0},
+    {"nome":"DONIZETE DISTRIBUIDORA DE ALIMENTOS","obj":319.0,"real":0.0,"proj":0.0,"total_proj":0.0,"falt":319.0,"pct_real":0.0,"pct_proj":0.0},
+    {"nome":"SOLMAR DISTRIBUIDORA DE ALIMENTOS","obj":304.1,"real":62.0,"proj":0.0,"total_proj":62.0,"falt":242.1,"pct_real":20.4,"pct_proj":20.4},
+    {"nome":"DONIZETE DISTRIBUIDORA DE","obj":298.0,"real":0.0,"proj":0.0,"total_proj":0.0,"falt":298.0,"pct_real":0.0,"pct_proj":0.0},
+    {"nome":"TT DISTRIBUIDOR DE ALIMENTOS LTDA","obj":270.8,"real":1.0,"proj":0.0,"total_proj":1.0,"falt":269.8,"pct_real":0.4,"pct_proj":0.4},
+    {"nome":"L F S COMERCIO E IMPORTACAO DE","obj":225.2,"real":0.0,"proj":104.3,"total_proj":104.3,"falt":120.9,"pct_real":0.0,"pct_proj":46.3}
+  ],
+  "Flávia":[
+    {"nome":"NORDECE - NORDESTE REPRESENTACAO E","obj":458.1,"real":0.0,"proj":0.0,"total_proj":0.0,"falt":458.1,"pct_real":0.0,"pct_proj":0.0},
+    {"nome":"MULTIGIRO DISTRIBUIDORA LTDA","obj":440.4,"real":0.0,"proj":19.6,"total_proj":19.6,"falt":420.9,"pct_real":0.0,"pct_proj":4.4},
+    {"nome":"PROGRESSO ATACADO LTDA","obj":401.2,"real":0.0,"proj":0.0,"total_proj":0.0,"falt":401.2,"pct_real":0.0,"pct_proj":0.0},
+    {"nome":"MULTIGIRO COMERCIO E DISTRIBUICAO","obj":300.1,"real":0.0,"proj":19.5,"total_proj":19.5,"falt":280.5,"pct_real":0.0,"pct_proj":6.5},
+    {"nome":"PROGRESSO ATAC DE ALIMENTOS LTDA","obj":69.4,"real":0.0,"proj":0.0,"total_proj":0.0,"falt":69.4,"pct_real":0.0,"pct_proj":0.0},
+    {"nome":"COMERCIAL ELOI CHAVES LTDA","obj":53.1,"real":21.0,"proj":0.0,"total_proj":21.0,"falt":32.1,"pct_real":39.5,"pct_proj":39.5},
+    {"nome":"CAICO DISTRIBUIDORA DE LATICINIOS","obj":43.9,"real":0.0,"proj":0.0,"total_proj":0.0,"falt":43.9,"pct_real":0.0,"pct_proj":0.0},
+    {"nome":"RF SOLUCOES AMBIENTAIS LTDA","obj":2.5,"real":0.0,"proj":0.0,"total_proj":0.0,"falt":2.5,"pct_real":0.0,"pct_proj":0.0}
+  ],
+  "Amom":[
+    {"nome":"DCL DISTRIBUIDORA CARDEAL LTDA","obj":778.9,"real":201.7,"proj":0.0,"total_proj":201.7,"falt":577.2,"pct_real":25.9,"pct_proj":25.9},
+    {"nome":"E.B.A. DISTRIBUIDORA LTDA","obj":361.1,"real":0.0,"proj":0.0,"total_proj":0.0,"falt":361.1,"pct_real":0.0,"pct_proj":0.0},
+    {"nome":"CASA DAS BALAS LTDA","obj":243.6,"real":0.0,"proj":26.6,"total_proj":26.6,"falt":216.9,"pct_real":0.0,"pct_proj":10.9},
+    {"nome":"VITORIA ATACAREJO DISTRIBUIDORA","obj":172.7,"real":0.0,"proj":26.0,"total_proj":26.0,"falt":146.7,"pct_real":0.0,"pct_proj":15.0},
+    {"nome":"COMERCIAL VITA NORTE LTDA","obj":78.5,"real":0.0,"proj":259.2,"total_proj":259.2,"falt":0.0,"pct_real":0.0,"pct_proj":100.0},
+    {"nome":"AMANHECER ATACADO DE PRODUTOS","obj":25.1,"real":0.0,"proj":10.4,"total_proj":10.4,"falt":14.7,"pct_real":0.0,"pct_proj":41.4},
+    {"nome":"COMERCIAL OESTE LTDA","obj":22.8,"real":0.0,"proj":0.0,"total_proj":0.0,"falt":22.8,"pct_real":0.0,"pct_proj":0.0},
+    {"nome":"DISTRIBUIDORA CRISTAL LTDA","obj":3.3,"real":0.0,"proj":0.0,"total_proj":0.0,"falt":3.3,"pct_real":0.0,"pct_proj":0.0}
+  ],
+  "Elias":[
+    {"nome":"BTM  DIST. DE ALIMENTOS LTDA","obj":173.4,"real":0.0,"proj":37.3,"total_proj":37.3,"falt":136.1,"pct_real":0.0,"pct_proj":21.5},
+    {"nome":"DISMELO DISTRIBUIDORA","obj":162.9,"real":0.0,"proj":8.5,"total_proj":8.5,"falt":154.4,"pct_real":0.0,"pct_proj":5.2},
+    {"nome":"SOMMA DISTRIBUIDOR PARA","obj":141.7,"real":0.0,"proj":8.5,"total_proj":8.5,"falt":133.2,"pct_real":0.0,"pct_proj":6.0},
+    {"nome":"DESTAQUE DO NORTE","obj":56.6,"real":0.0,"proj":0.0,"total_proj":0.0,"falt":56.6,"pct_real":0.0,"pct_proj":0.0}
+  ]
+};
+
+function pctColor_cli(p){if(p>=90)return 'green';if(p>=50)return 'amber';return 'red';}
+function fmt_cli(v){return v.toLocaleString('pt-BR',{minimumFractionDigits:1,maximumFractionDigits:1});}
+function w_cli(p){return Math.min(100,Math.max(0,p))+'%';}
+
+function showSV_cli(name,el){
+  document.querySelectorAll('#page-clientes .sv-tab').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  const clients=CLIENTES_DATA[name];
+  const totalObj=clients.reduce((s,c)=>s+c.obj,0);
+  const totalReal=clients.reduce((s,c)=>s+c.real,0);
+  const totalProj=clients.reduce((s,c)=>s+c.total_proj,0);
+  const totalFalt=clients.reduce((s,c)=>s+c.falt,0);
+  const pctReal=(totalReal/totalObj*100).toFixed(1);
+  const pctProj=(totalProj/totalObj*100).toFixed(1);
+
+  let html=`
+    <div class="hero">
+      <div class="hero-label">${name} — Resumo total</div>
+      <div class="hero-nums">
+        <div class="hero-num"><span class="hero-num-label">Objetivo</span><span class="hero-num-val">${fmt_cli(totalObj)}</span></div>
+        <div class="hero-num"><span class="hero-num-label">Realizado ${pctReal}%</span><span class="hero-num-val">${fmt_cli(totalReal)}</span></div>
+        <div class="hero-num"><span class="hero-num-label">Projeção ${pctProj}%</span><span class="hero-num-val proj">${fmt_cli(totalProj)}</span></div>
+      </div>
+    </div>
+    <div class="sec-label">${clients.length} clientes</div>`;
+
+  clients.forEach(c=>{
+    const color=pctColor_cli(c.pct_proj);
+    html+=`
+    <div class="client-card">
+      <div class="client-header">
+        <div class="client-name">${c.nome}</div>
+        <div class="client-pct-wrap">
+          <div class="pct-badge real">Real ${c.pct_real.toFixed(1)}%</div>
+          <div class="pct-badge proj ${color}">Proj ${c.pct_proj.toFixed(1)}%</div>
+        </div>
+      </div>
+      <div class="client-row">
+        <div class="client-cell"><span class="client-cell-label">Objetivo</span><span class="client-cell-val">${fmt_cli(c.obj)}</span></div>
+        <div class="client-cell"><span class="client-cell-label">Realizado</span><span class="client-cell-val real">${fmt_cli(c.real)}</span></div>
+        <div class="client-cell"><span class="client-cell-label">Projeção</span><span class="client-cell-val proj">${fmt_cli(c.total_proj)}</span></div>
+        <div class="client-cell"><span class="client-cell-label">Faltante</span><span class="client-cell-val falt">${fmt_cli(c.falt)}</span></div>
+      </div>
+      <div class="client-bars">
+        <div class="mini-bar-row">
+          <div class="mini-bar-lbl"><span>Realizado</span><span>${c.pct_real.toFixed(1)}%</span></div>
+          <div class="mini-bar"><div class="mini-fill" style="width:${w_cli(c.pct_real)};background:#378ADD;"></div></div>
+        </div>
+        <div class="mini-bar-row">
+          <div class="mini-bar-lbl"><span>Projeção total</span><span>${c.pct_proj.toFixed(1)}%</span></div>
+          <div class="mini-bar"><div class="mini-fill" style="width:${w_cli(c.pct_proj)};background:${color==='green'?'#81C784':color==='amber'?'#FFB74D':'#EF9A9A'};"></div></div>
+        </div>
+      </div>
+    </div>`;
+  });
+
+  document.getElementById('clientes-content').innerHTML=html;
+}
+
+function switchPage_cli(name,el){
+  document.querySelectorAll('.page-tab').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('page-clientes').style.display=name==='clientes'?'block':'none';
+  document.getElementById('page-desafio').style.display=name==='desafio'?'block':'none';
+}
+
+// Init
+showSV_cli('Eliadson',document.querySelector('#page-clientes .sv-tab'));
+
+window.showSV_cli = showSV_cli;
+window.switchPage_cli = switchPage_cli;
+})();
+
 </script>
 
 
