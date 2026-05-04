@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0047)file:///C:/Users/g710931/Downloads/index_5.html -->
+<!-- saved from url=(0047)file:///C:/Users/g710931/Downloads/index_9.html -->
 <html lang="pt-BR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
@@ -345,12 +345,185 @@ body{background:var(--bg);min-height:100vh;}
 .desafio-diff-item{flex:1;background:var(--bg);border-radius:8px;padding:6px 8px;text-align:center;}
 .desafio-diff-label{font-size:8px;color:#999;font-weight:700;text-transform:uppercase;letter-spacing:0.3px;display:block;margin-bottom:2px;}
 .desafio-diff-val{font-size:11px;font-weight:700;color:var(--gold);}
+
+/* ── DASHBOARD FASEAMENTO ── */
+
+:root{
+  --navy:#0C2D5E;--mid:#185FA5;--light:#378ADD;
+  --b100:#B5D4F4;--b50:#E6F1FB;--bg:#f0f4f9;
+  --green:#2E7D32;--green-bg:#E8F5E9;
+  --amber:#E65100;--amber-bg:#FFF3E0;
+  --red:#C62828;--red-bg:#FFEBEE;--gold:#F57F17;--gold-bg:#FFF8E1;
+}
+*{box-sizing:border-box;margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;}
+body{background:var(--bg);}
+.fas-page{max-width:430px;margin:0 auto;padding:14px;}
+
+.fas-tabs{display:flex;gap:8px;margin-bottom:14px;overflow-x:auto;padding-bottom:2px;}
+.fas-tab{flex-shrink:0;padding:8px 14px;border-radius:20px;border:1.5px solid var(--b100);background:white;font-size:12px;font-weight:600;color:var(--mid);cursor:pointer;white-space:nowrap;}
+.fas-tab.active{background:var(--navy);color:white;border-color:var(--navy);}
+
+.fas-mode{display:flex;background:white;border-radius:11px;padding:3px;margin-bottom:14px;border:.5px solid var(--b100);}
+.fas-mode-btn{flex:1;text-align:center;padding:7px 6px;border-radius:8px;font-size:11px;font-weight:600;color:var(--mid);cursor:pointer;}
+.fas-mode-btn.active{background:var(--navy);color:white;}
+
+.fas-hero{background:var(--navy);border-radius:14px;padding:14px;margin-bottom:14px;}
+.fas-hero-label{font-size:10px;font-weight:700;color:var(--b100);text-transform:uppercase;letter-spacing:.6px;margin-bottom:6px;}
+.fas-hero-title{font-size:14px;font-weight:600;color:white;margin-bottom:14px;}
+.fas-hero-nums{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;}
+.fas-hero-num{background:rgba(255,255,255,0.1);border-radius:10px;padding:9px 6px;text-align:center;}
+.fas-hero-num-label{font-size:8px;color:var(--b100);font-weight:700;text-transform:uppercase;letter-spacing:.3px;display:block;margin-bottom:3px;}
+.fas-hero-num-val{font-size:14px;font-weight:700;color:white;}
+.fas-hero-num-val.green{color:#81C784;}
+
+.fas-sec{font-size:10px;font-weight:700;color:var(--mid);text-transform:uppercase;letter-spacing:.7px;margin-bottom:10px;margin-top:14px;}
+
+.fas-week{background:white;border-radius:13px;padding:13px;margin-bottom:9px;border:.5px solid var(--b100);}
+.fas-week-header{display:flex;align-items:center;gap:10px;margin-bottom:11px;}
+.fas-week-num{width:32px;height:32px;border-radius:8px;background:var(--bg);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--navy);flex-shrink:0;}
+.fas-week-num.done{background:var(--green-bg);color:var(--green);}
+.fas-week-info{flex:1;}
+.fas-week-name{font-size:13px;font-weight:700;color:var(--navy);}
+.fas-week-pct{font-size:10px;color:#999;font-weight:600;}
+.fas-week-status{font-size:10px;font-weight:700;padding:3px 8px;border-radius:6px;}
+.fas-week-status.win{background:var(--green-bg);color:var(--green);}
+.fas-week-status.miss{background:var(--red-bg);color:var(--red);}
+.fas-week-status.pending{background:var(--bg);color:#999;}
+
+.fas-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:9px;}
+.fas-cell{text-align:center;}
+.fas-cell-label{font-size:8px;font-weight:700;color:#aaa;text-transform:uppercase;letter-spacing:.3px;display:block;margin-bottom:2px;}
+.fas-cell-val{font-size:11px;font-weight:700;color:var(--navy);}
+.fas-cell-val.real{color:var(--mid);}
+.fas-cell-val.falt{color:var(--amber);}
+
+.fas-input-wrap{margin-bottom:9px;}
+.fas-input-label{font-size:10px;color:var(--mid);font-weight:700;display:block;margin-bottom:5px;text-transform:uppercase;letter-spacing:.4px;}
+.fas-input{width:100%;padding:9px 12px;border-radius:9px;border:.5px solid var(--b100);background:var(--bg);font-size:13px;font-weight:600;color:var(--navy);outline:none;font-family:inherit;-webkit-appearance:none;}
+.fas-input:focus{border-color:var(--mid);}
+
+.fas-acum{background:var(--b50);border-radius:9px;padding:8px 11px;display:flex;justify-content:space-between;align-items:center;}
+.fas-acum-label{font-size:10px;color:var(--mid);font-weight:700;}
+.fas-acum-val{font-size:11px;font-weight:700;color:var(--navy);}
+.fas-acum-pct{font-size:10px;font-weight:700;padding:2px 7px;border-radius:6px;margin-left:6px;}
+.fas-acum-pct.win{background:var(--green-bg);color:var(--green);}
+.fas-acum-pct.miss{background:var(--red-bg);color:var(--red);}
+
+.fas-summary{background:white;border-radius:14px;padding:14px;border:.5px solid var(--b100);margin-top:6px;}
+.fas-summary-title{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:11px;}
+.fas-summary-row{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:.5px solid var(--bg);}
+.fas-summary-row:last-child{border-bottom:none;}
+.fas-summary-week{font-size:12px;color:#555;}
+.fas-summary-pts{font-size:12px;font-weight:700;}
+.fas-summary-pts.zero{color:#aaa;}
+.fas-summary-pts.earned{color:var(--green);}
+.fas-summary-total{background:var(--navy);border-radius:10px;padding:11px 13px;display:flex;justify-content:space-between;align-items:center;margin-top:8px;}
+.fas-summary-total-label{font-size:12px;color:var(--b100);font-weight:600;}
+.fas-summary-total-val{font-size:18px;font-weight:700;color:white;}
+
+.fas-info{background:var(--gold-bg);border-radius:11px;padding:11px;margin-bottom:14px;display:flex;align-items:flex-start;gap:8px;}
+.fas-info-icon{font-size:15px;flex-shrink:0;}
+.fas-info-text{font-size:11px;color:#7A5000;line-height:1.5;font-weight:500;}
+
+.fas-reset{background:transparent;border:1px solid var(--b100);color:var(--mid);font-family:inherit;font-size:11px;font-weight:600;padding:6px 10px;border-radius:7px;cursor:pointer;margin-top:8px;}
+
+.fas-meta-card{background:white;border-radius:13px;padding:13px;margin-bottom:9px;border:.5px solid var(--b100);}
+.fas-meta-row{display:flex;align-items:center;gap:10px;}
+.fas-meta-num{width:32px;height:32px;border-radius:8px;background:var(--bg);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--navy);flex-shrink:0;}
+.fas-meta-info{flex:1;}
+.fas-meta-name{font-size:12px;font-weight:700;color:var(--navy);}
+.fas-meta-range{font-size:10px;color:#999;}
+.fas-meta-input{width:110px;padding:8px 11px;border-radius:8px;border:.5px solid var(--b100);background:var(--bg);font-size:13px;font-weight:600;color:var(--navy);outline:none;font-family:inherit;text-align:right;-webkit-appearance:none;}
+
+
+/* ── DASHBOARD BEST ── */
+
+:root{
+  --navy:#0C2D5E;--mid:#185FA5;--light:#378ADD;
+  --b100:#B5D4F4;--b50:#E6F1FB;--bg:#f0f4f9;
+  --green:#2E7D32;--green-bg:#E8F5E9;
+  --amber:#E65100;--amber-bg:#FFF3E0;
+  --red:#C62828;--red-bg:#FFEBEE;--gold:#F57F17;--gold-bg:#FFF8E1;
+}
+*{box-sizing:border-box;margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;}
+body{background:var(--bg);}
+.best-page{max-width:430px;margin:0 auto;padding:14px;}
+
+.best-tabs{display:flex;gap:8px;margin-bottom:14px;overflow-x:auto;padding-bottom:2px;}
+.best-tab{flex-shrink:0;padding:8px 14px;border-radius:20px;border:1.5px solid var(--b100);background:white;font-size:12px;font-weight:600;color:var(--mid);cursor:pointer;white-space:nowrap;}
+.best-tab.active{background:var(--navy);color:white;border-color:var(--navy);}
+
+.best-hero{background:var(--navy);border-radius:14px;padding:14px;margin-bottom:14px;}
+.best-hero-label{font-size:10px;font-weight:700;color:var(--b100);text-transform:uppercase;letter-spacing:.6px;margin-bottom:6px;}
+.best-hero-title{font-size:14px;font-weight:600;color:white;margin-bottom:4px;}
+.best-hero-period{font-size:11px;color:var(--b100);margin-bottom:14px;}
+.best-hero-pct{font-size:28px;font-weight:700;color:white;margin-bottom:10px;}
+.best-hero-nums{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:5px;}
+.best-hero-num{background:rgba(255,255,255,0.1);border-radius:9px;padding:8px 4px;text-align:center;}
+.best-hero-num-label{font-size:8px;color:var(--b100);font-weight:700;text-transform:uppercase;letter-spacing:.3px;display:block;margin-bottom:2px;}
+.best-hero-num-val{font-size:11px;font-weight:700;color:white;}
+.best-hero-num-val.green{color:#81C784;}
+.best-hero-num-val.amber{color:#FFB74D;}
+.best-hero-num-val.gold{color:#FFD54F;}
+
+.best-sec{font-size:10px;font-weight:700;color:var(--mid);text-transform:uppercase;letter-spacing:.7px;margin-bottom:10px;margin-top:4px;}
+
+.best-info{background:var(--gold-bg);border-radius:11px;padding:11px;margin-bottom:14px;display:flex;align-items:flex-start;gap:8px;}
+.best-info-icon{font-size:15px;flex-shrink:0;}
+.best-info-text{font-size:11px;color:#7A5000;line-height:1.5;font-weight:500;}
+
+.best-client{background:white;border-radius:13px;padding:13px;margin-bottom:9px;border:.5px solid var(--b100);}
+.best-client-header{display:flex;align-items:center;gap:8px;margin-bottom:11px;}
+.best-client-name{font-size:12px;font-weight:700;color:var(--navy);flex:1;line-height:1.3;}
+.best-client-pct{font-size:11px;font-weight:700;padding:2px 8px;border-radius:6px;flex-shrink:0;}
+.best-client-pct.green{background:var(--green-bg);color:var(--green);}
+.best-client-pct.amber{background:var(--amber-bg);color:var(--amber);}
+.best-client-pct.red{background:var(--red-bg);color:var(--red);}
+
+.best-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px;margin-bottom:9px;}
+.best-cell{background:var(--bg);border-radius:8px;padding:7px 5px;text-align:center;}
+.best-cell-label{font-size:8px;font-weight:700;color:#999;text-transform:uppercase;letter-spacing:.3px;display:block;margin-bottom:2px;}
+.best-cell-val{font-size:11px;font-weight:700;color:var(--navy);}
+.best-cell-val.real{color:var(--mid);}
+.best-cell-val.fora{color:#FFA726;}
+.best-cell-val.proj{color:var(--green);}
+
+.best-week-toggle{background:var(--b50);border-radius:9px;padding:8px 11px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;margin-bottom:6px;}
+.best-week-toggle:active{opacity:.7;}
+.best-week-toggle-name{font-size:11px;color:var(--mid);font-weight:700;}
+.best-week-toggle-val{font-size:11px;color:var(--navy);font-weight:700;}
+.best-week-toggle-arrow{font-size:11px;color:var(--light);margin-left:6px;}
+
+.best-week-days{display:none;padding:8px;background:var(--bg);border-radius:9px;margin-bottom:6px;}
+.best-week-days.open{display:block;}
+.best-day-row{display:flex;align-items:center;gap:8px;margin-bottom:5px;}
+.best-day-row:last-child{margin-bottom:0;}
+.best-day-label{font-size:11px;color:#666;font-weight:600;width:62px;flex-shrink:0;}
+.best-day-input{flex:1;padding:6px 9px;border-radius:7px;border:.5px solid var(--b100);background:white;font-size:12px;font-weight:600;color:var(--navy);outline:none;font-family:inherit;text-align:right;-webkit-appearance:none;}
+.best-day-input:focus{border-color:var(--mid);}
+
+.best-final{background:linear-gradient(135deg,var(--green-bg),#C8E6C9);border-radius:9px;padding:9px 11px;display:flex;justify-content:space-between;align-items:center;margin-top:8px;}
+.best-final-label{font-size:11px;color:var(--green);font-weight:700;}
+.best-final-val{font-size:13px;color:var(--green);font-weight:700;}
+
+.best-reset{background:transparent;border:1px solid var(--b100);color:var(--mid);font-family:inherit;font-size:11px;font-weight:600;padding:6px 10px;border-radius:7px;cursor:pointer;margin-top:8px;}
+
+.best-summary{background:white;border-radius:14px;padding:14px;border:.5px solid var(--b100);margin-top:6px;}
+.best-summary-title{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:11px;}
+.best-summary-row{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:.5px solid var(--bg);}
+.best-summary-row:last-child{border-bottom:none;}
+.best-summary-label{font-size:11px;color:#666;}
+.best-summary-val{font-size:12px;font-weight:700;color:var(--navy);}
+.best-summary-val.green{color:var(--green);}
+.best-summary-val.fora{color:#FFA726;}
+.best-summary-val.proj{color:var(--mid);}
+
 </style>
 </head>
 <body>
 
 <!-- ═══════════════ LOGIN ═══════════════ -->
-<div class="login-screen" id="login-screen">
+<div class="login-screen" id="login-screen" style="display: flex;">
   <div class="login-logo"><img src="data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCACMAMUDASIAAhEBAxEB/8QAHQABAAMBAAMBAQAAAAAAAAAAAAYHCAUCBAkBA//EAEwQAAEDAwIDBQQFBwkECwAAAAECAwQABREGIQcSMQgTQVFhIjJxgRQ3dJGzIzV1gqGxshUXNkJScnPBwjNiY5IWJENEVpWi0dLh8f/EABsBAQACAwEBAAAAAAAAAAAAAAAEBQEDBgIH/8QAOREAAQMCBAQDBgQEBwAAAAAAAQACAwQRBRIhMUFRYXEGE4EUIjKRofBSscHRI4LC4RUzNEJFkvH/2gAMAwEAAhEDEQA/ANl0pSiJSlKIlKUoiUpSiJSlKIlKUoiUpSiJSlKIlKUoiUpSiJSlKIlKUoiUpSiJSlKIlKUoiUpSiJSlKIlKUoiUpSiJSlKIlKUoiUpSiJSlKIlKUoiUpSiJSlKIlKUoignFnXkvRDUNbVpamomcyUrVIKShad908u4wRvmquHEXWF/1QzY06ii2i4PsJkNxGox5UIVjk5l4JBUCCBk7HO1f27UMl06vtUVRPdN28uIH+8pwhX7Eprwsz2h7y3/0uWy3D1Tbbf7awkFwhpHVAVso8oI8wDg7VTSzF9Q6MuIA2Gy7eloGU+GRVLIg5zr3JGawvpobjubKZcONcXyPqGXpjXDzYkNN94zJKQARkDcpGOUg55jjHid9rXrI+h9eK1ldp+sb0/EiKjR0xUstApbhtFWcuLV4rV4nbYCtCQ9Us2XhIzqiehfdNQg6y2vIW4FHDKd9wVAoG/nUfDcTkfUzU0jTlYAQ4315/LmqfGKRhc2WNoaXWBaNr9OV+S/rxI4hWPREVH04rlT3klTEJkjnWOnMSdkpz4n5A1RV/wCNeuLi6TBkRbOzn2UR2EuKx6qcByfUAVGJUTUOrnbjqmUpMhRWtct0rwGQlPMEgdQnGyQM9K4MWQ9FkNyI7hbdQcpUPA1Eq8Umkd7hytVtQ4PBE3+IMzuPJTZ3iHxLhxolwXqaWGpQUWSpllQVynCtijHWpVo3jzd4r6GNVQWp8YnCpMVHdvI9SjPKr5cvzriat13AuOml2u3FTMljkSJHcJSH0kYc5ABlvJ38Nh4dKruFHXLlsxWikOOrCEcysDJOBv4Vp9tmheMkhK3nD6eZhzxgdtFtux3W3Xy1MXS1Sm5UOQnmbcQdj6HxBB2IO4Ne7WaeDt6umgdbxtP3rLMG8cocZUrPcOqJS2vyBJAB9CCelaWrp6OqFTHmtYjcLkK6jNLLlvcHY9F+LPKhSh4DNcjT97/lKCqRIjKihHVazhtXwJr03Lvc4Ls9y5tsCLG9lsoQQXlH3QMny6+VQa63KXcn+8kuZA9xtOyEDyArnMV8RtpHMcy99btItfW1ydbWINrbqVS4cZQQbcNfv7CndhkyRdJSpdytzzb6uZDbUkKKD0AA8sfur22bw47qH+S/objSEoUouODHPj+z6etVbUk0nqJ6HJbizHO8jKPKlS9y0T4g+XpVThvibM5kDyWDNe9817nY32HXh2UupwywL26m223qrFqG661/H0vd49rFluV0kvMGQUxG+bkRzcuT8wa7VhkXl+XLRcW2ENMq5EFCCCs9cjJO2MffUB4pjueJNme2AkWmQ3kqIyUOtnw/vGu4bU+dCJGAtubajXe2yraWBgmLZRmABNgeQvuvGRxtt8fmErS97ikJKgZCUNj9qs/cDXAsvaTsUiCpd20/Ot0pKt2u8CklPmCQPuxVF8Vbabdqly5Q5hdjSZSgpKneZSHc5UMED2dxg7/GpHwdstovFxdl3OI3IfjuNhrmHsjm5skjoTsMZ6VDbVzGfySfVdXJgdAMNGI2NgASAeJNrXPXirsgdoHREhtpbqZ0bmSpTgcayUY6DbOSfl8fCplpjiDpPUS22bbd47j6mO+ca5xlpPko9AfSqePDrSktqI19BLSQHVKLasFe53V5npUDvvCK5NfR5FmniYp5KypD3sYSNxsOuRV41rCLX1XByOOYkCwWxI7zUhlD7DqHWljKVoVkKHmDXnWQdCcSdbaWlhiYt+VHZYDSEXDn5W056oTkZOAfurSWk+IWkdRPRoFuv8WRPdZDnc55VHzGOmf93rXmRvl2vxXqNrpb5ATbU9BzUspSleVhKhnFvWqdGafS+y2l64ylFuK2r3QR7yz5hORt4kipnWfu0+zNc1Jb3ktrXEahAEpB9lalrznyGAN/SoWIVPs8JdexOg9VcYDSRVdcyOb4dz1tw9VU2rL3eL1NTcbpPkTHklSfyqshIO+EjoB6DavRjuyHCFpQGx/aJ/dX69yulDZIIJ51Ab7D/wC6/oVcvNkjOM9MbVyxcXG53X2ZkbI25WCzRwGy05wahaOvOgUvQNMWaL32GLgy3EbCXXG8HKgB7WfZUM9M1Fe1bd1NW+yafaVhLzq5ToG2yAEoHwysn9Wux2YWH29G3B51JS27OPJ5HCEgkfu+VelxA0R/ORxOlsSLnJtcW1w24yFNshZfXs6spJOAAH2x47g10T/MqKIBm7gvkM4hpMVeCfcaT1+7foqJh60utltki2Q5r4Q6kBLbJPMg8wJIx0Jxg+hqvrrfLpJdUG0qiIJ32wo/P/2rUk/s72K2WiVPtVzuky6sNlxhuQpHdOEblJSlIPtDI97qQa7li0g7dmHr9FtOnnYN1tzJiJQ4ehST7WWhjIUAcZI5R8q1uHyxkBzbqx/xWCQEh1vosXNypyF84nyOb++TUq0tfroxJbeCF980eZD6WxsfPcYB9a1VG4fSozlhKdN2pSoLZRIcC0dSjGU+z7W+/tYrmXPQU2VIi6UnN2iE1c5z01Ji8zjrTCACokFKQDzKQjIO3OPKsyUkjxbJqssxCBn+/RUjqDUly1E+l+ZMdWUJSEI5zhCgkAqA8CSM7eJrXWmL87ctBWu/JjuSXpEJt1xtrGecpHMPkrNQqRwD0I4csqu0Y+bUoH+JJqQcEeRvh5EiNh7uosmSy0p0gqW2H1lCsgAbpKfCplFRzwOeHO+Ib76+qqsSrqepYzINWn6L1NXXJ+4WO2vOthrvXHSpAzgFJ5R88E1F6mupZDF+RLhw080iAvnRj/tU9F4+B+/FQqvm/iAONVnz5wQBm5loyn6gn1Vnh5Aiy2t076j6JSleza4T1wnNxGBlSzufBI8SfQVTRxukcGMFydlNc4NBJ2U8g3qW25bIn0JySl6G2take8k7jJztjb0qKcZk93qnSUnITkzGCSrHvNpVj/0VN9OXWFNU9CijAiYbQc++gDAV9+f2edRHjggpTpeUMgt3ju8jGcLYdHj8q+xURLqbP5ucXFuliAR11HFcxDpU5cuU2d9WmyzTx4uU43pq2PQ2WoaVh9h5CyS6cYUTvjrt0zt1xXq8P7nJg3Atx5ao/eNqUcY3KQSOvka6faBtMhy5JuyJwebabSl2Ot1PMzk4SUjOSFEHoPCoIxFkSlsrjLUlxDbmyfHKDWjUV4v96LtQWv8AC7gzhv8A9v2V0wdTXlgBpt9qSrDcdIcTgpCk8y1ZHjUr01qWNelpZbbXFkrQENNr3w2DuvPrjb4Vn6DLu0F1wnvFe+ObJPKVexk/BKVGpNbdWmLb3H3GyJCsFCRsQke4jPh5mrh8gYMztl8+gp31EjYoxdx0C6nHi5W25XpmzwEDvYaO7kPoPj4N+uPH1OPOoo/KnPRbfb4sKNbW7eoOJkMgpPP05ubrnpsOpAydgB/G0xnZUovLBU44vJx1JJ/fmtI8FuG8eGwu+XlAk/SWe7REeQlTQHirBG/TAz6+dVNPJLWzEuPuj7A/dfTKqOj8O0DLNDn/AJm256D8laWnHH3dPW12U+iQ+uI0p11IwHFFAJUB5E70r3kpSlISkBKQMAAbAUq9XypxzElftU1x7vEm06ggYityYj0NaVoIGSvKwnc+Htb1OdecRNJ6HfisakuDkVctKlshMdbnMEkA+6DjqKp3i9rzSWvGrcnTc92S7EUvvyqO43ypVykbqA8Un76lR4MzEWiOqiLoncbG3Q37qDW176SMyQPs8W/Pko0ifpO4qkuXS3qgrUouMlAPugAgAp6qUokn0FecKXZP5Tj27TdkFxmvPhDXe+ygqUMDBO+Mn0GAT41HLpOhwUJ79YCz7LaEjKt9tk+J6D0rscPtRWjTuvEXz6N9PiR0KaihxxuMtKyOVSylaice+nJwdwcCqvEfBuD4f/Fe55adAwvs3bidDw56qVhXiLGcSYYQ8NAFybG56AbXPaw36LUWibKdP6aiWxbiXX0J5n3EjCVOHdWB4AdB6AVH7NekI4tXqzvkIQ82kxAR7ziGmVPb+JKXGdv+Eojxry4ccUdKa6edh2uS5HuLOS5CkgJcwDglJSSlY9Uk/KpM3ZLai6uXMRwZbj4fLh6hQa7rb9UkfOpT4TFZtrbW7cLdOS9teHXN7/uujUO4cNuWeZe9JO5DdvlmTA9YkgqWgD+6sOo+CBUvedbZZW884httCSpa1qwlIHUknoKq+7cVNGO6uhMaddmahvLQWyti1Ry73jJwVjnOEnBSFAgnoRkcxrZHBJLcsaTbdYMjW6OO6tKoLoh86h19qXUueaHBULJbz4HuzzyFjzBcITn/AIQqN8RuM9usloVDbhzrbdLgzi3SJIacjjmISXStlbmQjJUR12xjep1wyZ0/E0RbIWmbixcbdHaCEyGnAvvF9VqUR/WKiVEeZNYfDI2ziNOfD57LLXtta+q6WqpyrZpe63JGeaJCefGPNKCr/KuTwvejr0r9EYDaFQJsqG40gj8kW31pCT+ryn1BB8akr7Tb7K2XkJcbcSUrQoZCgRgg1WkrW3DvhdPk6euN1kszH3PpjoVHcdKuZISCVJSRnlQPuz40igkmfljaSeiw6RrG+8bKyS002FLbabSoA4ISBUOh2ZvUcdUx+G5bXzv3qB+Td9eU71zLXxx4bXO5RbdDvTzkmU8hhlJhPDmWpQSkZKcDcipZrHVth0lBEq9zQzz57plCS488R1CEJyT6noPEioVfgLqmRkc7Dl1922+2vMW6fNbqevEbXOYded9vvqoxa9N2+dMVHZvPeqQCVpTGUkgA46nYV3bE2LdfDa2baphlTaiX3faW9j1GwHpVRNdpHRkO6SXYmmbwWpDnM46S2Fn4J5seZ6+NW3w819pnXlvXLsE0uLax38Z1PI8znpzJ8vUEj1qJB4Pmw5jZnR5HA6kXIIvtqSRcciOWq3SYw2oJYHZhbjpr6WupMhlps8yGkJPmEgVGuJempeqLCxEt8tiLLjTGpTK32ytGUZ2IBB3BNSivVu1yt9ogO3C6TY8KI0MrefcCEJ+Zqz8oOGQDdaI5nQvEjTqFl7tD2LUumtKpevDtolt3J1EZTkNDraklGVp5gVYPj186qvS8hLCO+UcYa6+Wa1xA4p6Y1XcX7Npuy3XVJaTzPKYitpYQOntKfUgb748/DNQVepOBsbVUi2ah0a/p+5NPflkT4f5MLJzuGlrTynIOccuD5VplwGrfMHsBuLG3G3bddNR+K6WLDpKSVnxA6i1rnpoBboqts8mFOflyZIQILDKnpTh8B4JHmSo4A8eb0qMSnGrndVORWFNMZ9hJ974n1NaD4s8Lod/0mLpw2Zt6mZD/ANMfZirHJKATyp7sg8m3tHl8STvnY1npXhrrFx5CDpi4pAcSHu9b7rlSTg4K8Z+WcDJqrxJs75BA1v3/AGVx4T9gpad9fNIMw4cQO3M9O3NTDgVof+V56LjLbP0Njcbe9/8AvQfM1pJCEtoShCQlKRgAdAKjPD3SKNIQZUNq5SJjT73eIS6kAMjHujHX4/CpPVrTQNgjDGrlcbxV+JVRkPwjbslKUreqdZf7bf560z9nf/iRVGWW+Src2I7KWw2VFS1Ae2dvOrz7bf560z9nf/iRVAWpluROQ07nkIUTg+SSf8q72jlbDg/mu2a1x+VyqV1J7bXtp/xuA+dgrN7NdmVqLjNDlTEqfRbu8muZOQkpGEfctSCPhXtdryJHjcXS4w0lCpNvZddIGOZeVpyfXCR91Wd2StPtQ2L1d0ozu3DQ4epPvufxN/dVb9sX62GP0Uz/ABuVTYBXmtrvNAsCDYdP77q0xzD24ePZgbltr97a27beirjhtPlWziBYJsN1TTzdwZwQcZBWAoH0IJB9DX0IWpKElSlBKQMkk4AFfO3Rf9MbL+kGPxE1tjtA3V6zcHdRzI6il1UZMcEdQHVpbOPks1M8Rw+bUwsG7tPqFXYc/JG8ngs08fuLM/W15ftNqkuM6cjOFDaEHH0sg/7RfmM+6D0GD1qxOxTYmRbr7qZxsKeW8mCysjdKUpC1gfHmR/y1mOtj9kFoN8IgsDd24vrP3JT/AJVLxmJlHhvlRCwuB9/JaqNxmqMzl0e0VpG13ThXfpbFuitT4yRPD6GUpWpTZyoqIGT7BWN/OsncN9c33Ql+bulmkK7skCTFUo91IR/ZUPPyPUVujXrKZGhb+woZS5bJKCPQtKFfPCtHhvLNTSQvFxfbv/4tmI3ZI143X0R0ZqK36r0xB1Ba1lUaY3zgH3kK6KQfUEEH4Vk3tdfXA79gY/1VY/Yourz+m9QWZaipqHKafbB8O9SoED0/JZ+ZquO119cDv2Bj/VUfCqYUuKviGwB+WhC91Unm0rXqudCKkI1vYVxGkOyE3KOWm1r5UrX3qeUE4OATjfFb201Yk2zvJ014TrxKAMuapOCryQgf1G0/1Uj4nJJJwfw3+sTTX6Wi/jJr6FVnxQ8h7GjiCmGAEOKwbx5iR4XGDUseM0lpr6YVhKRgAqSFH9pNdPsyz5UHjPZER3VIRKLrDyQdloLajg/NKT8QK9PtD/XPqX7Sn8NFeXZ0+unTf+Ov8JdXrvewzX8H9KgjSp0/F+q25frrCsdlmXi5PBmHDZU88vySBnbzPgB4msLcWOIl64g39cyc6tm3trP0OElXsMp8CfNZHVX7hgVozti3V6FwwjQGVFIuFwbbdx4oSlS8f8yUH5VkCqrw1RMERqHDUmw6BSsSmObyxsts9mDTzFj4SW2QlsCVdOaY+vG6uYkIHwCAn5k+dVF207W1H1jZbs2gJXMhKacIHvFtexPrhYHyFXHwhtdymcL9NSI2rrrHaVbmQlptiKUowkApBUyTgEeJJr819wgt+uVQ1ak1PfZRhBYY5BGb5efl5vdZGfdHWqqnq20+JOnldpd19/27KVJEZKcMaOSz92YtfTdNa4iafkSFKs93eDC2lHIbeVshafIk4SfMHfoK2ZVK2vs3aNt1zi3Bi9agLsV5DyOZ1nHMlQIz+T8xV1VoxqppqqYSwcRrpZe6OOSJha/0SlKVTKYlKUoiy/22/wA9aZ+zv/xIqgrMoJuTRJAyFJyfVJH+dX722/z1pn7O/wDxIrO1d/Q0/tWD+Re2Zrh87hVDan2TEWVFr5HNNu1it9cHbIbDw7tcVxPLIeb+lP56hbh5sH4AhP6tZs7Yv1sMfopn+NytcWb80Q/s6P4RWR+2L9bDH6KZ/jcrnfDLBHWBg4AqbjEzp2ulfu43+aq7Rf8ATGy/pBj8RNbi42WN/UfCvUFpjILkhyL3rSAN1rbUHAkepKMfOsO6L/pjZf0gx+ImvonVn4kkMU8Mg3GvyIUPDmhzHtPFfNati9j59L3CRbYO7FzeQfmlCv8AVVc9oXgpcIF0lap0jCXKt0hRdlQmU5XGWd1KSkdUHrge78OnvdjDU0ePLvGkpTyW3ZBTLiJUcc6kjlcSPXAQceQPlUnFZ2V+GmSI3tYkcQtVKx0FRlfxWgOIT6YugdQyVHCWrXJWfk0o188q2t2oNTRrBwrnwS8lM27gRI7ed1JJBcOPIIyM+ah51m3g/wAJ7/r64tPdy7BsaV/9YnrTgKA6pbz7yv2Dx8jp8POZTUj55TZpP5L3iAMkrWN1KuzsY2N+Fou7X15BQm5ykts5HvIaBHMPTmWsfqmqu7XX1wO/YGP9Va+sdrg2SzxLTbGEx4cRpLTLafBIH7T5nxNZB7XX1wO/YGP9VR8IqfasUfNzB/Sy2VcflUoZyVf8N/rE01+lov4ya+hVfPXhv9Ymmv0tF/GTX0KrHin/ADI+xTC/hcsKdof659S/aU/hory7On106b/x1/hLrx7Q/wBc+pftKfw0V5dnT66dN/46/wAJddB/xn8n9KgD/U/zfqtFdrWxP3fhSqZGQVrtUtEpYAye7wpCvu5wT6JNY1r6SS47EuK9FlNIeYeQpt1tYylaSMEEeIIrGnG7g3d9F3CRc7PHen6dWorQ6gFS4o/suDrgeCuh8cGqXw5iEbWGmebG9x+ymYjTuJ8xvqrk7IWqWbpw+Xpxx1P0yzvKCUE7qZcUVJV8lFY9MDzq7K+duj9S3nSV+YvdilqjS2ts4ylaT1QoeKT5fPqAaveH2pZYgBErRrLs3GCtqeUNk+fKUEj4ZPxrViuAzvqDLALh2u4Fjx3XulrmCMNebEK/Nf6hTpnTMi4oQh6YspjwI5/7xJWeVpsDqcqIzjwBPhXdZ7wNIDxQXOUc5SMAnxwPKqa4XWjWOudSxeIHEBoQ4sMFVktIQUpbUof7ZSTvnHQq3J32AGbnrn6qJsFowbuG5G3b0/Psp8Ty/wB7YcEpSlRFtSlKURcu96c09fVtLvdhtdzWyCG1TIjbxQD1A5gcZwK53832gv8AwRpr/wAqY/8AjUlpW1s0jRYOI9V5LGnUhfiEpQhKEJCUpGAAMADyrkXnSul71LEu8abs9xkhAQHpcFt1YSM4HMpJONzt612KV4a9zTdpsskA6FR1nQeh2HkPM6M06062oKQtFsZCkqByCCE7GpFSlZfI9/xG6BoGwSo3e9B6PvM9NwuGn4S5yVc4lNpLT3N4HvEEKz86klKMkfGbsNuyOaHaEKKnh3oxy4puEyxt3GWgAJduLzkxSQOmC8pVShtCG20ttoShCQAlKRgAeQFeVKPlfJbMSe6wGtbsErjXfSelrxMMy76as1wklISXpUFp1eB0HMpJOK7NKw17mG7TZZIB3UejaF0TGktSY2jtPMvtLC23G7YylSFA5CgQnIIO+akNKVl8jn/EboGgbBcK46M0fcprs246UsUyU6cuPv25pxxZxjJUU5NLdozR9tmtTrdpSxQ5TRy2+xb2m3EHGMhQSCNia7tK9edJa2Y27rGRt72ShAIwdxSlal6UNvnC3h7epCpFw0nbVOqOVLZQWSo+ZLZTk/Gv7ab4baE07KRKtGl7exIQcoeUgurQfNKlkkH4VLKVvNVOW5M5tyuVr8pl72F0pSlaFsSlKURKUpREpSlESlKURKUpREpSlESlKURKUpREpSlESlKURKUpREpSlESlKURKUpREpSlEX//Z" alt="None"></div>
   <div class="login-tagline">Equipe de Vendas</div>
   <div class="login-card">
@@ -400,7 +573,7 @@ body{background:var(--bg);min-height:100vh;}
       <div class="hdr-logo"><img src="data:image/png;base64,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" alt="None"></div>
       <div class="hdr-info">
         <h1>Equipe de Vendas</h1>
-        <p id="hdr-user">Bom trabalho hoje! 💪</p>
+        <p id="hdr-user">Olá, Flávia! 👋</p>
       </div>
       <div class="hdr-right">
         <button class="btn-logout" onclick="logout()">⎋ Sair</button>
@@ -430,13 +603,13 @@ body{background:var(--bg);min-height:100vh;}
             <div class="btn-icon">⭐</div>
             <div><div class="btn-label">Destaque do Mês</div><div class="btn-sub">Ver detalhes</div></div>
           </button>
-          <button class="btn-card" onclick="openViewer(&#39;img&#39;,&#39;Faseamento&#39;,&#39;https://drive.google.com/file/d/1Bet3fTx8OhGMS_4P3wsRqeFEPlelb8-P/preview&#39;)">
+          <button class="btn-card" onclick="openDash(&#39;faseamento&#39;,&#39;Faseamento&#39;)">
             <div class="btn-icon">📈</div>
-            <div><div class="btn-label">Faseamento</div><div class="btn-sub">Ver detalhes</div></div>
+            <div><div class="btn-label">Faseamento</div><div class="btn-sub">Dashboard semanal</div></div>
           </button>
-          <button class="btn-card" onclick="openViewer(&#39;pdf&#39;,&#39;Best — Previsões&#39;,&#39;https://docs.google.com/spreadsheets/d/1u6BXy-Q68iN9Unm2M76awlFrdrvw8Vd1/preview&#39;)">
+          <button class="btn-card" onclick="openDash(&#39;best&#39;,&#39;Best&#39;)">
             <div class="btn-icon">🏆</div>
-            <div><div class="btn-label">Best</div><div class="btn-sub">Preencher previsões</div></div>
+            <div><div class="btn-label">Best</div><div class="btn-sub">Projeção do mês</div></div>
           </button>
         </div>
         <div class="sec" style="margin-top:18px" id="sec-metas-cliente">Metas por cliente</div>
@@ -481,7 +654,7 @@ body{background:var(--bg);min-height:100vh;}
           </div>
           <div class="field"><label>CNPJ do PDV</label><input type="text" id="f-cnpj" placeholder="00.000.000/0000-00" maxlength="18" inputmode="numeric"></div>
           <div class="field"><label>Distribuidor</label>
-            <select id="f-dist"><option value="">Selecione...</option>
+            <select id="f-dist" style="opacity: 1;"><option value="">Selecione...</option>
               <option>MULTIGIROPB</option><option>MULTIGIRO RN</option><option>CARDEAL</option>
               <option>EBA</option><option>DONIZETE</option><option>TT</option>
               <option>DISMELO</option><option>BTM</option>
@@ -518,7 +691,7 @@ body{background:var(--bg);min-height:100vh;}
             </select>
           </div>
           <div class="field"><label>Distribuidor</label>
-            <select id="foto-dist"><option value="">Selecione...</option>
+            <select id="foto-dist" style="opacity: 1;"><option value="">Selecione...</option>
               <option>Cardeal</option><option>Multigiro PB</option><option>Multigiro RN</option>
               <option>EBA</option><option>Donizete</option><option>BTM</option>
               <option>Dismelo</option><option>TT</option><option>Somma</option><option>Destaque do Norte</option>
@@ -775,6 +948,870 @@ body{background:var(--bg);min-height:100vh;}
     </div>
   </div>
 
+
+  <!-- ── SCREEN 5: FASEAMENTO ── -->
+  <div class="screen" id="screen-faseamento">
+    <div class="vhdr">
+      <button class="btn-back" onclick="goBack()">‹ Voltar</button>
+      <div class="vhdr-title">Faseamento</div>
+    </div>
+    <div class="dash-scroll">
+      <div class="dash-inner" style="padding:0;">
+        <div class="fas-page" id="fas-content"></div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ── SCREEN 6: BEST ── -->
+  <div class="screen" id="screen-best">
+    <div class="vhdr">
+      <button class="btn-back" onclick="goBack()">‹ Voltar</button>
+      <div class="vhdr-title">Best — Projeção do Mês</div>
+    </div>
+    <div class="dash-scroll">
+      <div class="dash-inner" style="padding:0;">
+        <div class="best-page" id="best-content">
+    <div class="best-tabs">
+      <div class="best-tab " onclick="bestShow(&#39;Regional&#39;)">🌎 Regional</div>
+      <div class="best-tab " onclick="bestShow(&#39;Eliadson&#39;)">Eliadson</div><div class="best-tab " onclick="bestShow(&#39;Flávia&#39;)">Flávia</div><div class="best-tab " onclick="bestShow(&#39;Amom&#39;)">Amom</div><div class="best-tab active" onclick="bestShow(&#39;Elias&#39;)">Elias</div>
+    </div>
+  
+    <div class="best-hero">
+      <div class="best-hero-label">👤 Elias</div>
+      <div class="best-hero-title">Best — Projeção do Mês</div>
+      <div class="best-hero-period">Mês fiscal — 27/04 a 29/05</div>
+      <div class="best-hero-pct">54.2%</div>
+      <div class="best-hero-nums">
+        <div class="best-hero-num"><span class="best-hero-num-label">Objetivo</span><span class="best-hero-num-val">534,6</span></div>
+        <div class="best-hero-num"><span class="best-hero-num-label">Real+Cart</span><span class="best-hero-num-val green">54,1</span></div>
+        <div class="best-hero-num"><span class="best-hero-num-label">Fora</span><span class="best-hero-num-val gold">235,5</span></div>
+        <div class="best-hero-num"><span class="best-hero-num-label">Projeção</span><span class="best-hero-num-val amber">0,0</span></div>
+      </div>
+    </div>
+
+    <div class="best-summary">
+      <div class="best-summary-title">Resumo Total</div>
+      <div class="best-summary-row"><span class="best-summary-label">📊 Objetivo</span><span class="best-summary-val">534,6</span></div>
+      <div class="best-summary-row"><span class="best-summary-label">💰 Realizado + Carteira</span><span class="best-summary-val green">54,1</span></div>
+      <div class="best-summary-row"><span class="best-summary-label">📅 Fora do mês</span><span class="best-summary-val fora">235,5</span></div>
+      <div class="best-summary-row"><span class="best-summary-label">🎯 Projeção (manual)</span><span class="best-summary-val proj">0,0</span></div>
+      <div class="best-summary-row"><span class="best-summary-label" style="font-weight:700;">✓ Total Projetado</span><span class="best-summary-val" style="color:var(--amber);">289,6 · 54.2%</span></div>
+    </div>
+  
+      <div class="best-info" style="margin-top:14px;">
+        <div class="best-info-icon">💡</div>
+        <div class="best-info-text"><strong>Como funciona:</strong> Para cada cliente, expanda as semanas e preencha quanto você projeta entrar em cada dia útil. O total final = Real+Cart + Fora + sua Projeção.</div>
+      </div>
+    <div class="best-sec" style="margin-top:14px;">4 clientes</div>
+      <div class="best-client">
+        <div class="best-client-header">
+          <div class="best-client-name">BTM  DIST. DE ALIMENTOS LTDA</div>
+          <div class="best-client-pct red">22%</div>
+        </div>
+        <div class="best-row">
+          <div class="best-cell"><span class="best-cell-label">Objetivo</span><span class="best-cell-val">173,4</span></div>
+          <div class="best-cell"><span class="best-cell-label">Real+Cart</span><span class="best-cell-val real">37,3</span></div>
+          <div class="best-cell"><span class="best-cell-label">Fora</span><span class="best-cell-val fora">0,0</span></div>
+        </div>
+        
+        <div class="best-sec" style="margin-bottom:6px;font-size:9px;">Projeção por dia útil</div>
+        
+          <div class="best-week-toggle" onclick="bestToggleWeek(&#39;x1&#39;, 0)">
+            <span class="best-week-toggle-name">Semana 1</span>
+            <div>
+              <span class="best-week-toggle-val">0,0</span>
+              <span class="best-week-toggle-arrow">▸</span>
+            </div>
+          </div>
+          <div class="best-week-days ">
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Seg 27/04</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x1&#39;,&#39;2026-04-27&#39;,this.value)" oninput="bestUpdateDay(&#39;x1&#39;,&#39;2026-04-27&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Ter 28/04</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x1&#39;,&#39;2026-04-28&#39;,this.value)" oninput="bestUpdateDay(&#39;x1&#39;,&#39;2026-04-28&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Qua 29/04</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x1&#39;,&#39;2026-04-29&#39;,this.value)" oninput="bestUpdateDay(&#39;x1&#39;,&#39;2026-04-29&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Qui 30/04</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x1&#39;,&#39;2026-04-30&#39;,this.value)" oninput="bestUpdateDay(&#39;x1&#39;,&#39;2026-04-30&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Sex 01/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x1&#39;,&#39;2026-05-01&#39;,this.value)" oninput="bestUpdateDay(&#39;x1&#39;,&#39;2026-05-01&#39;,this.value)">
+              </div>
+            
+          </div>
+        
+          <div class="best-week-toggle" onclick="bestToggleWeek(&#39;x1&#39;, 1)">
+            <span class="best-week-toggle-name">Semana 2</span>
+            <div>
+              <span class="best-week-toggle-val">0,0</span>
+              <span class="best-week-toggle-arrow">▸</span>
+            </div>
+          </div>
+          <div class="best-week-days ">
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Seg 04/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x1&#39;,&#39;2026-05-04&#39;,this.value)" oninput="bestUpdateDay(&#39;x1&#39;,&#39;2026-05-04&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Ter 05/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x1&#39;,&#39;2026-05-05&#39;,this.value)" oninput="bestUpdateDay(&#39;x1&#39;,&#39;2026-05-05&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Qua 06/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x1&#39;,&#39;2026-05-06&#39;,this.value)" oninput="bestUpdateDay(&#39;x1&#39;,&#39;2026-05-06&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Qui 07/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x1&#39;,&#39;2026-05-07&#39;,this.value)" oninput="bestUpdateDay(&#39;x1&#39;,&#39;2026-05-07&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Sex 08/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x1&#39;,&#39;2026-05-08&#39;,this.value)" oninput="bestUpdateDay(&#39;x1&#39;,&#39;2026-05-08&#39;,this.value)">
+              </div>
+            
+          </div>
+        
+          <div class="best-week-toggle" onclick="bestToggleWeek(&#39;x1&#39;, 2)">
+            <span class="best-week-toggle-name">Semana 3</span>
+            <div>
+              <span class="best-week-toggle-val">0,0</span>
+              <span class="best-week-toggle-arrow">▸</span>
+            </div>
+          </div>
+          <div class="best-week-days ">
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Seg 11/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x1&#39;,&#39;2026-05-11&#39;,this.value)" oninput="bestUpdateDay(&#39;x1&#39;,&#39;2026-05-11&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Ter 12/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x1&#39;,&#39;2026-05-12&#39;,this.value)" oninput="bestUpdateDay(&#39;x1&#39;,&#39;2026-05-12&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Qua 13/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x1&#39;,&#39;2026-05-13&#39;,this.value)" oninput="bestUpdateDay(&#39;x1&#39;,&#39;2026-05-13&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Qui 14/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x1&#39;,&#39;2026-05-14&#39;,this.value)" oninput="bestUpdateDay(&#39;x1&#39;,&#39;2026-05-14&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Sex 15/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x1&#39;,&#39;2026-05-15&#39;,this.value)" oninput="bestUpdateDay(&#39;x1&#39;,&#39;2026-05-15&#39;,this.value)">
+              </div>
+            
+          </div>
+        
+          <div class="best-week-toggle" onclick="bestToggleWeek(&#39;x1&#39;, 3)">
+            <span class="best-week-toggle-name">Semana 4</span>
+            <div>
+              <span class="best-week-toggle-val">0,0</span>
+              <span class="best-week-toggle-arrow">▸</span>
+            </div>
+          </div>
+          <div class="best-week-days ">
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Seg 18/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x1&#39;,&#39;2026-05-18&#39;,this.value)" oninput="bestUpdateDay(&#39;x1&#39;,&#39;2026-05-18&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Ter 19/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x1&#39;,&#39;2026-05-19&#39;,this.value)" oninput="bestUpdateDay(&#39;x1&#39;,&#39;2026-05-19&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Qua 20/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x1&#39;,&#39;2026-05-20&#39;,this.value)" oninput="bestUpdateDay(&#39;x1&#39;,&#39;2026-05-20&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Qui 21/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x1&#39;,&#39;2026-05-21&#39;,this.value)" oninput="bestUpdateDay(&#39;x1&#39;,&#39;2026-05-21&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Sex 22/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x1&#39;,&#39;2026-05-22&#39;,this.value)" oninput="bestUpdateDay(&#39;x1&#39;,&#39;2026-05-22&#39;,this.value)">
+              </div>
+            
+          </div>
+        
+          <div class="best-week-toggle" onclick="bestToggleWeek(&#39;x1&#39;, 4)">
+            <span class="best-week-toggle-name">Semana 5</span>
+            <div>
+              <span class="best-week-toggle-val">0,0</span>
+              <span class="best-week-toggle-arrow">▸</span>
+            </div>
+          </div>
+          <div class="best-week-days ">
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Seg 25/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x1&#39;,&#39;2026-05-25&#39;,this.value)" oninput="bestUpdateDay(&#39;x1&#39;,&#39;2026-05-25&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Ter 26/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x1&#39;,&#39;2026-05-26&#39;,this.value)" oninput="bestUpdateDay(&#39;x1&#39;,&#39;2026-05-26&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Qua 27/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x1&#39;,&#39;2026-05-27&#39;,this.value)" oninput="bestUpdateDay(&#39;x1&#39;,&#39;2026-05-27&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Qui 28/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x1&#39;,&#39;2026-05-28&#39;,this.value)" oninput="bestUpdateDay(&#39;x1&#39;,&#39;2026-05-28&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Sex 29/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x1&#39;,&#39;2026-05-29&#39;,this.value)" oninput="bestUpdateDay(&#39;x1&#39;,&#39;2026-05-29&#39;,this.value)">
+              </div>
+            
+          </div>
+        
+        
+        <div class="best-final">
+          <span class="best-final-label">Final (Real+Cart+Fora+Proj)</span>
+          <span class="best-final-val">37,3 · 22%</span>
+        </div>
+        
+      </div>
+    
+      <div class="best-client">
+        <div class="best-client-header">
+          <div class="best-client-name">DISMELO DISTRIBUIDORA</div>
+          <div class="best-client-pct red">5%</div>
+        </div>
+        <div class="best-row">
+          <div class="best-cell"><span class="best-cell-label">Objetivo</span><span class="best-cell-val">162,9</span></div>
+          <div class="best-cell"><span class="best-cell-label">Real+Cart</span><span class="best-cell-val real">8,3</span></div>
+          <div class="best-cell"><span class="best-cell-label">Fora</span><span class="best-cell-val fora">0,0</span></div>
+        </div>
+        
+        <div class="best-sec" style="margin-bottom:6px;font-size:9px;">Projeção por dia útil</div>
+        
+          <div class="best-week-toggle" onclick="bestToggleWeek(&#39;x2&#39;, 0)">
+            <span class="best-week-toggle-name">Semana 1</span>
+            <div>
+              <span class="best-week-toggle-val">0,0</span>
+              <span class="best-week-toggle-arrow">▸</span>
+            </div>
+          </div>
+          <div class="best-week-days ">
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Seg 27/04</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x2&#39;,&#39;2026-04-27&#39;,this.value)" oninput="bestUpdateDay(&#39;x2&#39;,&#39;2026-04-27&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Ter 28/04</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x2&#39;,&#39;2026-04-28&#39;,this.value)" oninput="bestUpdateDay(&#39;x2&#39;,&#39;2026-04-28&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Qua 29/04</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x2&#39;,&#39;2026-04-29&#39;,this.value)" oninput="bestUpdateDay(&#39;x2&#39;,&#39;2026-04-29&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Qui 30/04</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x2&#39;,&#39;2026-04-30&#39;,this.value)" oninput="bestUpdateDay(&#39;x2&#39;,&#39;2026-04-30&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Sex 01/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x2&#39;,&#39;2026-05-01&#39;,this.value)" oninput="bestUpdateDay(&#39;x2&#39;,&#39;2026-05-01&#39;,this.value)">
+              </div>
+            
+          </div>
+        
+          <div class="best-week-toggle" onclick="bestToggleWeek(&#39;x2&#39;, 1)">
+            <span class="best-week-toggle-name">Semana 2</span>
+            <div>
+              <span class="best-week-toggle-val">0,0</span>
+              <span class="best-week-toggle-arrow">▸</span>
+            </div>
+          </div>
+          <div class="best-week-days ">
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Seg 04/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x2&#39;,&#39;2026-05-04&#39;,this.value)" oninput="bestUpdateDay(&#39;x2&#39;,&#39;2026-05-04&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Ter 05/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x2&#39;,&#39;2026-05-05&#39;,this.value)" oninput="bestUpdateDay(&#39;x2&#39;,&#39;2026-05-05&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Qua 06/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x2&#39;,&#39;2026-05-06&#39;,this.value)" oninput="bestUpdateDay(&#39;x2&#39;,&#39;2026-05-06&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Qui 07/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x2&#39;,&#39;2026-05-07&#39;,this.value)" oninput="bestUpdateDay(&#39;x2&#39;,&#39;2026-05-07&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Sex 08/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x2&#39;,&#39;2026-05-08&#39;,this.value)" oninput="bestUpdateDay(&#39;x2&#39;,&#39;2026-05-08&#39;,this.value)">
+              </div>
+            
+          </div>
+        
+          <div class="best-week-toggle" onclick="bestToggleWeek(&#39;x2&#39;, 2)">
+            <span class="best-week-toggle-name">Semana 3</span>
+            <div>
+              <span class="best-week-toggle-val">0,0</span>
+              <span class="best-week-toggle-arrow">▸</span>
+            </div>
+          </div>
+          <div class="best-week-days ">
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Seg 11/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x2&#39;,&#39;2026-05-11&#39;,this.value)" oninput="bestUpdateDay(&#39;x2&#39;,&#39;2026-05-11&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Ter 12/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x2&#39;,&#39;2026-05-12&#39;,this.value)" oninput="bestUpdateDay(&#39;x2&#39;,&#39;2026-05-12&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Qua 13/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x2&#39;,&#39;2026-05-13&#39;,this.value)" oninput="bestUpdateDay(&#39;x2&#39;,&#39;2026-05-13&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Qui 14/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x2&#39;,&#39;2026-05-14&#39;,this.value)" oninput="bestUpdateDay(&#39;x2&#39;,&#39;2026-05-14&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Sex 15/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x2&#39;,&#39;2026-05-15&#39;,this.value)" oninput="bestUpdateDay(&#39;x2&#39;,&#39;2026-05-15&#39;,this.value)">
+              </div>
+            
+          </div>
+        
+          <div class="best-week-toggle" onclick="bestToggleWeek(&#39;x2&#39;, 3)">
+            <span class="best-week-toggle-name">Semana 4</span>
+            <div>
+              <span class="best-week-toggle-val">0,0</span>
+              <span class="best-week-toggle-arrow">▸</span>
+            </div>
+          </div>
+          <div class="best-week-days ">
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Seg 18/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x2&#39;,&#39;2026-05-18&#39;,this.value)" oninput="bestUpdateDay(&#39;x2&#39;,&#39;2026-05-18&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Ter 19/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x2&#39;,&#39;2026-05-19&#39;,this.value)" oninput="bestUpdateDay(&#39;x2&#39;,&#39;2026-05-19&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Qua 20/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x2&#39;,&#39;2026-05-20&#39;,this.value)" oninput="bestUpdateDay(&#39;x2&#39;,&#39;2026-05-20&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Qui 21/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x2&#39;,&#39;2026-05-21&#39;,this.value)" oninput="bestUpdateDay(&#39;x2&#39;,&#39;2026-05-21&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Sex 22/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x2&#39;,&#39;2026-05-22&#39;,this.value)" oninput="bestUpdateDay(&#39;x2&#39;,&#39;2026-05-22&#39;,this.value)">
+              </div>
+            
+          </div>
+        
+          <div class="best-week-toggle" onclick="bestToggleWeek(&#39;x2&#39;, 4)">
+            <span class="best-week-toggle-name">Semana 5</span>
+            <div>
+              <span class="best-week-toggle-val">0,0</span>
+              <span class="best-week-toggle-arrow">▸</span>
+            </div>
+          </div>
+          <div class="best-week-days ">
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Seg 25/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x2&#39;,&#39;2026-05-25&#39;,this.value)" oninput="bestUpdateDay(&#39;x2&#39;,&#39;2026-05-25&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Ter 26/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x2&#39;,&#39;2026-05-26&#39;,this.value)" oninput="bestUpdateDay(&#39;x2&#39;,&#39;2026-05-26&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Qua 27/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x2&#39;,&#39;2026-05-27&#39;,this.value)" oninput="bestUpdateDay(&#39;x2&#39;,&#39;2026-05-27&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Qui 28/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x2&#39;,&#39;2026-05-28&#39;,this.value)" oninput="bestUpdateDay(&#39;x2&#39;,&#39;2026-05-28&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Sex 29/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x2&#39;,&#39;2026-05-29&#39;,this.value)" oninput="bestUpdateDay(&#39;x2&#39;,&#39;2026-05-29&#39;,this.value)">
+              </div>
+            
+          </div>
+        
+        
+        <div class="best-final">
+          <span class="best-final-label">Final (Real+Cart+Fora+Proj)</span>
+          <span class="best-final-val">8,3 · 5%</span>
+        </div>
+        
+      </div>
+    
+      <div class="best-client">
+        <div class="best-client-header">
+          <div class="best-client-name">SOMMA DISTRIBUIDOR PARA</div>
+          <div class="best-client-pct green">172%</div>
+        </div>
+        <div class="best-row">
+          <div class="best-cell"><span class="best-cell-label">Objetivo</span><span class="best-cell-val">141,7</span></div>
+          <div class="best-cell"><span class="best-cell-label">Real+Cart</span><span class="best-cell-val real">8,5</span></div>
+          <div class="best-cell"><span class="best-cell-label">Fora</span><span class="best-cell-val fora">235,5</span></div>
+        </div>
+        
+        <div class="best-sec" style="margin-bottom:6px;font-size:9px;">Projeção por dia útil</div>
+        
+          <div class="best-week-toggle" onclick="bestToggleWeek(&#39;x3&#39;, 0)">
+            <span class="best-week-toggle-name">Semana 1</span>
+            <div>
+              <span class="best-week-toggle-val">0,0</span>
+              <span class="best-week-toggle-arrow">▸</span>
+            </div>
+          </div>
+          <div class="best-week-days ">
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Seg 27/04</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x3&#39;,&#39;2026-04-27&#39;,this.value)" oninput="bestUpdateDay(&#39;x3&#39;,&#39;2026-04-27&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Ter 28/04</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x3&#39;,&#39;2026-04-28&#39;,this.value)" oninput="bestUpdateDay(&#39;x3&#39;,&#39;2026-04-28&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Qua 29/04</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x3&#39;,&#39;2026-04-29&#39;,this.value)" oninput="bestUpdateDay(&#39;x3&#39;,&#39;2026-04-29&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Qui 30/04</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x3&#39;,&#39;2026-04-30&#39;,this.value)" oninput="bestUpdateDay(&#39;x3&#39;,&#39;2026-04-30&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Sex 01/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x3&#39;,&#39;2026-05-01&#39;,this.value)" oninput="bestUpdateDay(&#39;x3&#39;,&#39;2026-05-01&#39;,this.value)">
+              </div>
+            
+          </div>
+        
+          <div class="best-week-toggle" onclick="bestToggleWeek(&#39;x3&#39;, 1)">
+            <span class="best-week-toggle-name">Semana 2</span>
+            <div>
+              <span class="best-week-toggle-val">0,0</span>
+              <span class="best-week-toggle-arrow">▸</span>
+            </div>
+          </div>
+          <div class="best-week-days ">
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Seg 04/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x3&#39;,&#39;2026-05-04&#39;,this.value)" oninput="bestUpdateDay(&#39;x3&#39;,&#39;2026-05-04&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Ter 05/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x3&#39;,&#39;2026-05-05&#39;,this.value)" oninput="bestUpdateDay(&#39;x3&#39;,&#39;2026-05-05&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Qua 06/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x3&#39;,&#39;2026-05-06&#39;,this.value)" oninput="bestUpdateDay(&#39;x3&#39;,&#39;2026-05-06&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Qui 07/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x3&#39;,&#39;2026-05-07&#39;,this.value)" oninput="bestUpdateDay(&#39;x3&#39;,&#39;2026-05-07&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Sex 08/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x3&#39;,&#39;2026-05-08&#39;,this.value)" oninput="bestUpdateDay(&#39;x3&#39;,&#39;2026-05-08&#39;,this.value)">
+              </div>
+            
+          </div>
+        
+          <div class="best-week-toggle" onclick="bestToggleWeek(&#39;x3&#39;, 2)">
+            <span class="best-week-toggle-name">Semana 3</span>
+            <div>
+              <span class="best-week-toggle-val">0,0</span>
+              <span class="best-week-toggle-arrow">▸</span>
+            </div>
+          </div>
+          <div class="best-week-days ">
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Seg 11/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x3&#39;,&#39;2026-05-11&#39;,this.value)" oninput="bestUpdateDay(&#39;x3&#39;,&#39;2026-05-11&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Ter 12/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x3&#39;,&#39;2026-05-12&#39;,this.value)" oninput="bestUpdateDay(&#39;x3&#39;,&#39;2026-05-12&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Qua 13/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x3&#39;,&#39;2026-05-13&#39;,this.value)" oninput="bestUpdateDay(&#39;x3&#39;,&#39;2026-05-13&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Qui 14/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x3&#39;,&#39;2026-05-14&#39;,this.value)" oninput="bestUpdateDay(&#39;x3&#39;,&#39;2026-05-14&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Sex 15/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x3&#39;,&#39;2026-05-15&#39;,this.value)" oninput="bestUpdateDay(&#39;x3&#39;,&#39;2026-05-15&#39;,this.value)">
+              </div>
+            
+          </div>
+        
+          <div class="best-week-toggle" onclick="bestToggleWeek(&#39;x3&#39;, 3)">
+            <span class="best-week-toggle-name">Semana 4</span>
+            <div>
+              <span class="best-week-toggle-val">0,0</span>
+              <span class="best-week-toggle-arrow">▸</span>
+            </div>
+          </div>
+          <div class="best-week-days ">
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Seg 18/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x3&#39;,&#39;2026-05-18&#39;,this.value)" oninput="bestUpdateDay(&#39;x3&#39;,&#39;2026-05-18&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Ter 19/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x3&#39;,&#39;2026-05-19&#39;,this.value)" oninput="bestUpdateDay(&#39;x3&#39;,&#39;2026-05-19&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Qua 20/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x3&#39;,&#39;2026-05-20&#39;,this.value)" oninput="bestUpdateDay(&#39;x3&#39;,&#39;2026-05-20&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Qui 21/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x3&#39;,&#39;2026-05-21&#39;,this.value)" oninput="bestUpdateDay(&#39;x3&#39;,&#39;2026-05-21&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Sex 22/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x3&#39;,&#39;2026-05-22&#39;,this.value)" oninput="bestUpdateDay(&#39;x3&#39;,&#39;2026-05-22&#39;,this.value)">
+              </div>
+            
+          </div>
+        
+          <div class="best-week-toggle" onclick="bestToggleWeek(&#39;x3&#39;, 4)">
+            <span class="best-week-toggle-name">Semana 5</span>
+            <div>
+              <span class="best-week-toggle-val">0,0</span>
+              <span class="best-week-toggle-arrow">▸</span>
+            </div>
+          </div>
+          <div class="best-week-days ">
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Seg 25/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x3&#39;,&#39;2026-05-25&#39;,this.value)" oninput="bestUpdateDay(&#39;x3&#39;,&#39;2026-05-25&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Ter 26/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x3&#39;,&#39;2026-05-26&#39;,this.value)" oninput="bestUpdateDay(&#39;x3&#39;,&#39;2026-05-26&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Qua 27/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x3&#39;,&#39;2026-05-27&#39;,this.value)" oninput="bestUpdateDay(&#39;x3&#39;,&#39;2026-05-27&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Qui 28/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x3&#39;,&#39;2026-05-28&#39;,this.value)" oninput="bestUpdateDay(&#39;x3&#39;,&#39;2026-05-28&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Sex 29/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x3&#39;,&#39;2026-05-29&#39;,this.value)" oninput="bestUpdateDay(&#39;x3&#39;,&#39;2026-05-29&#39;,this.value)">
+              </div>
+            
+          </div>
+        
+        
+        <div class="best-final">
+          <span class="best-final-label">Final (Real+Cart+Fora+Proj)</span>
+          <span class="best-final-val">244,0 · 172%</span>
+        </div>
+        
+      </div>
+    
+      <div class="best-client">
+        <div class="best-client-header">
+          <div class="best-client-name">DESTAQUE DO NORTE</div>
+          <div class="best-client-pct red">0%</div>
+        </div>
+        <div class="best-row">
+          <div class="best-cell"><span class="best-cell-label">Objetivo</span><span class="best-cell-val">56,6</span></div>
+          <div class="best-cell"><span class="best-cell-label">Real+Cart</span><span class="best-cell-val real">0,0</span></div>
+          <div class="best-cell"><span class="best-cell-label">Fora</span><span class="best-cell-val fora">0,0</span></div>
+        </div>
+        
+        <div class="best-sec" style="margin-bottom:6px;font-size:9px;">Projeção por dia útil</div>
+        
+          <div class="best-week-toggle" onclick="bestToggleWeek(&#39;x4&#39;, 0)">
+            <span class="best-week-toggle-name">Semana 1</span>
+            <div>
+              <span class="best-week-toggle-val">0,0</span>
+              <span class="best-week-toggle-arrow">▸</span>
+            </div>
+          </div>
+          <div class="best-week-days ">
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Seg 27/04</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x4&#39;,&#39;2026-04-27&#39;,this.value)" oninput="bestUpdateDay(&#39;x4&#39;,&#39;2026-04-27&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Ter 28/04</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x4&#39;,&#39;2026-04-28&#39;,this.value)" oninput="bestUpdateDay(&#39;x4&#39;,&#39;2026-04-28&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Qua 29/04</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x4&#39;,&#39;2026-04-29&#39;,this.value)" oninput="bestUpdateDay(&#39;x4&#39;,&#39;2026-04-29&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Qui 30/04</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x4&#39;,&#39;2026-04-30&#39;,this.value)" oninput="bestUpdateDay(&#39;x4&#39;,&#39;2026-04-30&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Sex 01/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x4&#39;,&#39;2026-05-01&#39;,this.value)" oninput="bestUpdateDay(&#39;x4&#39;,&#39;2026-05-01&#39;,this.value)">
+              </div>
+            
+          </div>
+        
+          <div class="best-week-toggle" onclick="bestToggleWeek(&#39;x4&#39;, 1)">
+            <span class="best-week-toggle-name">Semana 2</span>
+            <div>
+              <span class="best-week-toggle-val">0,0</span>
+              <span class="best-week-toggle-arrow">▸</span>
+            </div>
+          </div>
+          <div class="best-week-days ">
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Seg 04/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x4&#39;,&#39;2026-05-04&#39;,this.value)" oninput="bestUpdateDay(&#39;x4&#39;,&#39;2026-05-04&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Ter 05/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x4&#39;,&#39;2026-05-05&#39;,this.value)" oninput="bestUpdateDay(&#39;x4&#39;,&#39;2026-05-05&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Qua 06/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x4&#39;,&#39;2026-05-06&#39;,this.value)" oninput="bestUpdateDay(&#39;x4&#39;,&#39;2026-05-06&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Qui 07/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x4&#39;,&#39;2026-05-07&#39;,this.value)" oninput="bestUpdateDay(&#39;x4&#39;,&#39;2026-05-07&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Sex 08/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x4&#39;,&#39;2026-05-08&#39;,this.value)" oninput="bestUpdateDay(&#39;x4&#39;,&#39;2026-05-08&#39;,this.value)">
+              </div>
+            
+          </div>
+        
+          <div class="best-week-toggle" onclick="bestToggleWeek(&#39;x4&#39;, 2)">
+            <span class="best-week-toggle-name">Semana 3</span>
+            <div>
+              <span class="best-week-toggle-val">0,0</span>
+              <span class="best-week-toggle-arrow">▸</span>
+            </div>
+          </div>
+          <div class="best-week-days ">
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Seg 11/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x4&#39;,&#39;2026-05-11&#39;,this.value)" oninput="bestUpdateDay(&#39;x4&#39;,&#39;2026-05-11&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Ter 12/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x4&#39;,&#39;2026-05-12&#39;,this.value)" oninput="bestUpdateDay(&#39;x4&#39;,&#39;2026-05-12&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Qua 13/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x4&#39;,&#39;2026-05-13&#39;,this.value)" oninput="bestUpdateDay(&#39;x4&#39;,&#39;2026-05-13&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Qui 14/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x4&#39;,&#39;2026-05-14&#39;,this.value)" oninput="bestUpdateDay(&#39;x4&#39;,&#39;2026-05-14&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Sex 15/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x4&#39;,&#39;2026-05-15&#39;,this.value)" oninput="bestUpdateDay(&#39;x4&#39;,&#39;2026-05-15&#39;,this.value)">
+              </div>
+            
+          </div>
+        
+          <div class="best-week-toggle" onclick="bestToggleWeek(&#39;x4&#39;, 3)">
+            <span class="best-week-toggle-name">Semana 4</span>
+            <div>
+              <span class="best-week-toggle-val">0,0</span>
+              <span class="best-week-toggle-arrow">▸</span>
+            </div>
+          </div>
+          <div class="best-week-days ">
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Seg 18/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x4&#39;,&#39;2026-05-18&#39;,this.value)" oninput="bestUpdateDay(&#39;x4&#39;,&#39;2026-05-18&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Ter 19/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x4&#39;,&#39;2026-05-19&#39;,this.value)" oninput="bestUpdateDay(&#39;x4&#39;,&#39;2026-05-19&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Qua 20/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x4&#39;,&#39;2026-05-20&#39;,this.value)" oninput="bestUpdateDay(&#39;x4&#39;,&#39;2026-05-20&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Qui 21/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x4&#39;,&#39;2026-05-21&#39;,this.value)" oninput="bestUpdateDay(&#39;x4&#39;,&#39;2026-05-21&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Sex 22/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x4&#39;,&#39;2026-05-22&#39;,this.value)" oninput="bestUpdateDay(&#39;x4&#39;,&#39;2026-05-22&#39;,this.value)">
+              </div>
+            
+          </div>
+        
+          <div class="best-week-toggle" onclick="bestToggleWeek(&#39;x4&#39;, 4)">
+            <span class="best-week-toggle-name">Semana 5</span>
+            <div>
+              <span class="best-week-toggle-val">0,0</span>
+              <span class="best-week-toggle-arrow">▸</span>
+            </div>
+          </div>
+          <div class="best-week-days ">
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Seg 25/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x4&#39;,&#39;2026-05-25&#39;,this.value)" oninput="bestUpdateDay(&#39;x4&#39;,&#39;2026-05-25&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Ter 26/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x4&#39;,&#39;2026-05-26&#39;,this.value)" oninput="bestUpdateDay(&#39;x4&#39;,&#39;2026-05-26&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Qua 27/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x4&#39;,&#39;2026-05-27&#39;,this.value)" oninput="bestUpdateDay(&#39;x4&#39;,&#39;2026-05-27&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Qui 28/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x4&#39;,&#39;2026-05-28&#39;,this.value)" oninput="bestUpdateDay(&#39;x4&#39;,&#39;2026-05-28&#39;,this.value)">
+              </div>
+            
+              <div class="best-day-row">
+                <span class="best-day-label">Sex 29/05</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="" placeholder="0,0" onchange="bestUpdateDay(&#39;x4&#39;,&#39;2026-05-29&#39;,this.value)" oninput="bestUpdateDay(&#39;x4&#39;,&#39;2026-05-29&#39;,this.value)">
+              </div>
+            
+          </div>
+        
+        
+        <div class="best-final">
+          <span class="best-final-label">Final (Real+Cart+Fora+Proj)</span>
+          <span class="best-final-val">0,0 · 0%</span>
+        </div>
+        
+      </div>
+    </div>
+      </div>
+    </div>
+  </div>
+
 </div><!-- /app -->
 
 <script>
@@ -856,6 +1893,14 @@ function openViewer(type, title, url, url2) {
 function openDash(type, title) {
   const id = 'screen-' + type;
   showScreen(id);
+  if (type === 'faseamento') {
+    setTimeout(() => { try { window.fasShow('Regional'); } catch(e) { console.error(e); } }, 100);
+    return;
+  }
+  if (type === 'best') {
+    setTimeout(() => { try { window.bestShow('Regional'); } catch(e) { console.error(e); } }, 100);
+    return;
+  }
   if (type === 'metas') {
     setTimeout(() => {
       const tab = document.querySelector('#screen-metas .sv-tab');
@@ -1822,6 +2867,530 @@ function switchPage_cli(name,el){
 // init handled by openDash()
 window.showSV_cli = showSV_cli;
 window.switchPage_cli = switchPage_cli;
+})();
+
+
+// ══════════════════════════════════════════
+// DASHBOARD FASEAMENTO (isolated scope)
+// ══════════════════════════════════════════
+(function() {
+
+const FAS_PCTS = [2.25, 2.25, 2.25, 2.25, 1.0];
+const FAS_SVS  = ['Eliadson','Flávia','Amom','Elias'];
+const FAS_WEEKS = [
+  {label:'Semana 1', range:'01 a 08 mai'},
+  {label:'Semana 2', range:'09 a 15 mai'},
+  {label:'Semana 3', range:'16 a 22 mai'},
+  {label:'Semana 4', range:'23 a 29 mai'},
+  {label:'Semana 5', range:'30 a 31 mai'},
+];
+
+let fasCurrentSV = 'Regional';
+let fasMode = 'real';
+
+function fasGet(key, def) {
+  try { const v = localStorage.getItem(key); return v ? JSON.parse(v) : def; }
+  catch(e) { return def; }
+}
+function fasSet(key, val) {
+  try { localStorage.setItem(key, JSON.stringify(val)); } catch(e) {}
+}
+function fasGetMetas(sv) { return fasGet('fas_meta_'+sv, [0,0,0,0,0]); }
+function fasGetReal(sv)  { return fasGet('fas_real_'+sv, [0,0,0,0,0]); }
+function fasSaveMetas(sv, arr){ fasSet('fas_meta_'+sv, arr); }
+function fasSaveReal(sv, arr) { fasSet('fas_real_'+sv, arr); }
+
+function fasShow(sv) { fasCurrentSV = sv; fasRender(); }
+function fasSetMode(mode) { fasMode = mode; fasRender(); }
+
+function calcPontos(metaSemanal, entered) {
+  let pts = [0,0,0,0,0], earned = [false,false,false,false,false];
+  let mAcum = 0, eAcum = 0;
+  for (let i = 0; i < 5; i++) {
+    mAcum += metaSemanal[i]; eAcum += entered[i];
+    if (metaSemanal[i] > 0 && entered[i] >= metaSemanal[i]) { pts[i] = FAS_PCTS[i]; earned[i] = true; }
+    if (mAcum > 0 && eAcum >= mAcum) {
+      for (let j = 0; j <= i; j++) {
+        if (!earned[j]) { pts[j] = FAS_PCTS[j]; earned[j] = true; }
+      }
+    }
+  }
+  return pts;
+}
+
+function fasRender() {
+  const sv = fasCurrentSV;
+  const isReg = sv === 'Regional';
+  let metaSemanal, entered;
+  if (isReg) {
+    metaSemanal = [0,0,0,0,0]; entered = [0,0,0,0,0];
+    FAS_SVS.forEach(name => {
+      const m = fasGetMetas(name); const e = fasGetReal(name);
+      m.forEach((v,i) => metaSemanal[i] += v);
+      e.forEach((v,i) => entered[i] += v);
+    });
+  } else {
+    metaSemanal = fasGetMetas(sv); entered = fasGetReal(sv);
+  }
+  const pontos = calcPontos(metaSemanal, entered);
+  const totalPts = pontos.reduce((a,b)=>a+b,0);
+  const totalReal = entered.reduce((a,b)=>a+b,0);
+  const totalMeta = metaSemanal.reduce((a,b)=>a+b,0);
+
+  let header = `
+    <div class="fas-tabs">
+      <div class="fas-tab ${sv==='Regional'?'active':''}" onclick="fasShow('Regional')">🌎 Regional</div>
+      ${FAS_SVS.map(n => `<div class="fas-tab ${sv===n?'active':''}" onclick="fasShow('${n}')">${n}</div>`).join('')}
+    </div>
+  `;
+  if (!isReg) {
+    header += `
+      <div class="fas-mode">
+        <div class="fas-mode-btn ${fasMode==='real'?'active':''}" onclick="fasSetMode('real')">📊 Acompanhar</div>
+        <div class="fas-mode-btn ${fasMode==='meta'?'active':''}" onclick="fasSetMode('meta')">🎯 Configurar metas</div>
+      </div>
+    `;
+  }
+
+  let html = header + `
+    <div class="fas-hero">
+      <div class="fas-hero-label">${isReg ? '🌎 Regional IND NONE' : '👤 ' + sv}</div>
+      <div class="fas-hero-title">Maio 2026 — 5 semanas</div>
+      <div class="fas-hero-nums">
+        <div class="fas-hero-num"><span class="fas-hero-num-label">Meta total</span><span class="fas-hero-num-val">${fmt(totalMeta)}</span></div>
+        <div class="fas-hero-num"><span class="fas-hero-num-label">Entradas</span><span class="fas-hero-num-val green">${fmt(totalReal)}</span></div>
+        <div class="fas-hero-num"><span class="fas-hero-num-label">RVV ganho</span><span class="fas-hero-num-val ${totalPts>0?'green':''}">${totalPts.toFixed(2)}%</span></div>
+      </div>
+    </div>
+  `;
+
+  if (!isReg && fasMode === 'meta') {
+    html += `
+      <div class="fas-info">
+        <div class="fas-info-icon">🎯</div>
+        <div class="fas-info-text"><strong>Configurar metas semanais:</strong> Preencha o objetivo de cada semana conforme divulgado pela Inteligência de Vendas. Faça isso uma vez no início do mês.</div>
+      </div>
+      <div class="fas-sec">Metas semanais (cx)</div>
+    `;
+    for (let i = 0; i < 5; i++) {
+      html += `
+        <div class="fas-meta-card">
+          <div class="fas-meta-row">
+            <div class="fas-meta-num">${i+1}</div>
+            <div class="fas-meta-info">
+              <div class="fas-meta-name">${FAS_WEEKS[i].label}</div>
+              <div class="fas-meta-range">${FAS_WEEKS[i].range} · vale ${FAS_PCTS[i]}%</div>
+            </div>
+            <input type="number" class="fas-meta-input" inputmode="decimal" step="0.1" value="${metaSemanal[i]||''}" placeholder="0,0" oninput="fasUpdateMeta(${i}, this.value)"/>
+          </div>
+        </div>
+      `;
+    }
+    html += `<button class="fas-reset" onclick="fasResetMetas()">↺ Limpar metas</button>`;
+    document.getElementById('fas-content').innerHTML = html;
+    return;
+  }
+
+  if (!isReg && totalMeta === 0) {
+    html += `
+      <div class="fas-info">
+        <div class="fas-info-icon">⚠️</div>
+        <div class="fas-info-text"><strong>Configure as metas primeiro:</strong> Toque em "Configurar metas" acima e preencha o objetivo de cada semana.</div>
+      </div>
+    `;
+    document.getElementById('fas-content').innerHTML = html;
+    return;
+  }
+
+  if (!isReg) {
+    html += `
+      <div class="fas-info">
+        <div class="fas-info-icon">💡</div>
+        <div class="fas-info-text"><strong>Como funciona:</strong> Atualize as entradas reais conforme os pedidos forem subindo no sistema. Pontua se bater a meta da semana <strong>OU</strong> o acumulado.</div>
+      </div>
+    `;
+  }
+
+  html += `<div class="fas-sec">Detalhamento por semana</div>`;
+
+  let mAcum = 0, eAcum = 0;
+  for (let i = 0; i < 5; i++) {
+    mAcum += metaSemanal[i]; eAcum += entered[i];
+    const acumOK = mAcum > 0 && eAcum >= mAcum;
+    const won = pontos[i] > 0;
+    const falt = Math.max(0, metaSemanal[i] - entered[i]);
+    let statusLbl, statusCls;
+    if (won) { statusLbl = '✓ +' + FAS_PCTS[i] + '%'; statusCls = 'win'; }
+    else if (entered[i] === 0 && metaSemanal[i] === 0) { statusLbl = '—'; statusCls = 'pending'; }
+    else if (entered[i] === 0) { statusLbl = 'Pendente'; statusCls = 'pending'; }
+    else { statusLbl = '✗ Não atingida'; statusCls = 'miss'; }
+
+    html += `
+      <div class="fas-week">
+        <div class="fas-week-header">
+          <div class="fas-week-num ${won?'done':''}">${i+1}</div>
+          <div class="fas-week-info">
+            <div class="fas-week-name">${FAS_WEEKS[i].label}</div>
+            <div class="fas-week-pct">${FAS_WEEKS[i].range} · vale ${FAS_PCTS[i]}%</div>
+          </div>
+          <div class="fas-week-status ${statusCls}">${statusLbl}</div>
+        </div>
+        <div class="fas-row">
+          <div class="fas-cell"><span class="fas-cell-label">Meta semana</span><span class="fas-cell-val">${fmt(metaSemanal[i])}</span></div>
+          <div class="fas-cell"><span class="fas-cell-label">Entradas</span><span class="fas-cell-val real">${fmt(entered[i])}</span></div>
+          <div class="fas-cell"><span class="fas-cell-label">Faltante</span><span class="fas-cell-val falt">${fmt(falt)}</span></div>
+        </div>
+        ${!isReg ? `
+        <div class="fas-input-wrap">
+          <label class="fas-input-label">Pedidos que entraram nesta semana (cx)</label>
+          <input type="number" class="fas-input" inputmode="decimal" step="0.1" value="${entered[i]||''}" placeholder="0,0" oninput="fasUpdateReal(${i}, this.value)"/>
+        </div>` : ''}
+        <div class="fas-acum">
+          <span class="fas-acum-label">Acumulado até S${i+1}</span>
+          <div>
+            <span class="fas-acum-val">${fmt(eAcum)} / ${fmt(mAcum)}</span>
+            <span class="fas-acum-pct ${acumOK?'win':'miss'}">${mAcum>0?(eAcum/mAcum*100).toFixed(1):'0.0'}%</span>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  html += `
+    <div class="fas-sec">Resumo do mês</div>
+    <div class="fas-summary">
+      <div class="fas-summary-title">RVV Faseamento por semana</div>
+      ${pontos.map((p,i) => `
+        <div class="fas-summary-row">
+          <span class="fas-summary-week">${FAS_WEEKS[i].label}</span>
+          <span class="fas-summary-pts ${p>0?'earned':'zero'}">${p>0?'+'+p+'%':'0%'}</span>
+        </div>
+      `).join('')}
+    </div>
+    <div class="fas-summary-total">
+      <span class="fas-summary-total-label">💰 Total RVV Faseamento</span>
+      <span class="fas-summary-total-val">${totalPts.toFixed(2)}%</span>
+    </div>
+    ${!isReg ? `<button class="fas-reset" onclick="fasResetReal()">↺ Limpar realizados deste SV</button>` : ''}
+  `;
+  document.getElementById('fas-content').innerHTML = html;
+}
+
+function fasUpdateMeta(idx, val) {
+  if (fasCurrentSV === 'Regional') return;
+  const m = fasGetMetas(fasCurrentSV);
+  m[idx] = parseFloat(String(val).replace(',','.')) || 0;
+  fasSaveMetas(fasCurrentSV, m);
+}
+function fasUpdateReal(idx, val) {
+  if (fasCurrentSV === 'Regional') return;
+  const r = fasGetReal(fasCurrentSV);
+  r[idx] = parseFloat(String(val).replace(',','.')) || 0;
+  fasSaveReal(fasCurrentSV, r);
+  fasRender();
+}
+function fasResetMetas() {
+  if (!confirm('Apagar todas as metas semanais deste SV?')) return;
+  fasSaveMetas(fasCurrentSV, [0,0,0,0,0]);
+  fasRender();
+}
+function fasResetReal() {
+  if (!confirm('Apagar todos os realizados deste SV?')) return;
+  fasSaveReal(fasCurrentSV, [0,0,0,0,0]);
+  fasRender();
+}
+function fmt(v) {
+  if (typeof v !== 'number') v = parseFloat(v)||0;
+  return v.toLocaleString('pt-BR', {minimumFractionDigits:1, maximumFractionDigits:1});
+}
+// init by openDash
+
+window.fasShow = fasShow;
+window.fasSetMode = fasSetMode;
+window.fasUpdateMeta = fasUpdateMeta;
+window.fasUpdateReal = fasUpdateReal;
+window.fasResetMetas = fasResetMetas;
+window.fasResetReal = fasResetReal;
+})();
+
+
+// ══════════════════════════════════════════
+// DASHBOARD BEST (isolated scope)
+// ══════════════════════════════════════════
+(function() {
+
+const BEST_SVS = ['Eliadson','Flávia','Amom','Elias'];
+
+const BEST_PERIOD = {
+  start: '27/04',
+  end:   '29/05',
+  label: 'Mês fiscal — 27/04 a 29/05'
+};
+
+// Semanas (5 semanas, Mon-Fri)
+const BEST_WEEKS = [
+  {name:'Semana 1', days:[
+    {iso:'2026-04-27', wd:'Seg', label:'Seg 27/04'},
+    {iso:'2026-04-28', wd:'Ter', label:'Ter 28/04'},
+    {iso:'2026-04-29', wd:'Qua', label:'Qua 29/04'},
+    {iso:'2026-04-30', wd:'Qui', label:'Qui 30/04'},
+    {iso:'2026-05-01', wd:'Sex', label:'Sex 01/05'},
+  ]},
+  {name:'Semana 2', days:[
+    {iso:'2026-05-04', wd:'Seg', label:'Seg 04/05'},
+    {iso:'2026-05-05', wd:'Ter', label:'Ter 05/05'},
+    {iso:'2026-05-06', wd:'Qua', label:'Qua 06/05'},
+    {iso:'2026-05-07', wd:'Qui', label:'Qui 07/05'},
+    {iso:'2026-05-08', wd:'Sex', label:'Sex 08/05'},
+  ]},
+  {name:'Semana 3', days:[
+    {iso:'2026-05-11', wd:'Seg', label:'Seg 11/05'},
+    {iso:'2026-05-12', wd:'Ter', label:'Ter 12/05'},
+    {iso:'2026-05-13', wd:'Qua', label:'Qua 13/05'},
+    {iso:'2026-05-14', wd:'Qui', label:'Qui 14/05'},
+    {iso:'2026-05-15', wd:'Sex', label:'Sex 15/05'},
+  ]},
+  {name:'Semana 4', days:[
+    {iso:'2026-05-18', wd:'Seg', label:'Seg 18/05'},
+    {iso:'2026-05-19', wd:'Ter', label:'Ter 19/05'},
+    {iso:'2026-05-20', wd:'Qua', label:'Qua 20/05'},
+    {iso:'2026-05-21', wd:'Qui', label:'Qui 21/05'},
+    {iso:'2026-05-22', wd:'Sex', label:'Sex 22/05'},
+  ]},
+  {name:'Semana 5', days:[
+    {iso:'2026-05-25', wd:'Seg', label:'Seg 25/05'},
+    {iso:'2026-05-26', wd:'Ter', label:'Ter 26/05'},
+    {iso:'2026-05-27', wd:'Qua', label:'Qua 27/05'},
+    {iso:'2026-05-28', wd:'Qui', label:'Qui 28/05'},
+    {iso:'2026-05-29', wd:'Sex', label:'Sex 29/05'},
+  ]}
+];
+
+const BEST_CLIENTS = {
+  "Eliadson":[
+    {"id":"e1","nome":"DONIZETE DISTRIBUIDORA DE AL","obj":357.0,"real_cart":0.0,"fora":0.0},
+    {"id":"e2","nome":"DONIZETE DISTRIBUIDORA DE ALIMENTOS","obj":319.0,"real_cart":0.0,"fora":0.0},
+    {"id":"e3","nome":"SOLMAR DISTRIBUIDORA DE ALIMENTOS","obj":304.1,"real_cart":62.0,"fora":0.0},
+    {"id":"e4","nome":"DONIZETE DISTRIBUIDORA DE","obj":298.0,"real_cart":0.0,"fora":0.0},
+    {"id":"e5","nome":"TT DISTRIBUIDOR DE ALIMENTOS LTDA","obj":270.8,"real_cart":1.0,"fora":0.0},
+    {"id":"e6","nome":"L F S COMERCIO E IMPORTACAO DE","obj":225.2,"real_cart":104.3,"fora":0.0}
+  ],
+  "Flávia":[
+    {"id":"f1","nome":"NORDECE - NORDESTE REPRESENTACAO E","obj":458.1,"real_cart":0.0,"fora":0.0},
+    {"id":"f2","nome":"MULTIGIRO DISTRIBUIDORA LTDA","obj":440.4,"real_cart":18.4,"fora":0.0},
+    {"id":"f3","nome":"PROGRESSO ATACADO LTDA","obj":401.2,"real_cart":0.0,"fora":0.0},
+    {"id":"f4","nome":"MULTIGIRO COMERCIO E DISTRIBUICAO","obj":300.1,"real_cart":19.5,"fora":0.0},
+    {"id":"f5","nome":"PROGRESSO ATAC DE ALIMENTOS LTDA","obj":69.4,"real_cart":0.0,"fora":0.0},
+    {"id":"f6","nome":"COMERCIAL ELOI CHAVES LTDA","obj":53.1,"real_cart":21.0,"fora":0.0},
+    {"id":"f7","nome":"CAICO DISTRIBUIDORA DE LATICINIOS","obj":43.9,"real_cart":0.0,"fora":0.0},
+    {"id":"f8","nome":"RF SOLUCOES AMBIENTAIS LTDA","obj":2.5,"real_cart":0.0,"fora":0.0}
+  ],
+  "Amom":[
+    {"id":"a1","nome":"DCL DISTRIBUIDORA CARDEAL LTDA","obj":778.9,"real_cart":201.7,"fora":0.0},
+    {"id":"a2","nome":"E.B.A. DISTRIBUIDORA LTDA","obj":361.1,"real_cart":0.0,"fora":0.0},
+    {"id":"a3","nome":"CASA DAS BALAS LTDA","obj":243.6,"real_cart":26.6,"fora":0.0},
+    {"id":"a4","nome":"VITORIA ATACAREJO DISTRIBUIDORA","obj":172.7,"real_cart":26.0,"fora":0.0},
+    {"id":"a5","nome":"COMERCIAL VITA NORTE LTDA","obj":78.5,"real_cart":259.2,"fora":0.0},
+    {"id":"a6","nome":"AMANHECER ATACADO DE PRODUTOS","obj":25.1,"real_cart":10.4,"fora":0.0},
+    {"id":"a7","nome":"COMERCIAL OESTE LTDA","obj":22.8,"real_cart":0.0,"fora":0.0},
+    {"id":"a8","nome":"DISTRIBUIDORA CRISTAL LTDA","obj":3.3,"real_cart":0.0,"fora":0.0}
+  ],
+  "Elias":[
+    {"id":"x1","nome":"BTM  DIST. DE ALIMENTOS LTDA","obj":173.4,"real_cart":37.3,"fora":0.0},
+    {"id":"x2","nome":"DISMELO DISTRIBUIDORA","obj":162.9,"real_cart":8.3,"fora":0.0},
+    {"id":"x3","nome":"SOMMA DISTRIBUIDOR PARA","obj":141.7,"real_cart":8.5,"fora":235.5},
+    {"id":"x4","nome":"DESTAQUE DO NORTE","obj":56.6,"real_cart":0.0,"fora":0.0}
+  ]
+};
+
+let bestSV = 'Regional';
+let openWeeks = new Set();
+
+function bestGetProj(clientId) {
+  try {
+    const raw = localStorage.getItem('best_proj_' + clientId);
+    return raw ? JSON.parse(raw) : {};
+  } catch(e) { return {}; }
+}
+function bestSaveProj(clientId, projObj) {
+  try { localStorage.setItem('best_proj_' + clientId, JSON.stringify(projObj)); } catch(e) {}
+}
+function bestProjTotal(clientId) {
+  const p = bestGetProj(clientId);
+  return Object.values(p).reduce((s,v)=>s+(parseFloat(v)||0), 0);
+}
+function bestProjWeek(clientId, weekIdx) {
+  const p = bestGetProj(clientId);
+  return BEST_WEEKS[weekIdx].days.reduce((s,d)=>s+(parseFloat(p[d.iso])||0), 0);
+}
+
+function bestShow(sv) { bestSV = sv; openWeeks.clear(); bestRender(); }
+
+function bestToggleWeek(clientId, weekIdx) {
+  const key = clientId + '|' + weekIdx;
+  if (openWeeks.has(key)) openWeeks.delete(key); else openWeeks.add(key);
+  bestRender();
+}
+
+function bestUpdateDay(clientId, iso, val) {
+  const p = bestGetProj(clientId);
+  const v = parseFloat(String(val).replace(',','.')) || 0;
+  if (v === 0) delete p[iso]; else p[iso] = v;
+  bestSaveProj(clientId, p);
+  bestRender();
+}
+
+function bestResetClient(clientId) {
+  if (!confirm('Apagar todas as projeções deste cliente?')) return;
+  try { localStorage.removeItem('best_proj_' + clientId); } catch(e) {}
+  bestRender();
+}
+
+function bestRender() {
+  const sv = bestSV;
+  const isReg = sv === 'Regional';
+
+  // Aggregate clients
+  let clients = [];
+  if (isReg) {
+    BEST_SVS.forEach(name => {
+      BEST_CLIENTS[name].forEach(c => clients.push({...c, _sv: name}));
+    });
+  } else {
+    clients = BEST_CLIENTS[sv].map(c => ({...c, _sv: sv}));
+  }
+
+  // Totals
+  let totObj = 0, totReal = 0, totFora = 0, totProj = 0;
+  clients.forEach(c => {
+    totObj  += c.obj;
+    totReal += c.real_cart;
+    totFora += c.fora;
+    totProj += bestProjTotal(c.id);
+  });
+  const totFinal = totReal + totFora + totProj;
+  const pctFinal = totObj > 0 ? (totFinal / totObj * 100) : 0;
+
+  let pctCls = 'amber';
+  if (pctFinal >= 100) pctCls = 'green';
+  else if (pctFinal < 50) pctCls = 'red';
+
+  let header = `
+    <div class="best-tabs">
+      <div class="best-tab ${sv==='Regional'?'active':''}" onclick="bestShow('Regional')">🌎 Regional</div>
+      ${BEST_SVS.map(n => `<div class="best-tab ${sv===n?'active':''}" onclick="bestShow('${n}')">${n}</div>`).join('')}
+    </div>
+  `;
+
+  let html = header + `
+    <div class="best-hero">
+      <div class="best-hero-label">${isReg ? '🌎 Regional IND NONE' : '👤 ' + sv}</div>
+      <div class="best-hero-title">Best — Projeção do Mês</div>
+      <div class="best-hero-period">${BEST_PERIOD.label}</div>
+      <div class="best-hero-pct">${pctFinal.toFixed(1)}%</div>
+      <div class="best-hero-nums">
+        <div class="best-hero-num"><span class="best-hero-num-label">Objetivo</span><span class="best-hero-num-val">${fmt(totObj)}</span></div>
+        <div class="best-hero-num"><span class="best-hero-num-label">Real+Cart</span><span class="best-hero-num-val green">${fmt(totReal)}</span></div>
+        <div class="best-hero-num"><span class="best-hero-num-label">Fora</span><span class="best-hero-num-val gold">${fmt(totFora)}</span></div>
+        <div class="best-hero-num"><span class="best-hero-num-label">Projeção</span><span class="best-hero-num-val amber">${fmt(totProj)}</span></div>
+      </div>
+    </div>
+
+    <div class="best-summary">
+      <div class="best-summary-title">Resumo Total</div>
+      <div class="best-summary-row"><span class="best-summary-label">📊 Objetivo</span><span class="best-summary-val">${fmt(totObj)}</span></div>
+      <div class="best-summary-row"><span class="best-summary-label">💰 Realizado + Carteira</span><span class="best-summary-val green">${fmt(totReal)}</span></div>
+      <div class="best-summary-row"><span class="best-summary-label">📅 Fora do mês</span><span class="best-summary-val fora">${fmt(totFora)}</span></div>
+      <div class="best-summary-row"><span class="best-summary-label">🎯 Projeção (manual)</span><span class="best-summary-val proj">${fmt(totProj)}</span></div>
+      <div class="best-summary-row"><span class="best-summary-label" style="font-weight:700;">✓ Total Projetado</span><span class="best-summary-val" style="color:${pctCls==='green'?'var(--green)':pctCls==='red'?'var(--red)':'var(--amber)'};">${fmt(totFinal)} · ${pctFinal.toFixed(1)}%</span></div>
+    </div>
+  `;
+
+  if (!isReg) {
+    html += `
+      <div class="best-info" style="margin-top:14px;">
+        <div class="best-info-icon">💡</div>
+        <div class="best-info-text"><strong>Como funciona:</strong> Para cada cliente, expanda as semanas e preencha quanto você projeta entrar em cada dia útil. O total final = Real+Cart + Fora + sua Projeção.</div>
+      </div>
+    `;
+  }
+
+  html += `<div class="best-sec" style="margin-top:14px;">${clients.length} clientes</div>`;
+
+  clients.forEach(c => {
+    const projTotal = bestProjTotal(c.id);
+    const finalTotal = c.real_cart + c.fora + projTotal;
+    const pct = c.obj > 0 ? (finalTotal / c.obj * 100) : 0;
+    let cls = 'amber';
+    if (pct >= 100) cls = 'green';
+    else if (pct < 50) cls = 'red';
+
+    let weeksHtml = '';
+    if (!isReg) {
+      BEST_WEEKS.forEach((w, wi) => {
+        const wTotal = bestProjWeek(c.id, wi);
+        const key = c.id + '|' + wi;
+        const isOpen = openWeeks.has(key);
+        const proj = bestGetProj(c.id);
+
+        weeksHtml += `
+          <div class="best-week-toggle" onclick="bestToggleWeek('${c.id}', ${wi})">
+            <span class="best-week-toggle-name">${w.name}</span>
+            <div>
+              <span class="best-week-toggle-val">${fmt(wTotal)}</span>
+              <span class="best-week-toggle-arrow">${isOpen?'▾':'▸'}</span>
+            </div>
+          </div>
+          <div class="best-week-days ${isOpen?'open':''}">
+            ${w.days.map(d => `
+              <div class="best-day-row">
+                <span class="best-day-label">${d.label}</span>
+                <input type="number" class="best-day-input" inputmode="decimal" step="0.1" value="${proj[d.iso]||''}" placeholder="0,0" onchange="bestUpdateDay('${c.id}','${d.iso}',this.value)" oninput="bestUpdateDay('${c.id}','${d.iso}',this.value)"/>
+              </div>
+            `).join('')}
+          </div>
+        `;
+      });
+    }
+
+    html += `
+      <div class="best-client">
+        <div class="best-client-header">
+          <div class="best-client-name">${isReg ? '<span style="color:#999;font-weight:600;font-size:10px;">[' + c._sv + ']</span> ' : ''}${c.nome}</div>
+          <div class="best-client-pct ${cls}">${pct.toFixed(0)}%</div>
+        </div>
+        <div class="best-row">
+          <div class="best-cell"><span class="best-cell-label">Objetivo</span><span class="best-cell-val">${fmt(c.obj)}</span></div>
+          <div class="best-cell"><span class="best-cell-label">Real+Cart</span><span class="best-cell-val real">${fmt(c.real_cart)}</span></div>
+          <div class="best-cell"><span class="best-cell-label">Fora</span><span class="best-cell-val fora">${fmt(c.fora)}</span></div>
+        </div>
+        ${!isReg ? `
+        <div class="best-sec" style="margin-bottom:6px;font-size:9px;">Projeção por dia útil</div>
+        ${weeksHtml}
+        ` : ''}
+        <div class="best-final">
+          <span class="best-final-label">${isReg?'Total':'Final'} (Real+Cart+Fora+Proj)</span>
+          <span class="best-final-val">${fmt(finalTotal)} · ${pct.toFixed(0)}%</span>
+        </div>
+        ${!isReg && projTotal > 0 ? `<button class="best-reset" onclick="bestResetClient('${c.id}')">↺ Limpar projeção</button>` : ''}
+      </div>
+    `;
+  });
+
+  document.getElementById('best-content').innerHTML = html;
+}
+
+function fmt(v) {
+  if (typeof v !== 'number') v = parseFloat(v)||0;
+  return v.toLocaleString('pt-BR', {minimumFractionDigits:1, maximumFractionDigits:1});
+}
+
+// init by openDash
+
+window.bestShow = bestShow;
+window.bestToggleWeek = bestToggleWeek;
+window.bestUpdateDay = bestUpdateDay;
+window.bestResetClient = bestResetClient;
 })();
 
 </script>
